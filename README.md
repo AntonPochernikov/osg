@@ -1,3 +1,3 @@
 ## Old school games
 
-This repo is made for testing react&redux API building simple old school games.
+This repo is made for testing React-Redux and other stuff building simple old school games.
