@@ -1,0 +1,13 @@
+/*=================================
+	tetris
+=================================*/
+.game-body {
+	display: flex;
+	justify-content: space-between;
+
+	width: var(--width-content);
+	height: 100%;
+	margin: 0 auto;
+	box-sizing: border-box;
+	padding: 40px 0 20px 0;
+}

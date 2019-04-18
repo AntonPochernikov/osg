@@ -1,0 +1,33 @@
+/*=================================
+	game board
+=================================*/
+.game-board {
+	border: none;
+}
+
+.game-board__cell {
+	position: relative;
+	width: 22px;
+	height: 22px;
+	box-sizing: border-box;
+
+	border: 2px solid var(--color-inactive);
+}
+
+.game-board__cell--active {
+	border: 2px solid var(--color-neutral--darken);
+}
+
+.game-board__cell--active::before {
+	content: "";
+	position: absolute;
+	top: 4px;
+	left: 4px;
+
+	display: block;
+	width: 10px;
+	height: 10px;
+	box-sizing: border-box;
+
+	background-color: var(--color-yellow);
+}

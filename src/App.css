@@ -1,0 +1,93 @@
+/*=================================
+	global styles
+=================================*/
+body {
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+
+	color: #333;
+	font-family: sans-serif;
+}
+
+.hidden {
+	display: none !important;
+}
+
+:root {
+	--color-alert--lighten: rgb(244, 197, 200);
+	--color-alert--light: rgb(238, 164, 168);
+	--color-alert: rgb(232, 131, 136);
+
+	--color-inactive: #b9c0cb;
+
+	--color-info--lightest: rgb(250, 253, 253);
+	--color-info--lighten: rgb(191, 229, 234);
+	--color-info--light: rgb(146, 212, 219);
+	--color-info: rgb(102, 194, 205);
+	--color-info--dark: rgb(61, 174, 187);
+	--color-info--darken: rgb(47, 132, 143);
+	--color-info--darkest: rgb(32, 91, 98);
+
+	--color-yellow--lighten: #ffeac3;
+	--color-yellow--light: #ffda97;
+	--color-yellow: #ffcb6b;
+	--color-yellow--dark: rgb(215, 199, 111);
+	--color-yellow--darken: rgb(206, 187, 80);
+	--color-yellow--darkest: rgb(193, 172, 54);
+
+	--color-orange--lightest: rgb(244, 229, 214);
+	--color-orange--lighten: rgb(235, 209, 183);
+	--color-orange--light: rgb(227, 190, 152);
+	--color-orange: rgb(219, 171, 121);
+	--color-orange--dark: rgb(219, 171, 121);
+	--color-orange--darken: rgb(210, 151, 90);
+	--color-orange--darkest: rgb(202, 132, 59);
+
+	--color-success: rgb(157, 242, 157);
+	--color-success--dark: rgb(122, 237, 122);
+	--color-success--darken: rgb(88, 233, 88);
+	--color-success--darkest: rgb(53, 228, 53);
+
+	--color-neutral--lightest: rgb(207, 212, 219);
+	--color-neutral--lighten: rgb(174, 182, 194);
+	--color-neutral--light: rgb(140, 151, 168);
+	--color-neutral: rgb(91, 102, 120);
+	--color-neutral--dark: rgb(65, 73, 87);
+	--color-neutral--darken: rgb(38, 50, 56);
+	--color-neutral--darkest: rgb(15, 17, 19);
+
+	--color-main: rgb(101, 136, 152);
+	--color-main--dark: rgb(85, 115, 128);
+	--color-main--darken: rgb(70, 94, 105);
+	--color-main--darkest: rgb(54, 73, 81);
+
+	--width-content: 768px;
+}
+
+@keyframes expand-height {
+	0% {
+		height: 0px;
+		transform: translateY(2px);
+	}
+	100% {
+		height: 4px;
+		transform: translateY(0);
+	}
+}
+
+@keyframes slide-through {
+	0% {
+		transform: translateX(-100%);
+	}
+	33% {
+		transform: translateX(-5%);
+	}
+	66% {
+		transform: translateX(50%) scaleX(0.01);
+	}
+	100% {
+		transform: translateX(200%);
+	}
+}

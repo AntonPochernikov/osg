@@ -1,2 +1,3 @@
-# OSG
-Creating Games using React-Redux and other stuff
+## Old school games
+
+This repo is made for testing react&redux API building simple old school games.

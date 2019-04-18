@@ -1,0 +1,127 @@
+/*=================================
+	tetris game info
+=================================*/
+.tetris-game-info {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
+	width: 200px;
+}
+
+.tetris-game-info__title {
+	margin: 0;
+	margin-bottom: 40px;
+	padding: 0;
+
+	color: var(--color-neutral--dark);
+}
+
+.tetris-game-info__paragraph {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	flex-shrink: 0;
+
+	margin: 0;
+	margin-bottom: 40px;
+
+	color: var(--color-neutral);
+	text-align: center;
+}
+
+.tetris-game-info__arrows {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
+	margin: 5px 0;
+}
+
+.tetris-game-info__arrows-bottom-layout {
+	display: flex;
+}
+
+.tetris-game-info__arrow {
+	position: relative;
+
+	width: 28px;
+	height: 28px;
+	margin: 1px;
+	box-sizing: border-box;
+
+	border: 2px solid var(--color-neutral--light);
+	border-radius: 6px;
+
+	background-color: var(--color-yellow--lighten);
+}
+
+.tetris-game-info__arrow::before {
+	position: absolute;
+	content: "";
+	top: 6px;
+	left: 6px;
+
+	display: block;
+	width: 12px;
+	height: 12px;
+	box-sizing: border-box;
+
+	border: 3px solid var(--color-neutral--light);
+	border-radius: 3px;
+}
+
+.tetris-game-info__arrow--top::before {
+	top: 9px;
+	transform: rotate(45deg);
+
+	border-right-color: transparent;
+	border-bottom-color: transparent;
+}
+
+.tetris-game-info__arrow--left::before {
+	top: 6px;
+	left: 8px;
+	transform: rotate(-45deg);
+
+	border-right-color: transparent;
+	border-bottom-color: transparent;
+}
+
+.tetris-game-info__arrow--down::before {
+	top: 5px;
+	left: 6px;
+	transform: rotate(45deg);
+
+	border-left-color: transparent;
+	border-top-color: transparent;
+}
+
+.tetris-game-info__arrow--right::before {
+	top: 6px;
+	left: 4px;
+	transform: rotate(45deg);
+
+	border-left-color: transparent;
+	border-bottom-color: transparent;
+}
+
+.tetris-game-info__key {
+	max-width: 140px;
+	padding: 5px 30px;
+	margin: 5px 0;
+
+	color: var(--color-neutral--light);
+	font-weight: 700;
+
+	border: 2px solid var(--color-neutral--light);
+	border-radius: 6px;
+
+	background-color: var(--color-yellow--lighten);
+
+	user-select: none;
+}
+
+.tetris-game-info__phrase {
+	max-width: 140px;
+}
