@@ -1,5 +1,6 @@
 import { createAction } from 'redux-actions';
 
+// TETRIS
 export const startTetrisGame = createAction('TETRIS/GAME/START');
 export const stopTetrisGame = createAction('TETRIS/GAME/STOP');
 export const pauseTetrisGame = createAction('TETRIS/GAME/PAUSE');
@@ -11,8 +12,9 @@ export const setNextTetrisFigure = createAction('TETRIS/FIGURE/NEXT/SET');
 
 export const moveTetrisFigureDown = createAction('TETRIS/FIGURE/MOVE/DOWN');
 export const fallTetrisFigureDown = createAction('TETRIS/FIGURE/FALL/DOWN');
+export const collideTetrisFigure = createAction('TETRIS/FIGURE/COLLIDE');
 
-
+// USER
 export const loginUserRequest = createAction('USER/LOGIN/REQUEST');
 export const loginUserSuccess = createAction('USER/LOGIN/SUCCESS');
 export const loginUserFailure = createAction('USER/LOGIN/FAILURE');

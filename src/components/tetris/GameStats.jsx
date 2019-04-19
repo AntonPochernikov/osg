@@ -1,9 +1,16 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import NextFigurePreview from './NextFigurePreview.jsx';
 import GameSettings from './GameSettings.jsx';
 import './GameStats.css';
 
 export default class GameStats extends React.Component {
+  static defaultProps = {
+    gameState: 'initial',
+    speed: 1,
+    score: 0,
+  };
+
   buttonByState = {
     initial: {
       title: 'Start New Game',
@@ -42,10 +49,17 @@ export default class GameStats extends React.Component {
           {this.getButtonTitle()}
         </button>
 
-        <div className={this.props.paused ? 'tetris-game-stats__paused-sign' : 'hidden'}>
-          Paused
-        </div>
+        {this.props.gameState === 'paused' &&
+          <div className='tetris-game-stats__paused-sign'>
+            Paused
+          </div>}
       </div>
     );
   }
 }
+
+GameStats.propTypes = {
+  gameState: PropTypes.oneOf(['initial', 'started', 'paused']).isRequired,
+  speed: PropTypes.number.isRequired,
+  score: PropTypes.number.isRequired,
+};

@@ -10,12 +10,22 @@ const checkCell = (cell) => {
 // get horizontal coordinate of cell
 export const getCol = (cell) => {
   checkCell(cell);
-  return cell.coordinates.col;
+  return cell.coordinates[0];
 };
 // get vertical coordinate of cell
 export const getRow = (cell) => {
   checkCell(cell);
-  return cell.coordinates.row;
+  return cell.coordinates[1];
+};
+// check same coordinates
+export const haveSameCoordinates = (c1, c2) => {
+  checkCell(c1);
+  checkCell(c2);
+  const col1 = getCol(c1);
+  const col2 = getCol(c2);
+  const row1 = getRow(c1);
+  const row2 = getRow(c2);
+  return col1 === col2 && row1 === row2;
 };
 // get cell id
 export const getId = (cell) => {
@@ -27,6 +37,8 @@ export const getState = (cell) => {
   checkCell(cell);
   return cell.state;
 };
+// isActive predicate
+export const isActive = cell => getState(cell) === 'active';
 // get cell fill color
 export const getFill = (cell) => {
   checkCell(cell);

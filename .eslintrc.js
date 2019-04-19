@@ -35,6 +35,7 @@ module.exports = {
     ],
   },
   rules: {
+    "class-methods-use-this": 0,
     "linebreak-style": 0,
     "line-break-style": 0,
     "react/prop-types": 0,

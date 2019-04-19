@@ -5,6 +5,7 @@ import GameBoard from './GameBoard.jsx';
 
 const mapStateToProps = state => ({
   board: selectors.getTetrisBoardCells(state),
+  gameState: state.tetris.gameState,
 });
 
 export default connect(mapStateToProps, actionCreators)(GameBoard);

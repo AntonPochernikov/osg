@@ -2,10 +2,11 @@ import {
   put,
   take,
   call,
-  fork,
-  cancel,
-  cancelled,
+  // fork,
+  // cancel,
+  // cancelled,
   select,
+  race,
 } from 'redux-saga/effects';
 import * as action from '../actions';
 import * as selector from '../selectors';
@@ -18,30 +19,40 @@ function* figureFall() {
   while (true) {
     try {
       const interval = yield select(selector.getTetrisFallInterval);
-      yield call(delay, interval);
-      yield put(action.fallTetrisFigureDown());
+      const { pause } = yield race({
+        delay: call(delay, interval),
+        pause: take('TETRIS/GAME/PAUSE'),
+      });
+      if (pause) {
+        yield take('TETRIS/GAME/RESUME');
+      } else {
+        yield put(action.fallTetrisFigureDown());
+      }
     } catch (e) {
       console.log(e);
-    } finally {
-      if (yield cancelled()) {
-        console.log('canceled');
-      }
+      yield put(action.finishTetrisGame());
     }
   }
 }
 
 function* figureFlow() {
-  yield put(action.setCurrentTetrisFigure());
-  yield put(action.setNextTetrisFigure());
-  const figureFalling = yield fork(figureFall);
-  yield take(['TETRIS/GAME/FINISH', 'TETRIS/GAME/PAUSE']);
-  yield cancel(figureFalling);
+  while (true) {
+    yield put(action.setCurrentTetrisFigure());
+    yield put(action.setNextTetrisFigure());
+    yield race({
+      fall: call(figureFall),
+      falldown: take('TETRIS/GAME/FIGURE/FELL_DOWN'),
+    });
+  }
 }
 
 export default function* gameFlow() {
   while (true) {
     yield take('TETRIS/GAME/START');
-    yield call(figureFlow);
-    yield take('TETRIS/GAME/STOP');
+    yield race({
+      figure: call(figureFlow),
+      stop: take('TETRIS/GAME/STOP'),
+      finish: take('TETRIS/GAME/FINISH'),
+    });
   }
 }

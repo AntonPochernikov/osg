@@ -6,19 +6,7 @@ export default class Figure {
     this.direction = direction;
   }
 
-  move(x, y) {
-    const headX = getCol(this.head);
-    const headY = getRow(this.head);
-    return new FigureI(new Cell([headX + x, headY + y]), this.direction);
-  }
-
-  moveDown() {
-    this.move(0, 1);
-  }
-  moveLeft() {
-    this.move(-1, 0);
-  }
-  moveRight() {
-    this.move(1, 0);
+  getCells() {
+    return [];
   }
 }

@@ -1,13 +1,26 @@
 import { createSelector } from 'reselect';
-import { getState } from '../libs/cells';
+import { getState, haveSameCoordinates } from '../libs/cells';
 
 export const getTetrisBoard = state => state.tetris.board;
 export const getTetrisSpeed = state => state.tetris.speed;
 export const getTetrisGameState = state => state.tetris.gameState;
+export const getTetrisCurrentFigure = state => state.tetris.currentFigure;
 
 export const getTetrisBoardCells = createSelector(
   getTetrisBoard,
-  board => board.map(tr => tr.map(cell => getState(cell))),
+  getTetrisCurrentFigure,
+  (board, figure) => {
+    if (figure) {
+      const figureCells = figure.getCells();
+      return board.map(tr => tr.map((cell) => {
+        if (figureCells.some(c => haveSameCoordinates(c, cell))) {
+          return 'active';
+        }
+        return getState(cell);
+      }));
+    }
+    return board.map(tr => tr.map(cell => getState(cell)));
+  },
 );
 
 export const getTetrisFallInterval = createSelector(
