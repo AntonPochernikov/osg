@@ -18,14 +18,20 @@ const gameState = handleActions({
   [action.pauseTetrisGame]: () => 'paused',
 }, 'initial');
 
-const board = handleActions({}, createField(10, 20));
+const board = handleActions({
+  [action.stopTetrisGame]: () => createField(10, 20),
+}, createField(10, 20));
 
 const currentFigure = handleActions({
   [action.setCurrentTetrisFigure]: () => ({}),
+  [action.stopTetrisGame]: () => null,
 }, null);
+
+const speed = handleActions({}, 1);
 
 export default combineReducers({
   gameState,
   board,
   currentFigure,
+  speed,
 });
