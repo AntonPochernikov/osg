@@ -17,6 +17,11 @@ export const getRow = (cell) => {
   checkCell(cell);
   return cell.coordinates[1];
 };
+// get coordinates array
+export const getCoordinates = (cell) => {
+  checkCell(cell);
+  return cell.coordinates;
+};
 // check same coordinates
 export const haveSameCoordinates = (c1, c2) => {
   checkCell(c1);

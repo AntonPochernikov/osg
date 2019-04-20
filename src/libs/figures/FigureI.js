@@ -1,4 +1,4 @@
-import { create as createCell, getCol, getRow } from '../cells.js';
+import { create as createCell, getCoordinates } from '../cells.js';
 import Figure from './Figure.js';
 
 export default class FigureI extends Figure {
@@ -8,8 +8,7 @@ export default class FigureI extends Figure {
       rotate: head => new FigureI(head, 'right'),
       getCells: (head) => {
         const result = [];
-        const headX = getCol(head);
-        const headY = getRow(head);
+        const [headX, headY] = getCoordinates(head);
         for (let y = headY; y < headY + 4; y += 1) {
           result.push(createCell([headX, y], 'active'));
         }
@@ -21,8 +20,7 @@ export default class FigureI extends Figure {
       rotate: head => new FigureI(head, 'down'),
       getCells: (head) => {
         const result = [];
-        const headX = getCol(head);
-        const headY = getRow(head);
+        const [headX, headY] = getCoordinates(head);
         for (let x = headX - 1; x < headX + 3; x += 1) {
           result.push(createCell([x, headY + 1], 'active'));
         }
@@ -36,8 +34,7 @@ export default class FigureI extends Figure {
   rotate = () => this.actions[this.direction].rotate(this.head)
 
   move(x, y) {
-    const headX = getCol(this.head);
-    const headY = getRow(this.head);
+    const [headX, headY] = getCoordinates(this.head);
     return new FigureI(createCell([headX + x, headY + y], 'active'), this.direction);
   }
 

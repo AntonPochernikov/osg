@@ -5,6 +5,10 @@ class Figure {
     this.head = head;
     this.direction = direction;
   }
+
+  getCells() {
+    return [];
+  }
 }
 
 export default Figure;

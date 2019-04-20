@@ -26,6 +26,10 @@ function* figureFall() {
       if (pause) {
         yield take('TETRIS/GAME/RESUME');
       } else {
+        if (yield select(selector.doesTetrisFigureCollide)) {
+          const currentFigure = yield select(selector.getTetrisCurrentFigure);
+          yield put(action.collideTetrisFigure({ currentFigure }));
+        }
         yield put(action.fallTetrisFigureDown());
       }
     } catch (e) {
@@ -39,9 +43,12 @@ function* figureFlow() {
   while (true) {
     yield put(action.setCurrentTetrisFigure());
     yield put(action.setNextTetrisFigure());
+    if (yield select(selector.doesTetrisFigureCollide)) {
+      yield put(action.finishTetrisGame());
+    }
     yield race({
       fall: call(figureFall),
-      falldown: take('TETRIS/GAME/FIGURE/FELL_DOWN'),
+      collision: take('TETRIS/FIGURE/COLLIDE'),
     });
   }
 }
