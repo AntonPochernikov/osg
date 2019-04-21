@@ -35,7 +35,7 @@
 }
 
 .game-board__cell--active {
-	border: 2px solid var(--color-neutral--darken);
+	border: 2px solid var(--color-neutral--dark);
 }
 
 .game-board__cell--active::before {

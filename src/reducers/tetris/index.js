@@ -79,7 +79,12 @@ const figure = handleActions({
 
 const speed = handleActions({}, 5);
 
-const score = handleActions({}, 0);
+const score = handleActions({
+  [action.collideTetrisFigure]: state => state + 1,
+  [action.removeTetrisCompletedRow]: state => state + 10,
+  [action.startTetrisGame]: () => 0,
+  [action.stopTetrisGame]: () => 0,
+}, 0);
 
 export default combineReducers({
   gameState,

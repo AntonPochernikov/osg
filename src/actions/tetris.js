@@ -8,8 +8,8 @@ export const resumeTetrisGame = createAction('TETRIS/GAME/RESUME');
 export const finishTetrisGame = createAction('TETRIS/GAME/FINISH');
 
 // BOARD
-export const removeTetrisCompletedRow = createAction('TETRIS/ROW/COMPLETED/REMOVE');
 export const selectTetrisCompletedRow = createAction('TETRIS/ROW/COMPLETED/SELECT');
+export const removeTetrisCompletedRow = createAction('TETRIS/ROW/COMPLETED/REMOVE');
 
 // FIGURES
 export const setCurrentTetrisFigure = createAction('TETRIS/FIGURE/CURRENT/SET');

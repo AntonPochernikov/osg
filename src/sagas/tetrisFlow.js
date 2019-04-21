@@ -56,7 +56,7 @@ function* figureFlow() {
   }
 }
 
-function* selectTetrisCompletedRow(row) {
+function* selectCompletedRow(row) {
   yield put(action.selectTetrisCompletedRow({ rowIndex: row }));
   const { pause } = yield race({
     pause: take('TETRIS/GAME/PAUSE'),
@@ -80,7 +80,7 @@ function* removeCompletedRow(row) {
 
 function* manageCompletedRows(rows) {
   for (let i = 0; i < rows.length; i += 1) {
-    yield call(selectTetrisCompletedRow, rows[i]);
+    yield call(selectCompletedRow, rows[i]);
     yield call(removeCompletedRow, rows[i]);
   }
 }
