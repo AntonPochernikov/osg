@@ -70,6 +70,16 @@ export const cons = ([col, row], state = 'inactive', fill = 'black') => {
   return cell;
 };
 
+// get cell moved down
+export const moveDown = (cell) => {
+  checkCell(cell);
+  return cons(
+    [getCol(cell), getRow(cell) + 1],
+    getState(cell),
+    getFill(cell),
+  );
+};
+
 // get active cell from cell
 export const getActive = (cell) => {
   checkCell(cell);
@@ -85,7 +95,17 @@ export const getInactive = (cell) => {
   checkCell(cell);
   return cons(
     getCoordinates(cell),
-    'active',
+    'inactive',
+    getFill(cell),
+  );
+};
+
+// get indeterminate cell from cell
+export const getIndeterminate = (cell) => {
+  checkCell(cell);
+  return cons(
+    getCoordinates(cell),
+    'indeterminate',
     getFill(cell),
   );
 };

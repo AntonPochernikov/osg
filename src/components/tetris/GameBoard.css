@@ -52,3 +52,39 @@
 	background-color: var(--color-yellow);
 	border-radius: 2px;
 }
+
+.game-board__cell--indeterminate {
+	border: 2px solid var(--color-inactive);
+}
+
+.game-board__cell--indeterminate::before {
+	content: "";
+	position: absolute;
+	top: 4px;
+	left: 4px;
+
+	display: block;
+	width: 10px;
+	height: 10px;
+	box-sizing: border-box;
+
+	background-color: var(--color-neutral);
+	border-radius: 2px;
+
+	animation: cell-blick 0.2s;
+}
+
+@keyframes cell-blick {
+	0% {
+		background-color: var(--color-neutral);
+	}
+	33% {
+		background-color: var(--color-neutral--light);
+	}
+	66% {
+		background-color: var(--color-neutral);
+	}
+	100% {
+		background-color: var(--color-neutral--light);
+	}
+}

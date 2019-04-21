@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux';
 import { handleActions } from 'redux-actions';
 import * as action from '../../actions/index.js';
-import { createField } from '../../libs/createField.js';
+import { createField, createClearRow, createIndeterminateRow } from '../../libs/createField.js';
 import getRandomFigure from '../../libs/figures/getRandomFigure.js';
-import { cons as consCell, haveSameCoordinates } from '../../libs/cell.js';
+import { cons as consCell, haveSameCoordinates, moveDown as moveCelldown } from '../../libs/cell.js';
 
 const gameState = handleActions({
   [action.startTetrisGame]: () => 'started',
@@ -23,6 +23,18 @@ const board = handleActions({
       return commonCell || cell;
     }));
   },
+  [action.selectTetrisCompletedRow]: (state, { payload: { rowIndex } }) => {
+    const first = state.slice(0, rowIndex);
+    const rest = state.slice(rowIndex + 1);
+    return [...first, createIndeterminateRow(10, rowIndex), ...rest];
+  },
+  [action.removeTetrisCompletedRow]: (state, { payload: { rowIndex } }) => {
+    const first = state
+      .slice(0, rowIndex)
+      .map(r => r.map(c => moveCelldown(c)));
+    const rest = state.slice(rowIndex + 1);
+    return [createClearRow(10, 0), ...first, ...rest];
+  },
 }, createField(10, 20));
 
 const figureInit = {
@@ -38,6 +50,10 @@ const figure = handleActions({
     ...state,
     next: getRandomFigure(consCell([5, 0], 'active')),
   }),
+  [action.collideTetrisFigure]: state => ({
+    ...state,
+    current: null,
+  }),
   [action.moveTetrisFigureDown]: state => ({
     ...state,
     current: state.current.moveDown(),
@@ -49,6 +65,10 @@ const figure = handleActions({
   [action.moveTetrisFigureRight]: state => ({
     ...state,
     current: state.current.moveRight(),
+  }),
+  [action.rotateTetrisFigure]: state => ({
+    ...state,
+    current: state.current.rotate(),
   }),
   [action.fallTetrisFigureDown]: state => ({
     ...state,

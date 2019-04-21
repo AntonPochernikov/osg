@@ -31,6 +31,16 @@ export const getTetrisBoardCells = createSelector(
   },
 );
 
+export const getTetrisCompletedRows = createSelector(
+  getTetrisBoard,
+  board => board.reduce((acc, row, i) => {
+    if (row.every(c => isActive(c))) {
+      return [...acc, i];
+    }
+    return acc;
+  }, []),
+);
+
 export const getTetrisFallInterval = createSelector(
   getTetrisSpeed,
   speed => (11 - speed) * 100,
@@ -72,5 +82,26 @@ export const canTetrisFigureMoveRight = createSelector(
     .every((cell) => {
       const [col, row] = getCoordinates(cell);
       return col !== board[row].length - 1 && !isActive(board[row][col + 1]);
+    }),
+);
+
+export const canTetrisFigureRotate = createSelector(
+  getTetrisBoard,
+  getTetrisCurrentFigure,
+  (board, figure) => figure && figure
+    .rotate()
+    .getCells()
+    .every((cell) => {
+      const [col, row] = getCoordinates(cell);
+      // outside top or bottom
+      if (row < 0 || row > board.length - 1) {
+        return false;
+      }
+      // outside left or right
+      if (col < 0 || col > board[row].length - 1) {
+        return false;
+      }
+      // will collide with active board cells
+      return !isActive(board[row][col]);
     }),
 );

@@ -23,10 +23,16 @@ function* checkFigureMoveRight() {
     yield put(action.moveTetrisFigureRight());
   }
 }
+function* checkFigureRotate() {
+  if (yield select(selector.canTetrisFigureRotate)) {
+    yield put(action.rotateTetrisFigure());
+  }
+}
 
 function* figureFlow() {
   yield takeEvery('TETRIS/FIGURE/TRY/LEFT', checkFigureMoveLeft);
   yield takeEvery('TETRIS/FIGURE/TRY/RIGHT', checkFigureMoveRight);
+  yield takeEvery('TETRIS/FIGURE/TRY/ROTATE', checkFigureRotate);
   while (true) {
     try {
       const interval = yield select(selector.getTetrisFallInterval);
@@ -37,17 +43,45 @@ function* figureFlow() {
       });
       if (pause) {
         yield take('TETRIS/GAME/RESUME');
-      } else {
-        if (!(yield select(selector.canTetrisFigureMoveDown))) {
-          const currentFigure = yield select(selector.getTetrisCurrentFigure);
-          yield put(action.collideTetrisFigure({ currentFigure }));
-        }
-        yield put(action.fallTetrisFigureDown());
       }
+      if (!(yield select(selector.canTetrisFigureMoveDown))) {
+        const currentFigure = yield select(selector.getTetrisCurrentFigure);
+        yield put(action.collideTetrisFigure({ currentFigure }));
+      }
+      yield put(action.fallTetrisFigureDown());
     } catch (e) {
       console.log(e);
       yield put(action.finishTetrisGame());
     }
+  }
+}
+
+function* selectTetrisCompletedRow(row) {
+  yield put(action.selectTetrisCompletedRow({ rowIndex: row }));
+  const { pause } = yield race({
+    pause: take('TETRIS/GAME/PAUSE'),
+    delay: call(delay, 200),
+  });
+  if (pause) {
+    yield take('TETRIS/GAME/RESUME');
+  }
+}
+
+function* removeCompletedRow(row) {
+  yield put(action.removeTetrisCompletedRow({ rowIndex: row }));
+  const { pause } = yield race({
+    pause: take('TETRIS/GAME/PAUSE'),
+    delay: call(delay, 100),
+  });
+  if (pause) {
+    yield take('TETRIS/GAME/RESUME');
+  }
+}
+
+function* manageCompletedRows(rows) {
+  for (let i = 0; i < rows.length; i += 1) {
+    yield call(selectTetrisCompletedRow, rows[i]);
+    yield call(removeCompletedRow, rows[i]);
   }
 }
 
@@ -62,6 +96,8 @@ function* figures() {
       fall: call(figureFlow),
       collision: take('TETRIS/FIGURE/COLLIDE'),
     });
+    const completedRows = yield select(selector.getTetrisCompletedRows);
+    yield call(manageCompletedRows, completedRows);
   }
 }
 
