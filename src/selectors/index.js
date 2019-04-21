@@ -44,7 +44,7 @@ export const isTetrisGameStarted = createSelector(
 export const doesTetrisFigureCollide = createSelector(
   getTetrisBoard,
   getTetrisCurrentFigure,
-  (board, figure) => figure
+  (board, figure) => figure && figure
     .getCells()
     .some((cell) => {
       const [col, row] = getCoordinates(cell);

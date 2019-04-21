@@ -8,7 +8,7 @@ import { cons as consCell, haveSameCoordinates } from '../../libs/cells.js';
 const gameState = handleActions({
   [action.startTetrisGame]: () => 'started',
   [action.stopTetrisGame]: () => 'initial',
-  [action.finishTetrisGame]: () => 'initial',
+  [action.finishTetrisGame]: () => 'finished',
   [action.pauseTetrisGame]: () => 'paused',
   [action.resumeTetrisGame]: () => 'started',
 }, 'initial');

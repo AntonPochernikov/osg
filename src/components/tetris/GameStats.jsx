@@ -24,7 +24,11 @@ export default class GameStats extends React.Component {
       title: 'Stop Game',
       action: this.props.stopTetrisGame,
     },
-  }
+    finished: {
+      title: 'Start New Game',
+      action: this.props.startTetrisGame,
+    },
+  };
 
   getButtonTitle = () => this.buttonByState[this.props.gameState].title
 
@@ -40,10 +44,7 @@ export default class GameStats extends React.Component {
         <h2 className='tetris-game-stats__title'>Game Stats</h2>
         <NextFigurePreview />
 
-        <GameSettings
-          speed={this.props.speed}
-          score={this.props.score}
-        />
+        <GameSettings speed={this.props.speed} score={this.props.score} />
 
         <button className='tetris-game-stats__game-button' onClick={this.handleGameButton}>
           {this.getButtonTitle()}
@@ -59,7 +60,7 @@ export default class GameStats extends React.Component {
 }
 
 GameStats.propTypes = {
-  gameState: PropTypes.oneOf(['initial', 'started', 'paused']).isRequired,
+  gameState: PropTypes.oneOf(['initial', 'started', 'paused', 'finished']).isRequired,
   speed: PropTypes.number.isRequired,
   score: PropTypes.number.isRequired,
 };

@@ -38,7 +38,7 @@ GameBoard.defaultProps = {
 
 GameBoard.propTypes = {
   board: PropTypes.arrayOf(PropTypes.array).isRequired,
-  gameState: PropTypes.oneOf(['initial', 'started', 'paused']).isRequired,
+  gameState: PropTypes.oneOf(['initial', 'started', 'paused', 'finished']).isRequired,
 };
 
 export default GameBoard;
