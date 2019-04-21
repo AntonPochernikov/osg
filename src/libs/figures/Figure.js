@@ -1,6 +1,6 @@
 import { cons as consCell } from '../cells.js';
 
-class Figure {
+export default class Figure {
   constructor(head = consCell([0, 0]), direction = 'down') {
     this.head = head;
     this.direction = direction;
@@ -10,5 +10,3 @@ class Figure {
     return [];
   }
 }
-
-export default Figure;

@@ -1,8 +1,9 @@
 import { cons as consCell, getCoordinates } from '../cells.js';
 import Figure from './Figure.js';
+import readonly from '../readonly.js';
 
 export default class FigureI extends Figure {
-  actions = {
+  static actions = {
     down: {
       direction: 'down',
       rotate: head => new FigureI(head, 'right'),
@@ -29,9 +30,12 @@ export default class FigureI extends Figure {
     },
   }
 
-  getCells = () => this.actions[this.direction].getCells(this.head)
+  @readonly
+  type = 'I';
 
-  rotate = () => this.actions[this.direction].rotate(this.head)
+  getCells = () => FigureI.actions[this.direction].getCells(this.head)
+
+  rotate = () => FigureI.actions[this.direction].rotate(this.head)
 
   move(x, y) {
     const [headX, headY] = getCoordinates(this.head);
