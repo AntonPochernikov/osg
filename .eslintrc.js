@@ -4,6 +4,7 @@ module.exports = {
     'react',
     'babel',
     'jest',
+    'react-hooks',
   ],
   env: {
     browser: true,
@@ -35,6 +36,7 @@ module.exports = {
     ],
   },
   rules: {
+    "react-hooks/rules-of-hooks": "error",
     "class-methods-use-this": 0,
     "linebreak-style": 0,
     "line-break-style": 0,
