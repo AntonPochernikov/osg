@@ -4,7 +4,7 @@ import {
   haveSameCoordinates,
   getState,
   isActive,
-} from '../libs/cells';
+} from '../libs/cell.js';
 
 export const getTetrisBoard = state => state.tetris.board;
 export const getTetrisSpeed = state => state.tetris.speed;

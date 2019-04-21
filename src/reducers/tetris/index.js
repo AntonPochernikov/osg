@@ -3,7 +3,7 @@ import { handleActions } from 'redux-actions';
 import * as action from '../../actions/index.js';
 import { createField } from '../../libs/createField.js';
 import getRandomFigure from '../../libs/figures/getRandomFigure.js';
-import { cons as consCell, haveSameCoordinates } from '../../libs/cells.js';
+import { cons as consCell, haveSameCoordinates } from '../../libs/cell.js';
 
 const gameState = handleActions({
   [action.startTetrisGame]: () => 'started',
