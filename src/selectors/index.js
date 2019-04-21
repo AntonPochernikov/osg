@@ -43,7 +43,7 @@ export const getTetrisCompletedRows = createSelector(
 
 export const getTetrisFallInterval = createSelector(
   getTetrisSpeed,
-  speed => (11 - speed) * 100,
+  speed => (11 - speed) * 50,
 );
 
 export const isTetrisGameStarted = createSelector(
