@@ -51,5 +51,5 @@ export default class Tetris extends React.Component {
 }
 
 Tetris.propTypes = {
-  gameState: PropTypes.oneOf(['initial', 'started', 'paused']).isRequired,
+  gameState: PropTypes.oneOf(['initial', 'started', 'paused', 'finished']).isRequired,
 };
