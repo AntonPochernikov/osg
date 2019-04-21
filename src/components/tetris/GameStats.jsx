@@ -4,63 +4,60 @@ import NextFigurePreview from './NextFigurePreview.jsx';
 import GameSettings from './GameSettings.jsx';
 import './GameStats.css';
 
-export default class GameStats extends React.Component {
-  static defaultProps = {
-    gameState: 'initial',
-    speed: 1,
-    score: 0,
-    nextFigurePreview: [],
-  };
-
-  buttonByState = {
+const GameStats = ({
+  score,
+  speed,
+  gameState,
+  nextFigurePreview,
+  ...actions
+}) => {
+  const buttonByState = {
     initial: {
       title: 'Start New Game',
-      action: this.props.startTetrisGame,
+      action: actions.startTetrisGame,
     },
     started: {
       title: 'Stop Game',
-      action: this.props.stopTetrisGame,
+      action: actions.stopTetrisGame,
     },
     paused: {
       title: 'Stop Game',
-      action: this.props.stopTetrisGame,
+      action: actions.stopTetrisGame,
     },
     finished: {
       title: 'Start New Game',
-      action: this.props.startTetrisGame,
+      action: actions.startTetrisGame,
     },
   };
 
-  getButtonTitle = () => this.buttonByState[this.props.gameState].title
+  const getButtonTitle = () => buttonByState[gameState].title;
 
-  getButtonHandler = () => this.buttonByState[this.props.gameState].action
+  const getButtonHandler = () => buttonByState[gameState].action;
 
-  handleGameButton = (e) => {
+  const handleGameButton = (e) => {
     // blur focus to use space in game
     e.target.blur();
-    this.getButtonHandler()(e);
-  }
+    getButtonHandler()(e);
+  };
 
-  render() {
-    return (
-      <div className='tetris-game-stats'>
-        <h2 className='tetris-game-stats__title'>Game Stats</h2>
-        <NextFigurePreview board={this.props.nextFigurePreview} />
+  return (
+    <div className='tetris-game-stats'>
+      <h2 className='tetris-game-stats__title'>Game Stats</h2>
+      <NextFigurePreview board={nextFigurePreview} />
 
-        <GameSettings
-          speed={this.props.speed}
-          score={this.props.score}
-          incSpeed={this.props.increaseTetrisGameSpeed}
-          decSpeed={this.props.decreaseTetrisGameSpeed}
-        />
+      <GameSettings
+        speed={speed}
+        score={score}
+        incSpeed={actions.increaseTetrisGameSpeed}
+        decSpeed={actions.decreaseTetrisGameSpeed}
+      />
 
-        <button className='tetris-game-stats__game-button' onClick={this.handleGameButton}>
-          {this.getButtonTitle()}
-        </button>
-      </div>
-    );
-  }
-}
+      <button className='tetris-game-stats__game-button' onClick={handleGameButton}>
+        {getButtonTitle()}
+      </button>
+    </div>
+  );
+};
 
 GameStats.propTypes = {
   gameState: PropTypes.oneOf(['initial', 'started', 'paused', 'finished']).isRequired,
@@ -68,3 +65,12 @@ GameStats.propTypes = {
   score: PropTypes.number.isRequired,
   nextFigurePreview: PropTypes.array.isRequired,
 };
+
+GameStats.defaultProps = {
+  gameState: 'initial',
+  speed: 1,
+  score: 0,
+  nextFigurePreview: [],
+};
+
+export default GameStats;

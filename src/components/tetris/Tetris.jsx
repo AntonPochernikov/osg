@@ -6,7 +6,7 @@ import GameStats from './GameStats.js';
 import GameInfo from './GameInfo.jsx';
 import './Tetris.css';
 
-const Tetris = ({ gameState, ...action }) => {
+const Tetris = ({ gameState, ...actions }) => {
   const keydownListener = (e) => {
     // check ingame state
     if (gameState !== 'started' && gameState !== 'paused') {
@@ -16,39 +16,39 @@ const Tetris = ({ gameState, ...action }) => {
       // shift
       case 16: {
         if (gameState === 'started') {
-          action.pauseTetrisGame();
+          actions.pauseTetrisGame();
           break;
         }
         if (gameState === 'paused') {
-          action.resumeTetrisGame();
+          actions.resumeTetrisGame();
         }
         break;
       }
       // arrow left
       case 37: {
         if (gameState === 'started') {
-          action.tryTetrisFigureLeft();
+          actions.tryTetrisFigureLeft();
         }
         break;
       }
       // arrow right
       case 39: {
         if (gameState === 'started') {
-          action.tryTetrisFigureRight();
+          actions.tryTetrisFigureRight();
         }
         break;
       }
       // arrow down
       case 40: {
         if (gameState === 'started') {
-          action.tryTetrisFigureDown();
+          actions.tryTetrisFigureDown();
         }
         break;
       }
       // space
       case 32: {
         if (gameState === 'started') {
-          action.tryRotateTetrisFigure();
+          actions.tryRotateTetrisFigure();
         }
         break;
       }
