@@ -42,6 +42,14 @@ const figure = handleActions({
     ...state,
     current: state.current.moveDown(),
   }),
+  [action.moveTetrisFigureLeft]: state => ({
+    ...state,
+    current: state.current.moveLeft(),
+  }),
+  [action.moveTetrisFigureRight]: state => ({
+    ...state,
+    current: state.current.moveRight(),
+  }),
   [action.fallTetrisFigureDown]: state => ({
     ...state,
     current: state.current.moveDown(),

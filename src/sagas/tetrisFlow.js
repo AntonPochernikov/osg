@@ -4,6 +4,7 @@ import {
   call,
   select,
   race,
+  takeEvery,
 } from 'redux-saga/effects';
 import * as action from '../actions';
 import * as selector from '../selectors';
@@ -12,18 +13,32 @@ const delay = ms => new Promise((res) => {
   setTimeout(res, ms);
 });
 
-function* figureFall() {
+function* checkFigureMoveLeft() {
+  if (yield select(selector.canTetrisFigureMoveLeft)) {
+    yield put(action.moveTetrisFigureLeft());
+  }
+}
+function* checkFigureMoveRight() {
+  if (yield select(selector.canTetrisFigureMoveRight)) {
+    yield put(action.moveTetrisFigureRight());
+  }
+}
+
+function* figureFlow() {
+  yield takeEvery('TETRIS/FIGURE/TRY/LEFT', checkFigureMoveLeft);
+  yield takeEvery('TETRIS/FIGURE/TRY/RIGHT', checkFigureMoveRight);
   while (true) {
     try {
       const interval = yield select(selector.getTetrisFallInterval);
       const { pause } = yield race({
         delay: call(delay, interval),
         pause: take('TETRIS/GAME/PAUSE'),
+        moveDown: take('TETRIS/FIGURE/TRY/DOWN'),
       });
       if (pause) {
         yield take('TETRIS/GAME/RESUME');
       } else {
-        if (yield select(selector.doesTetrisFigureCollide)) {
+        if (!(yield select(selector.canTetrisFigureMoveDown))) {
           const currentFigure = yield select(selector.getTetrisCurrentFigure);
           yield put(action.collideTetrisFigure({ currentFigure }));
         }
@@ -36,25 +51,25 @@ function* figureFall() {
   }
 }
 
-function* figureFlow() {
+function* figures() {
   while (true) {
     yield put(action.setCurrentTetrisFigure());
     yield put(action.setNextTetrisFigure());
-    if (yield select(selector.doesTetrisFigureCollide)) {
+    if (!(yield select(selector.canTetrisFigureMoveDown))) {
       yield put(action.finishTetrisGame());
     }
     yield race({
-      fall: call(figureFall),
+      fall: call(figureFlow),
       collision: take('TETRIS/FIGURE/COLLIDE'),
     });
   }
 }
 
-export default function* gameFlow() {
+export default function* game() {
   while (true) {
     yield take('TETRIS/GAME/START');
     yield race({
-      figure: call(figureFlow),
+      figures: call(figures),
       stop: take('TETRIS/GAME/STOP'),
       finish: take('TETRIS/GAME/FINISH'),
     });

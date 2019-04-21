@@ -20,6 +20,10 @@ export default class Tetris extends React.Component {
   }
 
   keydownListener = (e) => {
+    // check ingame state
+    if (this.props.gameState !== 'started' && this.props.gameState !== 'paused') {
+      return;
+    }
     switch (e.keyCode) {
       // shift
       case 16: {
@@ -29,6 +33,34 @@ export default class Tetris extends React.Component {
         }
         if (this.props.gameState === 'paused') {
           this.props.resumeTetrisGame();
+        }
+        break;
+      }
+      // arrow left
+      case 37: {
+        if (this.props.gameState === 'started') {
+          this.props.tryTetrisFigureLeft();
+        }
+        break;
+      }
+      // arrow right
+      case 39: {
+        if (this.props.gameState === 'started') {
+          this.props.tryTetrisFigureRight();
+        }
+        break;
+      }
+      // arrow down
+      case 40: {
+        if (this.props.gameState === 'started') {
+          this.props.tryTetrisFigureDown();
+        }
+        break;
+      }
+      // space
+      case 32: {
+        if (this.props.gameState === 'started') {
+          this.props.tryRotateTetrisFigure();
         }
         break;
       }

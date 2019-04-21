@@ -34,7 +34,9 @@ export default class GameStats extends React.Component {
 
   getButtonHandler = () => this.buttonByState[this.props.gameState].action
 
-  handleGameButton = () => {
+  handleGameButton = (e) => {
+    // blur focus to use space in game
+    e.target.blur();
     this.getButtonHandler()();
   }
 

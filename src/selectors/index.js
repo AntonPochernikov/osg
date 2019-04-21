@@ -7,9 +7,10 @@ import {
 } from '../libs/cell.js';
 
 export const getTetrisBoard = state => state.tetris.board;
+export const getTetrisCurrentFigure = state => state.tetris.figure.current;
+export const getTetrisNextFigure = state => state.tetris.figure.next;
 export const getTetrisSpeed = state => state.tetris.speed;
 export const getTetrisGameState = state => state.tetris.gameState;
-export const getTetrisCurrentFigure = state => state.tetris.figure.current;
 
 // add current figure on board
 export const getTetrisBoardCells = createSelector(
@@ -40,14 +41,36 @@ export const isTetrisGameStarted = createSelector(
   state => state === 'started',
 );
 
-// figure bottom collision predicate
-export const doesTetrisFigureCollide = createSelector(
+// figure collision predicate
+export const canTetrisFigureMoveDown = createSelector(
   getTetrisBoard,
   getTetrisCurrentFigure,
   (board, figure) => figure && figure
     .getCells()
-    .some((cell) => {
+    .every((cell) => {
       const [col, row] = getCoordinates(cell);
-      return row === board.length - 1 || isActive(board[row + 1][col]);
+      return row !== board.length - 1 && !isActive(board[row + 1][col]);
+    }),
+);
+
+export const canTetrisFigureMoveLeft = createSelector(
+  getTetrisBoard,
+  getTetrisCurrentFigure,
+  (board, figure) => figure && figure
+    .getCells()
+    .every((cell) => {
+      const [col, row] = getCoordinates(cell);
+      return col !== 0 && !isActive(board[row][col - 1]);
+    }),
+);
+
+export const canTetrisFigureMoveRight = createSelector(
+  getTetrisBoard,
+  getTetrisCurrentFigure,
+  (board, figure) => figure && figure
+    .getCells()
+    .every((cell) => {
+      const [col, row] = getCoordinates(cell);
+      return col !== board[row].length - 1 && !isActive(board[row][col + 1]);
     }),
 );
