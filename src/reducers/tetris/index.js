@@ -5,10 +5,6 @@ import { createField } from '../../libs/createField.js';
 import getRandomFigure from '../../libs/figures/getRandomFigure.js';
 import { cons as consCell, haveSameCoordinates } from '../../libs/cells.js';
 
-// const init = {
-//   nextFigure: {},
-// };
-
 const gameState = handleActions({
   [action.startTetrisGame]: () => 'started',
   [action.stopTetrisGame]: () => 'initial',
@@ -29,14 +25,29 @@ const board = handleActions({
   },
 }, createField(10, 20));
 
-const currentFigure = handleActions({
-  [action.setCurrentTetrisFigure]: () => getRandomFigure(consCell([5, 0], 'active')),
-  [action.moveTetrisFigureDown]: figure => figure.moveDown(),
-  [action.fallTetrisFigureDown]: figure => figure.moveDown(),
-  [action.stopTetrisGame]: () => null,
-}, null);
-
-const nextFigure = handleActions({}, null);
+const figureInit = {
+  current: null,
+  next: null,
+};
+const figure = handleActions({
+  [action.setCurrentTetrisFigure]: state => ({
+    ...state,
+    current: state.next || getRandomFigure(consCell([5, 0], 'active')),
+  }),
+  [action.setNextTetrisFigure]: state => ({
+    ...state,
+    next: getRandomFigure(consCell([5, 0], 'active')),
+  }),
+  [action.moveTetrisFigureDown]: state => ({
+    ...state,
+    current: state.current.moveDown(),
+  }),
+  [action.fallTetrisFigureDown]: state => ({
+    ...state,
+    current: state.current.moveDown(),
+  }),
+  [action.stopTetrisGame]: () => figureInit,
+}, figureInit);
 
 const speed = handleActions({}, 5);
 
@@ -45,8 +56,7 @@ const score = handleActions({}, 0);
 export default combineReducers({
   gameState,
   board,
-  currentFigure,
-  nextFigure,
+  figure,
   speed,
   score,
 });

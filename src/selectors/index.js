@@ -9,7 +9,7 @@ import {
 export const getTetrisBoard = state => state.tetris.board;
 export const getTetrisSpeed = state => state.tetris.speed;
 export const getTetrisGameState = state => state.tetris.gameState;
-export const getTetrisCurrentFigure = state => state.tetris.currentFigure;
+export const getTetrisCurrentFigure = state => state.tetris.figure.current;
 
 // add current figure on board
 export const getTetrisBoardCells = createSelector(
@@ -19,8 +19,9 @@ export const getTetrisBoardCells = createSelector(
     if (figure) {
       const figureCells = figure.getCells();
       return board.map(tr => tr.map((cell) => {
-        if (figureCells.some(c => haveSameCoordinates(c, cell))) {
-          return 'active';
+        const commonCell = figureCells.find(c => haveSameCoordinates(c, cell));
+        if (commonCell) {
+          return getState(commonCell);
         }
         return getState(cell);
       }));
@@ -39,7 +40,7 @@ export const isTetrisGameStarted = createSelector(
   state => state === 'started',
 );
 
-// figure fell down predicate
+// figure bottom collision predicate
 export const doesTetrisFigureCollide = createSelector(
   getTetrisBoard,
   getTetrisCurrentFigure,
