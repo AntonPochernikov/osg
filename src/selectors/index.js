@@ -6,6 +6,7 @@ import {
   getState,
   isActive,
 } from '../libs/cell.js';
+import times from '../libs/times.js';
 
 export const getTetrisBoard = state => state.tetris.board;
 export const getTetrisCurrentFigure = state => state.tetris.figure.current;
@@ -65,7 +66,8 @@ export const getTetrisCompletedRows = createSelector(
 
 export const getTetrisFallInterval = createSelector(
   getTetrisSpeed,
-  speed => (11 - speed) * 50,
+  // increase speed for 25% every time we add speed
+  speed => times(x => 0.75 * x, speed)(1000),
 );
 
 export const isTetrisGameStarted = createSelector(

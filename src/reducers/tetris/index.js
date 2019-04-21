@@ -77,7 +77,10 @@ const figure = handleActions({
   [action.stopTetrisGame]: () => figureInit,
 }, figureInit);
 
-const speed = handleActions({}, 5);
+const speed = handleActions({
+  [action.increaseTetrisGameSpeed]: state => state + 1,
+  [action.decreaseTetrisGameSpeed]: state => state - 1,
+}, 5);
 
 const score = handleActions({
   [action.collideTetrisFigure]: state => state + 1,

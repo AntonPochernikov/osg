@@ -7,6 +7,9 @@ export const pauseTetrisGame = createAction('TETRIS/GAME/PAUSE');
 export const resumeTetrisGame = createAction('TETRIS/GAME/RESUME');
 export const finishTetrisGame = createAction('TETRIS/GAME/FINISH');
 
+export const increaseTetrisGameSpeed = createAction('TETRIS/GAME/SPEED/INCREASE');
+export const decreaseTetrisGameSpeed = createAction('TETRIS/GAME/SPEED/DECREASE');
+
 // BOARD
 export const selectTetrisCompletedRow = createAction('TETRIS/ROW/COMPLETED/SELECT');
 export const removeTetrisCompletedRow = createAction('TETRIS/ROW/COMPLETED/REMOVE');

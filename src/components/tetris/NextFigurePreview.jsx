@@ -5,7 +5,7 @@ import './NextFigurePreview.css';
 const NextFigurePreview = ({ board }) => (
   <div className='tetris-game-stats__next-figure'>
     <table className='next-figure-board'>
-      <caption className='next-figure-board__caption'>Next Figure</caption>
+      {board.length > 0 && <caption className='next-figure-board__caption'>Next Figure</caption>}
       <tbody className='next-figure-board__body'>
         {board.map((tr, i) => (
           <tr className='next-figure-board__row' key={i}>

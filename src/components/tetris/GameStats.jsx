@@ -47,16 +47,16 @@ export default class GameStats extends React.Component {
         <h2 className='tetris-game-stats__title'>Game Stats</h2>
         <NextFigurePreview board={this.props.nextFigurePreview} />
 
-        <GameSettings speed={this.props.speed} score={this.props.score} />
+        <GameSettings
+          speed={this.props.speed}
+          score={this.props.score}
+          incSpeed={this.props.increaseTetrisGameSpeed}
+          decSpeed={this.props.decreaseTetrisGameSpeed}
+        />
 
         <button className='tetris-game-stats__game-button' onClick={this.handleGameButton}>
           {this.getButtonTitle()}
         </button>
-
-        {this.props.gameState === 'paused' &&
-          <div className='tetris-game-stats__paused-sign'>
-            Paused
-          </div>}
       </div>
     );
   }

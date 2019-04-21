@@ -8,10 +8,7 @@ import {
 } from 'redux-saga/effects';
 import * as action from '../actions';
 import * as selector from '../selectors';
-
-const delay = ms => new Promise((res) => {
-  setTimeout(res, ms);
-});
+import delay from '../libs/delay.js';
 
 function* selectCompletedRow(row) {
   yield put(action.selectTetrisCompletedRow({ rowIndex: row }));

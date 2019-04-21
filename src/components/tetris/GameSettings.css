@@ -1,0 +1,24 @@
+/*=================================
+	tetris game settings
+=================================*/
+.tetris-game-stats__settings {
+	margin-bottom: 40px;
+}
+
+.tetris-game-stats__speed,
+.tetris-game-stats__score {
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+
+	margin-bottom: 20px;
+}
+
+.tetris-game-stats__speed-value,
+.tetris-game-stats__score-value {
+	padding: 0;
+	margin: 0;
+
+	color: var(--color-neutral);
+	text-align: center;
+}

@@ -19,21 +19,8 @@
 
 /*  next figure  */
 .tetris-game-stats__next-figure {
-	height: 130px;
+	height: 160px;
 	margin-bottom: 40px;
-}
-
-.tetris-game-stats__settings {
-	margin-bottom: 40px;
-}
-
-.tetris-game-stats__paragraph {
-	padding: 0;
-	margin: 0;
-	margin-bottom: 20px;
-
-	color: var(--color-neutral);
-	text-align: center;
 }
 
 /*  start/stop game button  */
