@@ -32,7 +32,7 @@ const GameBoard = ({ board, gameState }) => (
 );
 
 GameBoard.defaultProps = {
-  board: [[]],
+  board: [],
   gameState: 'initial',
 };
 

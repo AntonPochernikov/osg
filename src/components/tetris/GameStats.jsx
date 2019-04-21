@@ -9,6 +9,7 @@ export default class GameStats extends React.Component {
     gameState: 'initial',
     speed: 1,
     score: 0,
+    nextFigurePreview: [],
   };
 
   buttonByState = {
@@ -44,7 +45,7 @@ export default class GameStats extends React.Component {
     return (
       <div className='tetris-game-stats'>
         <h2 className='tetris-game-stats__title'>Game Stats</h2>
-        <NextFigurePreview />
+        <NextFigurePreview board={this.props.nextFigurePreview} />
 
         <GameSettings speed={this.props.speed} score={this.props.score} />
 
@@ -65,4 +66,5 @@ GameStats.propTypes = {
   gameState: PropTypes.oneOf(['initial', 'started', 'paused', 'finished']).isRequired,
   speed: PropTypes.number.isRequired,
   score: PropTypes.number.isRequired,
+  nextFigurePreview: PropTypes.array.isRequired,
 };

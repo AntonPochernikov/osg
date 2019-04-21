@@ -15,6 +15,7 @@ export default class FigureI extends Figure {
         }
         return result;
       },
+      getSize: () => ({ height: 4, width: 1 }),
     },
     right: {
       direction: 'right',
@@ -27,15 +28,28 @@ export default class FigureI extends Figure {
         }
         return result;
       },
+      getSize: () => ({ height: 1, width: 4 }),
     },
   }
 
   @readonly
   type = 'I';
 
-  getCells = () => FigureI.actions[this.direction].getCells(this.head)
+  getSize() {
+    return FigureI.actions[this.direction].getSize();
+  }
 
-  rotate = () => FigureI.actions[this.direction].rotate(this.head)
+  getCells() {
+    return FigureI.actions[this.direction].getCells(this.head);
+  }
+
+  rotate() {
+    return FigureI.actions[this.direction].rotate(this.head);
+  }
+
+  setPosition(x, y) {
+    return new FigureI(consCell([x, y], 'active'), this.direction);
+  }
 
   move(x, y) {
     const [headX, headY] = getCoordinates(this.head);

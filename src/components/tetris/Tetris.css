@@ -4,6 +4,7 @@
 .game-body {
 	display: flex;
 	justify-content: space-between;
+	align-items: flex-start;
 
 	width: var(--width-content);
 	height: 100%;

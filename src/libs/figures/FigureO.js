@@ -10,20 +10,33 @@ export default class FigureO extends Figure {
         const result = [];
         const [headX, headY] = getCoordinates(head);
         result.push(consCell([headX, headY], 'active'));
-        result.push(consCell([headX + 1, headY], 'active'));
+        result.push(consCell([headX - 1, headY], 'active'));
         result.push(consCell([headX, headY + 1], 'active'));
-        result.push(consCell([headX + 1, headY + 1], 'active'));
+        result.push(consCell([headX - 1, headY + 1], 'active'));
         return result;
       },
+      getSize: () => ({ height: 2, width: 2 }),
     },
   };
 
   @readonly
   type = 'O';
 
-  getCells = () => FigureO.actions[this.direction].getCells(this.head)
+  getSize() {
+    return FigureO.actions[this.direction].getSize();
+  }
 
-  rotate = () => this
+  getCells() {
+    return FigureO.actions[this.direction].getCells(this.head);
+  }
+
+  rotate() {
+    return this;
+  }
+
+  setPosition(x, y) {
+    return new FigureO(consCell([x, y], 'active'), this.direction);
+  }
 
   move(x, y) {
     const [headX, headY] = getCoordinates(this.head);

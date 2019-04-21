@@ -1,4 +1,5 @@
 import { createSelector } from 'reselect';
+import { createField } from '../libs/createField.js';
 import {
   getCoordinates,
   haveSameCoordinates,
@@ -28,6 +29,27 @@ export const getTetrisBoardCells = createSelector(
       }));
     }
     return board.map(tr => tr.map(cell => getState(cell)));
+  },
+);
+
+export const getTetrisNextFigurePreview = createSelector(
+  getTetrisNextFigure,
+  (figure) => {
+    if (!figure) {
+      return [];
+    }
+    const { height, width } = figure.getSize();
+    const boardW = width + 2;
+    const boardH = height + 2;
+    const board = createField(boardW, boardH);
+    const figureCells = figure.setPosition(Math.floor(boardW / 2), 1).getCells();
+    return board.map(tr => tr.map((cell) => {
+      const commonCell = figureCells.find(c => haveSameCoordinates(c, cell));
+      if (commonCell) {
+        return getState(commonCell);
+      }
+      return getState(cell);
+    }));
   },
 );
 

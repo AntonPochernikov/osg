@@ -16,6 +16,7 @@ export default class FigureL extends Figure {
         result.push(consCell([headX + 1, headY + 1], 'active'));
         return result;
       },
+      getSize: () => ({ height: 2, width: 3 }),
     },
     left: {
       direction: 'left',
@@ -29,6 +30,7 @@ export default class FigureL extends Figure {
         result.push(consCell([headX + 1, headY + 1], 'active'));
         return result;
       },
+      getSize: () => ({ height: 3, width: 2 }),
     },
     up: {
       direction: 'up',
@@ -42,6 +44,7 @@ export default class FigureL extends Figure {
         result.push(consCell([headX + 1, headY], 'active'));
         return result;
       },
+      getSize: () => ({ height: 2, width: 3 }),
     },
     right: {
       direction: 'right',
@@ -55,15 +58,28 @@ export default class FigureL extends Figure {
         result.push(consCell([headX, headY - 1], 'active'));
         return result;
       },
+      getSize: () => ({ height: 3, width: 2 }),
     },
   };
 
   @readonly
   type = 'L';
 
-  getCells = () => FigureL.actions[this.direction].getCells(this.head)
+  getSize() {
+    return FigureL.actions[this.direction].getSize();
+  }
 
-  rotate = () => FigureL.actions[this.direction].rotate(this.head)
+  getCells() {
+    return FigureL.actions[this.direction].getCells(this.head);
+  }
+
+  rotate() {
+    return FigureL.actions[this.direction].rotate(this.head);
+  }
+
+  setPosition(x, y) {
+    return new FigureL(consCell([x, y], 'active'), this.direction);
+  }
 
   move(x, y) {
     const [headX, headY] = getCoordinates(this.head);

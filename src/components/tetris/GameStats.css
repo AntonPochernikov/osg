@@ -19,16 +19,8 @@
 
 /*  next figure  */
 .tetris-game-stats__next-figure {
+	height: 130px;
 	margin-bottom: 40px;
-}
-
-.game-board__cell--next-figure {
-	background-color: transparent;
-	border: none;
-}
-
-.game-board__caption {
-	margin-bottom: 10px;
 }
 
 .tetris-game-stats__settings {

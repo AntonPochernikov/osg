@@ -13,6 +13,35 @@ const delay = ms => new Promise((res) => {
   setTimeout(res, ms);
 });
 
+function* selectCompletedRow(row) {
+  yield put(action.selectTetrisCompletedRow({ rowIndex: row }));
+  const { pause } = yield race({
+    pause: take('TETRIS/GAME/PAUSE'),
+    delay: call(delay, 200),
+  });
+  if (pause) {
+    yield take('TETRIS/GAME/RESUME');
+  }
+}
+
+function* removeCompletedRow(row) {
+  yield put(action.removeTetrisCompletedRow({ rowIndex: row }));
+  const { pause } = yield race({
+    pause: take('TETRIS/GAME/PAUSE'),
+    delay: call(delay, 100),
+  });
+  if (pause) {
+    yield take('TETRIS/GAME/RESUME');
+  }
+}
+
+function* manageCompletedRows(rows) {
+  for (let i = 0; i < rows.length; i += 1) {
+    yield call(selectCompletedRow, rows[i]);
+    yield call(removeCompletedRow, rows[i]);
+  }
+}
+
 function* checkFigureMoveLeft() {
   if (yield select(selector.canTetrisFigureMoveLeft)) {
     yield put(action.moveTetrisFigureLeft());
@@ -53,35 +82,6 @@ function* figureFlow() {
       console.log(e);
       yield put(action.finishTetrisGame());
     }
-  }
-}
-
-function* selectCompletedRow(row) {
-  yield put(action.selectTetrisCompletedRow({ rowIndex: row }));
-  const { pause } = yield race({
-    pause: take('TETRIS/GAME/PAUSE'),
-    delay: call(delay, 200),
-  });
-  if (pause) {
-    yield take('TETRIS/GAME/RESUME');
-  }
-}
-
-function* removeCompletedRow(row) {
-  yield put(action.removeTetrisCompletedRow({ rowIndex: row }));
-  const { pause } = yield race({
-    pause: take('TETRIS/GAME/PAUSE'),
-    delay: call(delay, 100),
-  });
-  if (pause) {
-    yield take('TETRIS/GAME/RESUME');
-  }
-}
-
-function* manageCompletedRows(rows) {
-  for (let i = 0; i < rows.length; i += 1) {
-    yield call(selectCompletedRow, rows[i]);
-    yield call(removeCompletedRow, rows[i]);
   }
 }
 

@@ -16,6 +16,7 @@ export default class FigureS extends Figure {
         result.push(consCell([headX + 1, headY], 'active'));
         return result;
       },
+      getSize: () => ({ height: 2, width: 3 }),
     },
     left: {
       direction: 'left',
@@ -29,15 +30,28 @@ export default class FigureS extends Figure {
         result.push(consCell([headX + 1, headY + 1], 'active'));
         return result;
       },
+      getSize: () => ({ height: 3, width: 2 }),
     },
   };
 
   @readonly
   type = 'S';
 
-  getCells = () => FigureS.actions[this.direction].getCells(this.head)
+  getSize() {
+    return FigureS.actions[this.direction].getSize();
+  }
 
-  rotate = () => FigureS.actions[this.direction].rotate(this.head)
+  getCells() {
+    return FigureS.actions[this.direction].getCells(this.head);
+  }
+
+  rotate() {
+    return FigureS.actions[this.direction].rotate(this.head);
+  }
+
+  setPosition(x, y) {
+    return new FigureS(consCell([x, y], 'active'), this.direction);
+  }
 
   move(x, y) {
     const [headX, headY] = getCoordinates(this.head);
