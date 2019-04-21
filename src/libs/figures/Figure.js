@@ -1,7 +1,7 @@
-import { create as createCell } from '../cells.js';
+import { cons as consCell } from '../cells.js';
 
 class Figure {
-  constructor(head = createCell([0, 0]), direction = 'down') {
+  constructor(head = consCell([0, 0]), direction = 'down') {
     this.head = head;
     this.direction = direction;
   }

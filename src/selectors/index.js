@@ -11,6 +11,7 @@ export const getTetrisSpeed = state => state.tetris.speed;
 export const getTetrisGameState = state => state.tetris.gameState;
 export const getTetrisCurrentFigure = state => state.tetris.currentFigure;
 
+// add current figure on board
 export const getTetrisBoardCells = createSelector(
   getTetrisBoard,
   getTetrisCurrentFigure,
@@ -38,6 +39,7 @@ export const isTetrisGameStarted = createSelector(
   state => state === 'started',
 );
 
+// figure fell down predicate
 export const doesTetrisFigureCollide = createSelector(
   getTetrisBoard,
   getTetrisCurrentFigure,

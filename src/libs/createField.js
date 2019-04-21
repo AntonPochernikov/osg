@@ -1,9 +1,9 @@
-import { create as createCell } from './cells.js';
+import { cons as consCell } from './cells.js';
 
 export const createClearRow = (columns, y) => {
   const row = [];
   for (let x = 0; x < columns; x += 1) {
-    row.push(createCell([x, y], 'inactive'));
+    row.push(consCell([x, y], 'inactive'));
   }
   return row;
 };

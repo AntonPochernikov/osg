@@ -2,9 +2,6 @@ import {
   put,
   take,
   call,
-  // fork,
-  // cancel,
-  // cancelled,
   select,
   race,
 } from 'redux-saga/effects';

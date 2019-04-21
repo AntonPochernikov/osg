@@ -1,4 +1,4 @@
-import { create as createCell, getCoordinates } from '../cells.js';
+import { cons as consCell, getCoordinates } from '../cells.js';
 import Figure from './Figure.js';
 
 export default class FigureI extends Figure {
@@ -10,7 +10,7 @@ export default class FigureI extends Figure {
         const result = [];
         const [headX, headY] = getCoordinates(head);
         for (let y = headY; y < headY + 4; y += 1) {
-          result.push(createCell([headX, y], 'active'));
+          result.push(consCell([headX, y], 'active'));
         }
         return result;
       },
@@ -22,7 +22,7 @@ export default class FigureI extends Figure {
         const result = [];
         const [headX, headY] = getCoordinates(head);
         for (let x = headX - 1; x < headX + 3; x += 1) {
-          result.push(createCell([x, headY + 1], 'active'));
+          result.push(consCell([x, headY + 1], 'active'));
         }
         return result;
       },
@@ -35,7 +35,7 @@ export default class FigureI extends Figure {
 
   move(x, y) {
     const [headX, headY] = getCoordinates(this.head);
-    return new FigureI(createCell([headX + x, headY + y], 'active'), this.direction);
+    return new FigureI(consCell([headX + x, headY + y], 'active'), this.direction);
   }
 
   moveDown() {

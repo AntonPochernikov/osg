@@ -3,7 +3,7 @@ import { handleActions } from 'redux-actions';
 import * as action from '../../actions/index.js';
 import { createField } from '../../libs/createField.js';
 import getRandomFigure from '../../libs/figures/getRandomFigure.js';
-import { create as createCell, haveSameCoordinates } from '../../libs/cells.js';
+import { cons as consCell, haveSameCoordinates } from '../../libs/cells.js';
 
 // const init = {
 //   nextFigure: {},
@@ -19,6 +19,7 @@ const gameState = handleActions({
 
 const board = handleActions({
   [action.stopTetrisGame]: () => createField(10, 20),
+  [action.startTetrisGame]: () => createField(10, 20),
   [action.collideTetrisFigure]: (state, { payload: { currentFigure } }) => {
     const figureCells = currentFigure.getCells();
     return state.map(tr => tr.map((cell) => {
@@ -29,11 +30,13 @@ const board = handleActions({
 }, createField(10, 20));
 
 const currentFigure = handleActions({
-  [action.setCurrentTetrisFigure]: () => getRandomFigure(createCell([5, 0], 'active')),
+  [action.setCurrentTetrisFigure]: () => getRandomFigure(consCell([5, 0], 'active')),
   [action.moveTetrisFigureDown]: figure => figure.moveDown(),
   [action.fallTetrisFigureDown]: figure => figure.moveDown(),
   [action.stopTetrisGame]: () => null,
 }, null);
+
+const nextFigure = handleActions({}, null);
 
 const speed = handleActions({}, 5);
 
@@ -43,6 +46,7 @@ export default combineReducers({
   gameState,
   board,
   currentFigure,
+  nextFigure,
   speed,
   score,
 });
