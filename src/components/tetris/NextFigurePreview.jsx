@@ -14,12 +14,7 @@ const NextFigurePreview = ({ board }) => (
                 'next-figure-board__cell',
                 `next-figure-board__cell--${cellState}`,
               );
-              return (
-                <td
-                  className={cellClass}
-                  key={y}>
-                </td>
-              );
+              return <td className={cellClass} key={y} />;
             })}
           </tr>
         ))}

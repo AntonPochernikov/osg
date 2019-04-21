@@ -14,12 +14,7 @@ const GameBoard = ({ board, gameState }) => (
                 'game-board__cell',
                 `game-board__cell--${cellState}`,
               );
-              return (
-                <td
-                  className={cellClass}
-                  key={y}>
-                </td>
-              );
+              return <td className={cellClass} key={y} />;
             })}
           </tr>
         ))}
