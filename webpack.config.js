@@ -2,6 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const WebpackBar = require('webpackbar');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const LinkTypePlugin = require('html-webpack-link-type-plugin').HtmlWebpackLinkTypePlugin;
 
 const isDevMode = process.env.NODE_ENV !== 'production';
 
@@ -40,23 +41,21 @@ module.exports = {
       },
     ],
   },
-  // resolve: {
-  //   extensions: ['.js', '.jsx', '.css'],
-  // },
   plugins: [
     new WebpackBar(),
     new webpack.HotModuleReplacementPlugin(),
     new HtmlWebpackPlugin({
       filename: '../index.html',
-      template: 'src/template.html',
+      template: 'public/index.html',
     }),
+    new LinkTypePlugin(),
   ],
   devtool: isDevMode ? 'source-map' : false,
   devServer: {
     noInfo: true,
     stats: 'minimal',
     port: 3005,
-    contentBase: path.join(__dirname, 'dist'),
+    contentBase: path.join(__dirname, 'public'),
     historyApiFallback: true,
     hot: true,
   },
