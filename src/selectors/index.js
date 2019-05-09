@@ -1,12 +1,12 @@
 import { createSelector } from 'reselect';
-import { createField } from '../libs/createField.js';
+import { createField } from 'libs/createField.js';
 import {
   getCoordinates,
   haveSameCoordinates,
   getState,
   isActive,
-} from '../libs/cell.js';
-import times from '../libs/times.js';
+} from 'libs/cell.js';
+import times from 'libs/times.js';
 
 export const getTetrisBoard = state => state.tetris.board;
 export const getTetrisCurrentFigure = state => state.tetris.figure.current;

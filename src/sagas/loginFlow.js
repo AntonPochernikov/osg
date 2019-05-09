@@ -6,7 +6,7 @@ import {
   cancel,
   cancelled,
 } from 'redux-saga/effects';
-import * as action from '../actions';
+import * as action from 'actions';
 
 const noop = () => null;
 

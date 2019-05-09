@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './HomePage.css';
-import Header from '../common/Header.jsx';
+import Header from 'components/common/Header.jsx';
 
 const HomePage = () => (
   <div className='main-container'>

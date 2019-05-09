@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import * as actionCreators from '../../actions';
+import * as actionCreators from 'actions';
 import Tetris from './Tetris.jsx';
 
 const mapStateToProps = state => ({

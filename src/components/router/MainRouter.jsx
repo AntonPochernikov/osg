@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 import './MainRouter.css';
-import PageLoader from '../common/PageLoader.jsx';
+import PageLoader from 'components/common/PageLoader.jsx';
 import { Tetris, HomePage } from './LazyRoutes.js';
 
 const MainRouter = () => {

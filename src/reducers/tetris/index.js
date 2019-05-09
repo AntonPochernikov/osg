@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux';
 import { handleActions } from 'redux-actions';
-import * as action from '../../actions/index.js';
-import { createField, createClearRow, createIndeterminateRow } from '../../libs/createField.js';
-import getRandomFigure from '../../libs/figures/getRandomFigure.js';
-import { cons as consCell, haveSameCoordinates, moveDown as moveCelldown } from '../../libs/cell.js';
+import * as action from 'actions';
+import { createField, createClearRow, createIndeterminateRow } from 'libs/createField.js';
+import getRandomFigure from 'libs/figures/getRandomFigure.js';
+import { cons as consCell, haveSameCoordinates, moveDown as moveCelldown } from 'libs/cell.js';
 
 const gameState = handleActions({
   [action.startTetrisGame]: () => 'started',

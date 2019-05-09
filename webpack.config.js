@@ -2,7 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const WebpackBar = require('webpackbar');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const LinkTypePlugin = require('html-webpack-link-type-plugin').HtmlWebpackLinkTypePlugin;
+// const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 
 const isDevMode = process.env.NODE_ENV !== 'production';
 
@@ -46,9 +46,9 @@ module.exports = {
     new webpack.HotModuleReplacementPlugin(),
     new HtmlWebpackPlugin({
       filename: '../index.html',
-      template: 'public/index.html',
+      template: path.resolve(__dirname, 'public/index.html'),
     }),
-    new LinkTypePlugin(),
+    // new FaviconsWebpackPlugin({ logo: './public/favicon.png' }),
   ],
   devtool: isDevMode ? 'source-map' : false,
   devServer: {

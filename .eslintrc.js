@@ -1,6 +1,7 @@
 module.exports = {
   parser: 'babel-eslint',
   plugins: [
+    'module-resolver',
     'react',
     'babel',
     'jest',
@@ -16,7 +17,7 @@ module.exports = {
     ecmaVersion: 2018,
     sourceType: 'module',
     ecmaFeatures: {
-      jsx: true
+      jsx: true,
     },
   },
   extends: [
@@ -34,8 +35,17 @@ module.exports = {
       { property: 'freeze', object: 'Object' },
       { property: 'myFavoriteWrapper' },
     ],
+    'import/resolver': {
+      'babel-module': {
+        alias: {
+          actions: './src/actions',
+          reducers: './src/reducers',
+        },
+      },
+    },
   },
   rules: {
+    "module-resolver/use-alias": 2,
     "react-hooks/rules-of-hooks": "error",
     "class-methods-use-this": 0,
     "linebreak-style": 0,

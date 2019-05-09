@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
-import * as actionCreators from '../../actions';
-import * as select from '../../selectors';
+import * as actionCreators from 'actions';
+import * as select from 'selectors';
 import GameStats from './GameStats.jsx';
 
 const mapStateToProps = state => ({

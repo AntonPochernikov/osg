@@ -1,6 +1,6 @@
-import { cons as consCell, getCoordinates } from '../cell.js';
+import { cons as consCell, getCoordinates } from 'libs/cell.js';
+import readonly from 'libs/decorators.js';
 import Figure from './Figure.js';
-import readonly from '../decorators.js';
 
 export default class FigureO extends Figure {
   static actions = {

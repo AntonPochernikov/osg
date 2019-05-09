@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
-import Header from '../common/Header.jsx';
+import Header from 'components/common/Header.jsx';
 import GameBoard from './GameBoard.js';
 import GameStats from './GameStats.js';
 import GameInfo from './GameInfo.jsx';

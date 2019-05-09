@@ -6,9 +6,9 @@ import {
   race,
   takeEvery,
 } from 'redux-saga/effects';
-import * as action from '../actions';
-import * as selector from '../selectors';
-import delay from '../libs/delay.js';
+import * as action from 'actions';
+import * as selector from 'selectors';
+import delay from 'libs/delay.js';
 
 function* selectCompletedRow(row) {
   yield put(action.selectTetrisCompletedRow({ rowIndex: row }));
