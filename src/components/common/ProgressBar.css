@@ -16,7 +16,7 @@
 	background-color: var(--color-neutral--lightest);
 	border-radius: 4px;
 
-	animation: expand-height 0.4s ease;
+	animation: extend-height 0.4s ease;
 	overflow: hidden;
 }
 

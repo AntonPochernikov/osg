@@ -37,7 +37,7 @@ const GameStats = ({
   const handleGameButton = (e) => {
     // blur focus to use space in game
     e.target.blur();
-    getButtonHandler()(e);
+    getButtonHandler()();
   };
 
   return (

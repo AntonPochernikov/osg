@@ -4,22 +4,20 @@ import './MainRouter.css';
 import PageLoader from 'components/common/PageLoader.jsx';
 import { Tetris, HomePage } from './LazyRoutes.js';
 
-const MainRouter = () => {
-  const renderRoot = () => <Redirect to='/home' />;
-  const renderTetris = () => <Tetris />;
-  const renderHome = () => <HomePage />;
+const renderRoot = () => <Redirect to='/home' />;
+const renderTetris = () => <Tetris />;
+const renderHome = () => <HomePage />;
 
-  return (
-    <Router>
-      <div className='router'>
-        <React.Suspense fallback={<PageLoader />}>
-          <Route exact path='/' render={renderRoot} />
-          <Route path='/tetris' render={renderTetris} />
-          <Route path='/home' component={renderHome} />
-        </React.Suspense>
-      </div>
-    </Router>
-  );
-};
+const MainRouter = () => (
+  <Router>
+    <>
+      <React.Suspense fallback={<PageLoader />}>
+        <Route exact path='/' render={renderRoot} />
+        <Route path='/tetris' render={renderTetris} />
+        <Route path='/home' component={renderHome} />
+      </React.Suspense>
+    </>
+  </Router>
+);
 
 export default MainRouter;

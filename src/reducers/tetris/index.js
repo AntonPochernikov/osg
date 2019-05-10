@@ -3,7 +3,7 @@ import { handleActions } from 'redux-actions';
 import * as action from 'actions';
 import { createField, createClearRow, createIndeterminateRow } from 'libs/createField.js';
 import getRandomFigure from 'libs/figures/getRandomFigure.js';
-import { cons as consCell, haveSameCoordinates, moveDown as moveCelldown } from 'libs/cell.js';
+import { haveSameCoordinates, moveDown as moveCelldown } from 'libs/cell.js';
 
 const gameState = handleActions({
   [action.startTetrisGame]: () => 'started',
@@ -44,11 +44,11 @@ const figureInit = {
 const figure = handleActions({
   [action.setCurrentTetrisFigure]: state => ({
     ...state,
-    current: state.next || getRandomFigure(consCell([5, 0], 'active')),
+    current: state.next || getRandomFigure(),
   }),
   [action.setNextTetrisFigure]: state => ({
     ...state,
-    next: getRandomFigure(consCell([5, 0], 'active')),
+    next: getRandomFigure(),
   }),
   [action.collideTetrisFigure]: state => ({
     ...state,

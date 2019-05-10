@@ -3,9 +3,10 @@ import readonly from 'libs/decorators.js';
 import Figure from './Figure.js';
 
 export default class FigureO extends Figure {
-  static actions = {
-    down: {
-      direction: 'down',
+  static alignment = {
+    normal: {
+      direction: 'normal',
+      startHead: consCell([5, 0], 'active'),
       getCells: (head) => {
         const result = [];
         const [headX, headY] = getCoordinates(head);
@@ -23,11 +24,11 @@ export default class FigureO extends Figure {
   type = 'O';
 
   getSize() {
-    return FigureO.actions[this.direction].getSize();
+    return FigureO.alignment[this.direction].getSize();
   }
 
   getCells() {
-    return FigureO.actions[this.direction].getCells(this.head);
+    return FigureO.alignment[this.direction].getCells(this.head);
   }
 
   rotate() {

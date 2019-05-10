@@ -3,9 +3,10 @@ import readonly from 'libs/decorators.js';
 import Figure from './Figure.js';
 
 export default class FigureT extends Figure {
-  static actions = {
+  static alignment = {
     down: {
       direction: 'down',
+      startHead: consCell([5, 0], 'active'),
       rotate: head => new FigureT(head, 'left'),
       getCells: (head) => {
         const result = [];
@@ -20,6 +21,7 @@ export default class FigureT extends Figure {
     },
     left: {
       direction: 'left',
+      startHead: consCell([5, 0], 'active'),
       rotate: head => new FigureT(head, 'up'),
       getCells: (head) => {
         const result = [];
@@ -34,20 +36,22 @@ export default class FigureT extends Figure {
     },
     up: {
       direction: 'up',
+      startHead: consCell([5, 0], 'active'),
       rotate: head => new FigureT(head, 'right'),
       getCells: (head) => {
         const result = [];
         const [headX, headY] = getCoordinates(head);
-        result.push(consCell([headX, headY + 2], 'active'));
-        result.push(consCell([headX - 1, headY + 1], 'active'));
         result.push(consCell([headX, headY + 1], 'active'));
-        result.push(consCell([headX + 1, headY + 1], 'active'));
+        result.push(consCell([headX - 1, headY], 'active'));
+        result.push(consCell([headX, headY], 'active'));
+        result.push(consCell([headX + 1, headY], 'active'));
         return result;
       },
       getSize: () => ({ height: 2, width: 3 }),
     },
     right: {
       direction: 'right',
+      startHead: consCell([5, 0], 'active'),
       rotate: head => new FigureT(head, 'down'),
       getCells: (head) => {
         const result = [];
@@ -66,15 +70,15 @@ export default class FigureT extends Figure {
   type = 'T';
 
   getSize() {
-    return FigureT.actions[this.direction].getSize();
+    return FigureT.alignment[this.direction].getSize();
   }
 
   getCells() {
-    return FigureT.actions[this.direction].getCells(this.head);
+    return FigureT.alignment[this.direction].getCells(this.head);
   }
 
   rotate() {
-    return FigureT.actions[this.direction].rotate(this.head);
+    return FigureT.alignment[this.direction].rotate(this.head);
   }
 
   setPosition(x, y) {

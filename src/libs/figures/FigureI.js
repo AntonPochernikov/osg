@@ -3,9 +3,10 @@ import readonly from 'libs/decorators.js';
 import Figure from './Figure.js';
 
 export default class FigureI extends Figure {
-  static actions = {
+  static alignment = {
     down: {
       direction: 'down',
+      startHead: consCell([5, 0], 'active'),
       rotate: head => new FigureI(head, 'right'),
       getCells: (head) => {
         const result = [];
@@ -19,12 +20,13 @@ export default class FigureI extends Figure {
     },
     right: {
       direction: 'right',
+      startHead: consCell([5, 0], 'active'),
       rotate: head => new FigureI(head, 'down'),
       getCells: (head) => {
         const result = [];
         const [headX, headY] = getCoordinates(head);
-        for (let x = headX - 1; x < headX + 3; x += 1) {
-          result.push(consCell([x, headY + 1], 'active'));
+        for (let x = headX - 2; x < headX + 2; x += 1) {
+          result.push(consCell([x, headY], 'active'));
         }
         return result;
       },
@@ -36,15 +38,15 @@ export default class FigureI extends Figure {
   type = 'I';
 
   getSize() {
-    return FigureI.actions[this.direction].getSize();
+    return FigureI.alignment[this.direction].getSize();
   }
 
   getCells() {
-    return FigureI.actions[this.direction].getCells(this.head);
+    return FigureI.alignment[this.direction].getCells(this.head);
   }
 
   rotate() {
-    return FigureI.actions[this.direction].rotate(this.head);
+    return FigureI.alignment[this.direction].rotate(this.head);
   }
 
   setPosition(x, y) {
