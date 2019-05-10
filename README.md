@@ -2,12 +2,12 @@
 
 This repo is made for testing React-Redux and other stuff building simple old school games.
 
-## Development mode
+### Development mode
 ```
 npm run dev
 ```
 
-## Production mode
+### Production mode
 ```
 npm run build
 ```
