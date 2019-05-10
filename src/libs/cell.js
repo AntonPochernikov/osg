@@ -2,7 +2,7 @@
 // CELL CONSRUCTOR AND SELECTORS
 // =============================
 
-// is cell predicate for
+// is cell predicate
 export const isCell = cell => (typeof cell === 'object' && cell.isCell);
 
 // check cell for selectors and operations

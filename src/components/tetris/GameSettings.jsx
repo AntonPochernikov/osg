@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import './GameSettings.css';
 
 const GameSettings = ({
@@ -7,14 +7,20 @@ const GameSettings = ({
   incSpeed,
   decSpeed,
 }) => {
-  const handleDecSpeedBtn = (e) => {
-    e.target.blur();
-    decSpeed();
-  };
-  const handleIncSpeedBtn = (e) => {
-    e.target.blur();
-    incSpeed();
-  };
+  const handleDecSpeedBtn = useCallback(
+    (e) => {
+      e.target.blur();
+      decSpeed();
+    },
+    [decSpeed],
+  );
+  const handleIncSpeedBtn = useCallback(
+    (e) => {
+      e.target.blur();
+      incSpeed();
+    },
+    [incSpeed],
+  );
   return (
     <div className='tetris-game-stats__settings'>
       <div className='tetris-game-stats__speed'>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
 import NextFigurePreview from './NextFigurePreview.jsx';
 import GameSettings from './GameSettings.jsx';
@@ -34,11 +34,14 @@ const GameStats = ({
 
   const getButtonHandler = () => buttonByState[gameState].action;
 
-  const handleGameButton = (e) => {
-    // blur focus to use space in game
-    e.target.blur();
-    getButtonHandler()();
-  };
+  const handleGameButton = useCallback(
+    (e) => {
+      // blur focus to use [space] in game
+      e.target.blur();
+      getButtonHandler()();
+    },
+    [gameState],
+  );
 
   return (
     <div className='tetris-game-stats'>
