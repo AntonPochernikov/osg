@@ -17,6 +17,7 @@
     ["module-resolver", {
       "root": ["./src"],
       "alias": {
+        "static": "./public/static",
         "actions": "./src/actions",
         "components": "./src/components",
         "constants": "./src/constants",
