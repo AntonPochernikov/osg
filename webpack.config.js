@@ -2,7 +2,6 @@ const path = require('path');
 const webpack = require('webpack');
 const WebpackBar = require('webpackbar');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-// const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 
 const isDevMode = process.env.NODE_ENV !== 'production';
 
@@ -48,7 +47,6 @@ module.exports = {
       filename: '../index.html',
       template: path.resolve(__dirname, 'public/index.html'),
     }),
-    // new FaviconsWebpackPlugin({ logo: './public/favicon.png' }),
   ],
   devtool: isDevMode ? 'source-map' : false,
   devServer: {

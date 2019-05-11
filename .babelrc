@@ -26,6 +26,12 @@
         "selectors": "./src/selectors",
         "store": "./src/store"
       }
+    }],
+    ["transform-imports", {
+      "lodash": {
+        "transform": "lodash/${member}",
+        "preventFullImport": true
+      }
     }]
   ]
 }

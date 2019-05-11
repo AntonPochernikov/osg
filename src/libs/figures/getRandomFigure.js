@@ -1,4 +1,4 @@
-import _ from 'lodash';
+import { keys, sample } from 'lodash';
 import FigureI from './FigureI.js';
 import FigureJ from './FigureJ.js';
 import FigureL from './FigureL.js';
@@ -7,9 +7,7 @@ import FigureS from './FigureS.js';
 import FigureT from './FigureT.js';
 import FigureZ from './FigureZ.js';
 
-const getRandomDirection = Figure => _(Figure.alignment)
-  .keys()
-  .sample();
+const getRandomDirection = Figure => sample(keys(Figure.alignment));
 
 const consFigure = Figure => () => {
   const dir = getRandomDirection(Figure);
@@ -26,4 +24,4 @@ const figures = [
   consFigure(FigureZ),
 ];
 
-export default () => _.sample(figures)();
+export default () => sample(figures)();
