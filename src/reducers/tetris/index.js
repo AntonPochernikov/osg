@@ -13,8 +13,8 @@ const gameState = handleActions({
 }, 'initial');
 
 const speed = handleActions({
-  [action.increaseTetrisGameSpeed]: state => state + 1,
-  [action.decreaseTetrisGameSpeed]: state => state - 1,
+  [action.increaseTetrisGameSpeed]: state => (state === 10 ? state : state + 1),
+  [action.decreaseTetrisGameSpeed]: state => (state === 1 ? state : state - 1),
 }, 5);
 
 const score = handleActions({
