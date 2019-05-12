@@ -66,8 +66,8 @@ export const getTetrisCompletedRows = createSelector(
 
 export const getTetrisFallInterval = createSelector(
   getTetrisSpeed,
-  // increase speed for 25% every time we add speed
-  speed => times(x => 0.75 * x, speed)(1000),
+  // increase speed for 30% every time we add speed
+  speed => times(x => 0.7 * x, speed - 1)(1000),
 );
 
 export const isTetrisGameStarted = createSelector(

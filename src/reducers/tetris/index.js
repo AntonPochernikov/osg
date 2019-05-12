@@ -18,8 +18,9 @@ const speed = handleActions({
 }, 5);
 
 const score = handleActions({
-  [action.collideTetrisFigure]: state => state + 1,
-  [action.removeTetrisCompletedRow]: state => state + 10,
+  // speed declared above so no destructuring here
+  [action.collideTetrisFigure]: (state, { payload }) => state + payload.speed,
+  [action.removeTetrisCompletedRow]: (state, { payload: { modificator } }) => state + 10 * modificator,
   [action.startTetrisGame]: () => 0,
   [action.stopTetrisGame]: () => 0,
 }, 0);

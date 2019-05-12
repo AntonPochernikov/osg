@@ -21,8 +21,9 @@ function* selectCompletedRow(row) {
   }
 }
 
-function* removeCompletedRow(row) {
-  yield put(action.removeTetrisCompletedRow({ rowIndex: row }));
+function* removeCompletedRow(row, rowCount) {
+  const speed = yield select(selector.getTetrisSpeed);
+  yield put(action.removeTetrisCompletedRow({ rowIndex: row, modificator: rowCount * speed }));
   const { pause } = yield race({
     pause: take('TETRIS/GAME/PAUSE'),
     delay: call(delay, 100),
@@ -35,7 +36,7 @@ function* removeCompletedRow(row) {
 function* manageCompletedRows(rows) {
   for (let i = 0; i < rows.length; i += 1) {
     yield call(selectCompletedRow, rows[i]);
-    yield call(removeCompletedRow, rows[i]);
+    yield call(removeCompletedRow, rows[i], rows.length);
   }
 }
 
@@ -72,7 +73,8 @@ function* figureFlow() {
       }
       if (!(yield select(selector.canTetrisFigureMoveDown))) {
         const currentFigure = yield select(selector.getTetrisCurrentFigure);
-        yield put(action.collideTetrisFigure({ currentFigure }));
+        const speed = yield select(selector.getTetrisSpeed);
+        yield put(action.collideTetrisFigure({ currentFigure, speed }));
       }
       yield put(action.fallTetrisFigureDown());
     } catch (e) {
