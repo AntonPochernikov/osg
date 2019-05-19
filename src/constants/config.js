@@ -1,7 +1,7 @@
 export const tetrisConfig = {
   speed: {
     min: 1,
-    init: 5,
+    init: 4,
     max: 10,
     modificator: 0.7,
   },
