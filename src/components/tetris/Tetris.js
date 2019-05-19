@@ -6,4 +6,4 @@ const mapStateToProps = state => ({
   gameState: state.tetris.gameState,
 });
 
-export default connect(mapStateToProps, actionCreators)(Tetris);
+export default connect(mapStateToProps, actionCreators.tetris)(Tetris);

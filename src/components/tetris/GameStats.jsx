@@ -15,19 +15,19 @@ const GameStats = ({
   const buttonByState = {
     initial: {
       title: 'Start New Game',
-      action: actions.startTetrisGame,
+      action: actions.startGame,
     },
     started: {
       title: 'Stop Game',
-      action: actions.stopTetrisGame,
+      action: actions.stopGame,
     },
     paused: {
       title: 'Stop Game',
-      action: actions.stopTetrisGame,
+      action: actions.stopGame,
     },
     finished: {
       title: 'Start New Game',
-      action: actions.startTetrisGame,
+      action: actions.startGame,
     },
   };
 
@@ -52,8 +52,8 @@ const GameStats = ({
       <GameSettings
         speed={speed}
         score={score}
-        incSpeed={actions.increaseTetrisGameSpeed}
-        decSpeed={actions.decreaseTetrisGameSpeed}
+        incSpeed={actions.increaseGameSpeed}
+        decSpeed={actions.decreaseGameSpeed}
         canAdjustSpeed={canAdjustSpeed}
       />
 

@@ -1,2 +1,4 @@
-export * from './tetris.js';
-export * from './user.js';
+import * as tetris from './tetris.js';
+import * as user from './user.js';
+
+export { tetris, user };

@@ -8,24 +8,24 @@ import figure from './figure.js';
 const { speed: { min, max, init }, score: { collision, completedRow } } = tetrisConfig;
 
 const gameState = handleActions({
-  [action.startTetrisGame]: () => 'started',
-  [action.stopTetrisGame]: () => 'initial',
-  [action.finishTetrisGame]: () => 'finished',
-  [action.pauseTetrisGame]: () => 'paused',
-  [action.resumeTetrisGame]: () => 'started',
+  [action.tetris.startGame]: () => 'started',
+  [action.tetris.stopGame]: () => 'initial',
+  [action.tetris.finishGame]: () => 'finished',
+  [action.tetris.pauseGame]: () => 'paused',
+  [action.tetris.resumeGame]: () => 'started',
 }, 'initial');
 
 const speed = handleActions({
-  [action.increaseTetrisGameSpeed]: state => (state === max ? state : state + 1),
-  [action.decreaseTetrisGameSpeed]: state => (state === min ? state : state - 1),
+  [action.tetris.increaseGameSpeed]: state => (state === max ? state : state + 1),
+  [action.tetris.decreaseGameSpeed]: state => (state === min ? state : state - 1),
 }, init);
 
 const score = handleActions({
   // speed declared above so no destructuring here
-  [action.collideTetrisFigure]: (state, { payload }) => state + collision * payload.speed,
-  [action.removeTetrisCompletedRow]: (state, { payload: { modificator } }) => state + completedRow * modificator,
-  [action.startTetrisGame]: () => 0,
-  [action.stopTetrisGame]: () => 0,
+  [action.tetris.collideFigure]: (state, { payload }) => state + collision * payload.speed,
+  [action.tetris.removeCompletedRow]: (state, { payload: { modificator } }) => state + completedRow * modificator,
+  [action.tetris.startGame]: () => 0,
+  [action.tetris.stopGame]: () => 0,
 }, 0);
 
 export default combineReducers({

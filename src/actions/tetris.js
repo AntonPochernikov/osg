@@ -1,35 +1,35 @@
 import { createAction } from 'redux-actions';
 
 // GAME FLOW
-export const startTetrisGame = createAction('TETRIS/GAME/START');
-export const stopTetrisGame = createAction('TETRIS/GAME/STOP');
-export const pauseTetrisGame = createAction('TETRIS/GAME/PAUSE');
-export const resumeTetrisGame = createAction('TETRIS/GAME/RESUME');
-export const finishTetrisGame = createAction('TETRIS/GAME/FINISH');
+export const startGame = createAction('TETRIS/GAME/START');
+export const stopGame = createAction('TETRIS/GAME/STOP');
+export const pauseGame = createAction('TETRIS/GAME/PAUSE');
+export const resumeGame = createAction('TETRIS/GAME/RESUME');
+export const finishGame = createAction('TETRIS/GAME/FINISH');
 
-export const increaseTetrisGameSpeed = createAction('TETRIS/GAME/SPEED/INCREASE');
-export const decreaseTetrisGameSpeed = createAction('TETRIS/GAME/SPEED/DECREASE');
+export const increaseGameSpeed = createAction('TETRIS/GAME/SPEED/INCREASE');
+export const decreaseGameSpeed = createAction('TETRIS/GAME/SPEED/DECREASE');
 
 // BOARD
-export const selectTetrisCompletedRow = createAction('TETRIS/ROW/COMPLETED/SELECT');
-export const removeTetrisCompletedRow = createAction('TETRIS/ROW/COMPLETED/REMOVE');
+export const selectCompletedRow = createAction('TETRIS/ROW/COMPLETED/SELECT');
+export const removeCompletedRow = createAction('TETRIS/ROW/COMPLETED/REMOVE');
 
 // FIGURES
-export const setCurrentTetrisFigure = createAction('TETRIS/FIGURE/CURRENT/SET');
-export const setNextTetrisFigure = createAction('TETRIS/FIGURE/NEXT/SET');
+export const setCurrentFigure = createAction('TETRIS/FIGURE/CURRENT/SET');
+export const setNextFigure = createAction('TETRIS/FIGURE/NEXT/SET');
 
 // FIGURE FLOW
-export const fallTetrisFigureDown = createAction('TETRIS/FIGURE/FALL/DOWN');
-export const collideTetrisFigure = createAction('TETRIS/FIGURE/COLLIDE');
+export const fallFigureDown = createAction('TETRIS/FIGURE/FALL/DOWN');
+export const collideFigure = createAction('TETRIS/FIGURE/COLLIDE');
 
-export const tryTetrisFigureDown = createAction('TETRIS/FIGURE/TRY/DOWN');
-export const moveTetrisFigureDown = createAction('TETRIS/FIGURE/MOVE/DOWN');
+export const tryFigureDown = createAction('TETRIS/FIGURE/TRY/DOWN');
+export const moveFigureDown = createAction('TETRIS/FIGURE/MOVE/DOWN');
 
-export const tryTetrisFigureLeft = createAction('TETRIS/FIGURE/TRY/LEFT');
-export const moveTetrisFigureLeft = createAction('TETRIS/FIGURE/MOVE/LEFT');
+export const tryFigureLeft = createAction('TETRIS/FIGURE/TRY/LEFT');
+export const moveFigureLeft = createAction('TETRIS/FIGURE/MOVE/LEFT');
 
-export const tryTetrisFigureRight = createAction('TETRIS/FIGURE/TRY/RIGHT');
-export const moveTetrisFigureRight = createAction('TETRIS/FIGURE/MOVE/RIGHT');
+export const tryFigureRight = createAction('TETRIS/FIGURE/TRY/RIGHT');
+export const moveFigureRight = createAction('TETRIS/FIGURE/MOVE/RIGHT');
 
-export const tryRotateTetrisFigure = createAction('TETRIS/FIGURE/TRY/ROTATE');
-export const rotateTetrisFigure = createAction('TETRIS/FIGURE/ROTATE');
+export const tryRotateFigure = createAction('TETRIS/FIGURE/TRY/ROTATE');
+export const rotateFigure = createAction('TETRIS/FIGURE/ROTATE');

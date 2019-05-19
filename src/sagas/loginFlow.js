@@ -13,15 +13,15 @@ const noop = () => null;
 function* authorize(user, password) {
   try {
     const token = yield call(noop, user, password);
-    yield put(action.loginUserSuccess(token));
+    yield put(action.user.loginSuccess(token));
     yield call(noop, { token });
     return token;
   } catch (e) {
-    yield put(action.loginUserFailure(e));
+    yield put(action.user.loginFailure(e));
     return e;
   } finally {
     if (yield cancelled()) {
-      put(action.loginUserCancel());
+      put(action.user.loginCancel());
     }
   }
 }

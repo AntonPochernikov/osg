@@ -8,4 +8,4 @@ const mapStateToProps = state => ({
   gameState: state.tetris.gameState,
 });
 
-export default connect(mapStateToProps, actionCreators)(GameBoard);
+export default connect(mapStateToProps, actionCreators.tetris)(GameBoard);

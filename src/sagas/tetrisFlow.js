@@ -11,7 +11,7 @@ import * as selector from 'selectors';
 import delay from 'libs/delay.js';
 
 function* selectCompletedRow(row) {
-  yield put(action.selectTetrisCompletedRow({ rowIndex: row }));
+  yield put(action.tetris.selectCompletedRow({ rowIndex: row }));
   const { pause } = yield race({
     pause: take('TETRIS/GAME/PAUSE'),
     delay: call(delay, 200),
@@ -23,7 +23,7 @@ function* selectCompletedRow(row) {
 
 function* removeCompletedRow(row, rowCount) {
   const speed = yield select(selector.tetris.getSpeed);
-  yield put(action.removeTetrisCompletedRow({ rowIndex: row, modificator: rowCount * speed }));
+  yield put(action.tetris.removeCompletedRow({ rowIndex: row, modificator: rowCount * speed }));
   const { pause } = yield race({
     pause: take('TETRIS/GAME/PAUSE'),
     delay: call(delay, 100),
@@ -42,17 +42,17 @@ function* manageCompletedRows(rows) {
 
 function* checkFigureMoveLeft() {
   if (yield select(selector.tetris.canFigureMoveLeft)) {
-    yield put(action.moveTetrisFigureLeft());
+    yield put(action.tetris.moveFigureLeft());
   }
 }
 function* checkFigureMoveRight() {
   if (yield select(selector.tetris.canFigureMoveRight)) {
-    yield put(action.moveTetrisFigureRight());
+    yield put(action.tetris.moveFigureRight());
   }
 }
 function* checkFigureRotate() {
   if (yield select(selector.tetris.canFigureRotate)) {
-    yield put(action.rotateTetrisFigure());
+    yield put(action.tetris.rotateFigure());
   }
 }
 
@@ -74,22 +74,22 @@ function* figureFlow() {
       if (!(yield select(selector.tetris.canFigureMoveDown))) {
         const currentFigure = yield select(selector.tetris.getCurrentFigure);
         const speed = yield select(selector.tetris.getSpeed);
-        yield put(action.collideTetrisFigure({ currentFigure, speed }));
+        yield put(action.tetris.collideFigure({ currentFigure, speed }));
       }
-      yield put(action.fallTetrisFigureDown());
+      yield put(action.tetris.fallFigureDown());
     } catch (e) {
       console.log(e);
-      yield put(action.finishTetrisGame());
+      yield put(action.tetris.finishGame());
     }
   }
 }
 
 function* figures() {
   while (true) {
-    yield put(action.setCurrentTetrisFigure());
-    yield put(action.setNextTetrisFigure());
+    yield put(action.tetris.setCurrentFigure());
+    yield put(action.tetris.setNextFigure());
     if (!(yield select(selector.tetris.canFigureMoveDown))) {
-      yield put(action.finishTetrisGame());
+      yield put(action.tetris.finishGame());
     }
     yield race({
       fall: call(figureFlow),

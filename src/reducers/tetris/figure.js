@@ -8,37 +8,37 @@ const figureInit = {
 };
 
 export default handleActions({
-  [action.setCurrentTetrisFigure]: state => ({
+  [action.tetris.setCurrentFigure]: state => ({
     ...state,
     current: state.next || getRandomFigure(),
   }),
-  [action.setNextTetrisFigure]: state => ({
+  [action.tetris.setNextFigure]: state => ({
     ...state,
     next: getRandomFigure(),
   }),
-  [action.collideTetrisFigure]: state => ({
+  [action.tetris.collideFigure]: state => ({
     ...state,
     current: null,
   }),
-  [action.moveTetrisFigureDown]: state => ({
+  [action.tetris.moveFigureDown]: state => ({
     ...state,
     current: state.current.moveDown(),
   }),
-  [action.moveTetrisFigureLeft]: state => ({
+  [action.tetris.moveFigureLeft]: state => ({
     ...state,
     current: state.current.moveLeft(),
   }),
-  [action.moveTetrisFigureRight]: state => ({
+  [action.tetris.moveFigureRight]: state => ({
     ...state,
     current: state.current.moveRight(),
   }),
-  [action.rotateTetrisFigure]: state => ({
+  [action.tetris.rotateFigure]: state => ({
     ...state,
     current: state.current.rotate(),
   }),
-  [action.fallTetrisFigureDown]: state => ({
+  [action.tetris.fallFigureDown]: state => ({
     ...state,
     current: state.current.moveDown(),
   }),
-  [action.stopTetrisGame]: () => figureInit,
+  [action.tetris.stopGame]: () => figureInit,
 }, figureInit);

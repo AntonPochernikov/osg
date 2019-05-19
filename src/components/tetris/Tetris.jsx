@@ -16,39 +16,39 @@ const Tetris = ({ gameState, ...actions }) => {
       // shift
       case 16: {
         if (gameState === 'started') {
-          actions.pauseTetrisGame();
+          actions.pauseGame();
           break;
         }
         if (gameState === 'paused') {
-          actions.resumeTetrisGame();
+          actions.resumeGame();
         }
         break;
       }
       // arrow left
       case 37: {
         if (gameState === 'started') {
-          actions.tryTetrisFigureLeft();
+          actions.tryFigureLeft();
         }
         break;
       }
       // arrow right
       case 39: {
         if (gameState === 'started') {
-          actions.tryTetrisFigureRight();
+          actions.tryFigureRight();
         }
         break;
       }
       // arrow down
       case 40: {
         if (gameState === 'started') {
-          actions.tryTetrisFigureDown();
+          actions.tryFigureDown();
         }
         break;
       }
       // space
       case 32: {
         if (gameState === 'started') {
-          actions.tryRotateTetrisFigure();
+          actions.tryRotateFigure();
         }
         break;
       }

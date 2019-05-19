@@ -11,4 +11,4 @@ const mapStateToProps = state => ({
   canAdjustSpeed: select.tetris.canAdjustSpeed(state),
 });
 
-export default connect(mapStateToProps, actionCreators)(GameStats);
+export default connect(mapStateToProps, actionCreators.tetris)(GameStats);
