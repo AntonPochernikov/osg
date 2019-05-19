@@ -8,6 +8,7 @@ const GameStats = ({
   score,
   speed,
   gameState,
+  canAdjustSpeed,
   nextFigurePreview,
   ...actions
 }) => {
@@ -53,6 +54,7 @@ const GameStats = ({
         score={score}
         incSpeed={actions.increaseTetrisGameSpeed}
         decSpeed={actions.decreaseTetrisGameSpeed}
+        canAdjustSpeed={canAdjustSpeed}
       />
 
       <button className='tetris-game-stats__game-button' onClick={handleGameButton}>
@@ -67,6 +69,7 @@ GameStats.propTypes = {
   speed: PropTypes.number.isRequired,
   score: PropTypes.number.isRequired,
   nextFigurePreview: PropTypes.array.isRequired,
+  canAdjustSpeed: PropTypes.bool.isRequired,
 };
 
 GameStats.defaultProps = {
@@ -74,6 +77,7 @@ GameStats.defaultProps = {
   speed: 1,
   score: 0,
   nextFigurePreview: [],
+  canAdjustSpeed: true,
 };
 
 export default GameStats;

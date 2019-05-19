@@ -1,10 +1,10 @@
 import { connect } from 'react-redux';
 import * as actionCreators from 'actions';
-import * as selectors from 'selectors';
+import * as select from 'selectors';
 import GameBoard from './GameBoard.jsx';
 
 const mapStateToProps = state => ({
-  board: selectors.getTetrisBoardCells(state),
+  board: select.tetris.getBoardCells(state),
   gameState: state.tetris.gameState,
 });
 

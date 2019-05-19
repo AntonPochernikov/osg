@@ -4,19 +4,20 @@ import './GameSettings.css';
 const GameSettings = ({
   speed,
   score,
+  canAdjustSpeed,
   incSpeed,
   decSpeed,
 }) => {
   const handleDecSpeedBtn = useCallback(
-    (e) => {
-      e.target.blur();
+    () => {
+      // e.target.blur();
       decSpeed();
     },
     [decSpeed],
   );
   const handleIncSpeedBtn = useCallback(
-    (e) => {
-      e.target.blur();
+    () => {
+      // e.target.blur();
       incSpeed();
     },
     [incSpeed],
@@ -24,9 +25,17 @@ const GameSettings = ({
   return (
     <div className='tetris-game-stats__settings'>
       <div className='tetris-game-stats__speed'>
-        <button className='tetris-game-stats__speed-btn' onClick={handleDecSpeedBtn}>-</button>
+        {canAdjustSpeed && (
+          <button
+            className='tetris-game-stats__speed-btn tetris-game-stats__speed-btn--dec'
+            onClick={handleDecSpeedBtn}
+          />)}
         <p className='tetris-game-stats__speed-value'>Speed: {speed}</p>
-        <button className='tetris-game-stats__speed-btn' onClick={handleIncSpeedBtn}>+</button>
+        {canAdjustSpeed && (
+          <button
+            className='tetris-game-stats__speed-btn tetris-game-stats__speed-btn--inc'
+            onClick={handleIncSpeedBtn}
+          />)}
       </div>
       <div className='tetris-game-stats__score'>
         <p className='tetris-game-stats__score-value'>Score: {score}</p>

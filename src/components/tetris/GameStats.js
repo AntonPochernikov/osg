@@ -7,7 +7,8 @@ const mapStateToProps = state => ({
   gameState: state.tetris.gameState,
   speed: state.tetris.speed,
   score: state.tetris.score,
-  nextFigurePreview: select.getTetrisNextFigurePreview(state),
+  nextFigurePreview: select.tetris.getNextFigurePreview(state),
+  canAdjustSpeed: select.tetris.canAdjustSpeed(state),
 });
 
 export default connect(mapStateToProps, actionCreators)(GameStats);
