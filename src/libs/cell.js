@@ -41,18 +41,25 @@ export const getState = (cell) => {
   return cell.state;
 };
 
-// selector for cell fill color
-export const getFill = (cell) => {
+// selector for cell color color
+export const getColor = (cell) => {
   checkCell(cell);
-  return cell.fill;
+  return cell.color;
+};
+
+// selector for cell content
+export const getContent = (cell) => {
+  checkCell(cell);
+  return cell.content;
 };
 
 // construct cell
-export const cons = ([col, row], state = 'inactive', fill = 'black') => {
+export const cons = ([col, row], state = 'empty', color = 'black', content = null) => {
   const cell = {
     coordinates: [col, row],
     state,
-    fill,
+    color,
+    content,
     isCell: true,
   };
   return cell;
@@ -63,7 +70,7 @@ export const cons = ([col, row], state = 'inactive', fill = 'black') => {
 // =====================
 
 // is cell active predicate
-export const isActive = cell => getState(cell) === 'active';
+export const isFilled = cell => getState(cell) === 'filled';
 
 // check same coordinates operation
 export const haveSameCoordinates = (c1, c2) => {
@@ -76,7 +83,12 @@ export const haveSameCoordinates = (c1, c2) => {
 // convert cell to string operation
 export const toString = (cell) => {
   checkCell(cell);
-  return `coorinates: [${getCol(cell)}, ${getRow(cell)}], state: ${getState(cell)}, fill: ${getFill(cell)}`;
+  return `
+    coorinates: [${getCol(cell)}, ${getRow(cell)}],
+    state: ${getState(cell)},
+    color: ${getColor(cell)},
+    content: ${getContent(cell)}
+  `;
 };
 
 // get cell moved down operation
@@ -85,46 +97,51 @@ export const moveDown = (cell) => {
   return cons(
     [getCol(cell), getRow(cell) + 1],
     getState(cell),
-    getFill(cell),
+    getColor(cell),
+    getContent(cell),
   );
 };
 
-// get active cell from cell operation
-export const getActive = (cell) => {
-  checkCell(cell);
-  return cons(
-    getCoordinates(cell),
-    'active',
-    getFill(cell),
-  );
-};
+// // get active cell from cell operation
+// export const getActive = (cell) => {
+//   checkCell(cell);
+//   return cons(
+//     getCoordinates(cell),
+//     'active',
+//     getColor(cell),
+//     getContent(cell),
+//   );
+// };
 
-// get inactive cell from cell operation
-export const getInactive = (cell) => {
-  checkCell(cell);
-  return cons(
-    getCoordinates(cell),
-    'inactive',
-    getFill(cell),
-  );
-};
+// // get inactive cell from cell operation
+// export const getInactive = (cell) => {
+//   checkCell(cell);
+//   return cons(
+//     getCoordinates(cell),
+//     'inactive',
+//     getColor(cell),
+//     getContent(cell),
+//   );
+// };
 
-// get indeterminate cell from cell operation
-export const getIndeterminate = (cell) => {
-  checkCell(cell);
-  return cons(
-    getCoordinates(cell),
-    'indeterminate',
-    getFill(cell),
-  );
-};
+// // get indeterminate cell from cell operation
+// export const getIndeterminate = (cell) => {
+//   checkCell(cell);
+//   return cons(
+//     getCoordinates(cell),
+//     'indeterminate',
+//     getColor(cell),
+//     getContent(cell),
+//   );
+// };
 
-// get cell filled with color operation
-export const fill = (cell, color) => {
+// get cell painted with color operation
+export const paint = (cell, color) => {
   checkCell(cell);
   return cons(
     getCoordinates(cell),
     getState(cell),
     color,
+    getContent(cell),
   );
 };

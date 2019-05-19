@@ -34,11 +34,11 @@
 	border-radius: 2px;
 }
 
-.game-board__cell--active {
+.game-board__cell--filled {
 	border: 2px solid var(--color-neutral--dark);
 }
 
-.game-board__cell--active::before {
+.game-board__cell--filled::before {
 	content: "";
 	position: absolute;
 	top: 4px;

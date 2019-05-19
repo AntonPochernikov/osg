@@ -4,7 +4,7 @@ import {
   getCoordinates,
   haveSameCoordinates,
   getState,
-  isActive,
+  isFilled,
 } from 'libs/cell.js';
 import times from 'libs/times.js';
 import { tetrisConfig } from 'constants/config.js';
@@ -58,7 +58,7 @@ export const getTetrisNextFigurePreview = createSelector(
 export const getTetrisCompletedRows = createSelector(
   getTetrisBoard,
   board => board.reduce((acc, row, i) => {
-    if (row.every(c => isActive(c))) {
+    if (row.every(c => isFilled(c))) {
       return [...acc, i];
     }
     return acc;
@@ -85,7 +85,7 @@ export const canTetrisFigureMoveDown = createSelector(
     .getCells()
     .every((cell) => {
       const [col, row] = getCoordinates(cell);
-      return row !== board.length - 1 && !isActive(board[row + 1][col]);
+      return row !== board.length - 1 && !isFilled(board[row + 1][col]);
     }),
 );
 
@@ -96,7 +96,7 @@ export const canTetrisFigureMoveLeft = createSelector(
     .getCells()
     .every((cell) => {
       const [col, row] = getCoordinates(cell);
-      return col !== 0 && !isActive(board[row][col - 1]);
+      return col !== 0 && !isFilled(board[row][col - 1]);
     }),
 );
 
@@ -107,7 +107,7 @@ export const canTetrisFigureMoveRight = createSelector(
     .getCells()
     .every((cell) => {
       const [col, row] = getCoordinates(cell);
-      return col !== board[row].length - 1 && !isActive(board[row][col + 1]);
+      return col !== board[row].length - 1 && !isFilled(board[row][col + 1]);
     }),
 );
 
@@ -128,6 +128,6 @@ export const canTetrisFigureRotate = createSelector(
         return false;
       }
       // will collide with active board cells
-      return !isActive(board[row][col]);
+      return !isFilled(board[row][col]);
     }),
 );

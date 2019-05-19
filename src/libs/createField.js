@@ -3,7 +3,7 @@ import { cons as consCell } from './cell.js';
 export const createClearRow = (columns, y) => {
   const row = [];
   for (let x = 0; x < columns; x += 1) {
-    row.push(consCell([x, y], 'inactive'));
+    row.push(consCell([x, y], 'empty'));
   }
   return row;
 };

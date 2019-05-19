@@ -6,60 +6,60 @@ export default class FigureJ extends Figure {
   static alignment = {
     down: {
       direction: 'down',
-      startHead: consCell([5, 0], 'active'),
+      startHead: consCell([5, 0], 'filled'),
       rotate: head => new FigureJ(head, 'left'),
       getCells: (head) => {
         const result = [];
         const [headX, headY] = getCoordinates(head);
-        result.push(consCell([headX - 1, headY], 'active'));
-        result.push(consCell([headX - 1, headY + 1], 'active'));
-        result.push(consCell([headX, headY + 1], 'active'));
-        result.push(consCell([headX + 1, headY + 1], 'active'));
+        result.push(consCell([headX - 1, headY], 'filled'));
+        result.push(consCell([headX - 1, headY + 1], 'filled'));
+        result.push(consCell([headX, headY + 1], 'filled'));
+        result.push(consCell([headX + 1, headY + 1], 'filled'));
         return result;
       },
       getSize: () => ({ height: 2, width: 3 }),
     },
     left: {
       direction: 'left',
-      startHead: consCell([5, 0], 'active'),
+      startHead: consCell([5, 0], 'filled'),
       rotate: head => new FigureJ(head, 'up'),
       getCells: (head) => {
         const result = [];
         const [headX, headY] = getCoordinates(head);
-        result.push(consCell([headX - 1, headY], 'active'));
-        result.push(consCell([headX - 1, headY + 1], 'active'));
-        result.push(consCell([headX - 1, headY + 2], 'active'));
-        result.push(consCell([headX, headY], 'active'));
+        result.push(consCell([headX - 1, headY], 'filled'));
+        result.push(consCell([headX - 1, headY + 1], 'filled'));
+        result.push(consCell([headX - 1, headY + 2], 'filled'));
+        result.push(consCell([headX, headY], 'filled'));
         return result;
       },
       getSize: () => ({ height: 3, width: 2 }),
     },
     up: {
       direction: 'up',
-      startHead: consCell([5, 0], 'active'),
+      startHead: consCell([5, 0], 'filled'),
       rotate: head => new FigureJ(head, 'right'),
       getCells: (head) => {
         const result = [];
         const [headX, headY] = getCoordinates(head);
-        result.push(consCell([headX + 1, headY + 1], 'active'));
-        result.push(consCell([headX - 1, headY], 'active'));
-        result.push(consCell([headX, headY], 'active'));
-        result.push(consCell([headX + 1, headY], 'active'));
+        result.push(consCell([headX + 1, headY + 1], 'filled'));
+        result.push(consCell([headX - 1, headY], 'filled'));
+        result.push(consCell([headX, headY], 'filled'));
+        result.push(consCell([headX + 1, headY], 'filled'));
         return result;
       },
       getSize: () => ({ height: 2, width: 3 }),
     },
     right: {
       direction: 'right',
-      startHead: consCell([5, 0], 'active'),
+      startHead: consCell([5, 0], 'filled'),
       rotate: head => new FigureJ(head, 'down'),
       getCells: (head) => {
         const result = [];
         const [headX, headY] = getCoordinates(head);
-        result.push(consCell([headX, headY], 'active'));
-        result.push(consCell([headX, headY + 1], 'active'));
-        result.push(consCell([headX, headY + 2], 'active'));
-        result.push(consCell([headX - 1, headY + 2], 'active'));
+        result.push(consCell([headX, headY], 'filled'));
+        result.push(consCell([headX, headY + 1], 'filled'));
+        result.push(consCell([headX, headY + 2], 'filled'));
+        result.push(consCell([headX - 1, headY + 2], 'filled'));
         return result;
       },
       getSize: () => ({ height: 3, width: 2 }),
@@ -82,12 +82,12 @@ export default class FigureJ extends Figure {
   }
 
   setPosition(x, y) {
-    return new FigureJ(consCell([x, y], 'active'), this.direction);
+    return new FigureJ(consCell([x, y], 'filled'), this.direction);
   }
 
   move(x, y) {
     const [headX, headY] = getCoordinates(this.head);
-    return new FigureJ(consCell([headX + x, headY + y], 'active'), this.direction);
+    return new FigureJ(consCell([headX + x, headY + y], 'filled'), this.direction);
   }
 
   moveDown() {
