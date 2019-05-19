@@ -22,3 +22,71 @@
 	color: var(--color-neutral);
 	text-align: center;
 }
+
+.tetris-game-stats__speed-btn {
+	position: relative;
+	display: block;
+	width: 26px;
+	height: 26px;
+	box-sizing: border-box;
+	margin: 0 6px;
+
+	background-color: var(--color-neutral);
+	border: none;
+	border: 2px solid var(--color-neutral--lighten);
+	border-radius: 50%;
+	
+	cursor: pointer;
+}
+
+.tetris-game-stats__speed-btn:hover {
+	background-color: var(--color-neutral--dark);
+}
+.tetris-game-stats__speed-btn:focus {
+	outline: none;
+	border: 2px solid var(--color-orange);
+	box-shadow: 0 0 5px -1px var(--color-neutral--darkest);
+}
+.tetris-game-stats__speed-btn:active {
+	border-color: var(--color-neutral);
+	background-color: var(--color-neutral--dark);
+}
+
+.tetris-game-stats__speed-btn--inc::before {
+	content: "";
+	position: absolute;
+	top: 6px;
+	left: 10px;
+	display: block;
+
+	width: 2px;
+	height: 10px;
+
+	background-color: var(--color-orange--lighten);
+}
+
+.tetris-game-stats__speed-btn--inc::after {
+	content: "";
+	position: absolute;
+	top: 10px;
+	left: 6px;
+	display: block;
+
+	width: 10px;
+	height: 2px;
+
+	background-color: var(--color-orange--light);
+}
+
+.tetris-game-stats__speed-btn--dec::after {
+	content: "";
+	position: absolute;
+	top: 10px;
+	left: 6px;
+	display: block;
+
+	width: 10px;
+	height: 2px;
+
+	background-color: var(--color-orange--light);
+}
