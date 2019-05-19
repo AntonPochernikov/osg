@@ -52,6 +52,7 @@ module.exports = {
     },
   },
   rules: {
+    'import/prefer-default-export': 0,
     'module-resolver/use-alias': 2,
     'react-hooks/rules-of-hooks': 'error',
     'class-methods-use-this': 0,
