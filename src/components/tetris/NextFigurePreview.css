@@ -16,11 +16,11 @@
 	border-radius: 2px;
 }
 
-.next-figure-board__cell--active {
+.next-figure-board__cell--filled {
 	border: 2px solid var(--color-neutral--dark);
 }
 
-.next-figure-board__cell--active::before {
+.next-figure-board__cell--filled::before {
 	content: "";
 	position: absolute;
 	top: 3px;
