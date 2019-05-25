@@ -45,8 +45,8 @@ const GameStats = ({
   );
 
   return (
-    <div className='tetris-game-stats'>
-      <h2 className='tetris-game-stats__title'>Game Stats</h2>
+    <div className="tetris-game-stats">
+      <h2 className="tetris-game-stats__title">Game Stats</h2>
       <NextFigurePreview board={nextFigurePreview} />
 
       <GameSettings
@@ -57,7 +57,7 @@ const GameStats = ({
         canAdjustSpeed={canAdjustSpeed}
       />
 
-      <button className='tetris-game-stats__game-button' onClick={handleGameButton}>
+      <button className="tetris-game-stats__game-button" onClick={handleGameButton}>
         {getButtonTitle()}
       </button>
     </div>

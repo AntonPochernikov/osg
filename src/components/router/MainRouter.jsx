@@ -9,7 +9,7 @@ import './MainRouter.css';
 import PageLoader from 'components/common/PageLoader.jsx';
 import { Tetris, HomePage } from './LazyRoutes.js';
 
-const renderRoot = () => <Redirect to='/home' />;
+const renderRoot = () => <Redirect to="/home" />;
 const renderTetris = () => <Tetris />;
 const renderHome = () => <HomePage />;
 
@@ -17,8 +17,8 @@ const MainRouter = () => (
   <Router>
     <React.Suspense fallback={<PageLoader />}>
       <Switch>
-        <Route path='/tetris' render={renderTetris} />
-        <Route path='/home' render={renderHome} />
+        <Route path="/tetris" render={renderTetris} />
+        <Route path="/home" render={renderHome} />
         <Route render={renderRoot} />
       </Switch>
     </React.Suspense>

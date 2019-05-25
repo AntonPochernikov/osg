@@ -23,22 +23,22 @@ const GameSettings = ({
     [incSpeed],
   );
   return (
-    <div className='tetris-game-stats__settings'>
-      <div className='tetris-game-stats__speed'>
+    <div className="tetris-game-stats__settings">
+      <div className="tetris-game-stats__speed">
         {canAdjustSpeed && (
           <button
-            className='tetris-game-stats__speed-btn tetris-game-stats__speed-btn--dec'
+            className="tetris-game-stats__speed-btn tetris-game-stats__speed-btn--dec"
             onClick={handleDecSpeedBtn}
           />)}
-        <p className='tetris-game-stats__speed-value'>Speed: {speed}</p>
+        <p className="tetris-game-stats__speed-value">Speed: {speed}</p>
         {canAdjustSpeed && (
           <button
-            className='tetris-game-stats__speed-btn tetris-game-stats__speed-btn--inc'
+            className="tetris-game-stats__speed-btn tetris-game-stats__speed-btn--inc"
             onClick={handleIncSpeedBtn}
           />)}
       </div>
-      <div className='tetris-game-stats__score'>
-        <p className='tetris-game-stats__score-value'>Score: {score}</p>
+      <div className="tetris-game-stats__score">
+        <p className="tetris-game-stats__score-value">Score: {score}</p>
       </div>
     </div>
   );

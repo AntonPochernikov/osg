@@ -4,11 +4,11 @@ import cn from 'classnames';
 import './GameBoard.css';
 
 const GameBoard = ({ board, gameState }) => (
-  <div className='game-board-container'>
-    <table className='game-board'>
-      <tbody className='game-board__body'>
+  <div className="game-board-container">
+    <table className="game-board">
+      <tbody className="game-board__body">
         {board.map((tr, i) => (
-          <tr className='game-board__row' key={i}>
+          <tr className="game-board__row" key={i}>
             {tr.map((cellState, y) => {
               const cellClass = cn(
                 'game-board__cell',
@@ -21,7 +21,7 @@ const GameBoard = ({ board, gameState }) => (
       </tbody>
     </table>
     {gameState === 'paused' && (
-      <div className='game-board-container__paused-overlay' />
+      <div className="game-board-container__paused-overlay" />
     )}
   </div>
 );

@@ -64,9 +64,9 @@ const Tetris = ({ gameState, ...actions }) => {
   });
 
   return (
-    <div className='main-container'>
-      <Header title='Tetris' canHome />
-      <main className='game-body'>
+    <div className="main-container">
+      <Header title="Tetris" canHome />
+      <main className="game-body">
         <GameInfo />
         <GameBoard />
         <GameStats />
