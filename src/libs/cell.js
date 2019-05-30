@@ -102,39 +102,6 @@ export const moveDown = (cell) => {
   );
 };
 
-// // get active cell from cell operation
-// export const getActive = (cell) => {
-//   checkCell(cell);
-//   return cons(
-//     getCoordinates(cell),
-//     'active',
-//     getColor(cell),
-//     getContent(cell),
-//   );
-// };
-
-// // get inactive cell from cell operation
-// export const getInactive = (cell) => {
-//   checkCell(cell);
-//   return cons(
-//     getCoordinates(cell),
-//     'inactive',
-//     getColor(cell),
-//     getContent(cell),
-//   );
-// };
-
-// // get indeterminate cell from cell operation
-// export const getIndeterminate = (cell) => {
-//   checkCell(cell);
-//   return cons(
-//     getCoordinates(cell),
-//     'indeterminate',
-//     getColor(cell),
-//     getContent(cell),
-//   );
-// };
-
 // get cell painted with color operation
 export const paint = (cell, color) => {
   checkCell(cell);
