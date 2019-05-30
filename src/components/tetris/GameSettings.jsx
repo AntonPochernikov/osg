@@ -1,5 +1,8 @@
 import React, { useCallback } from 'react';
+import { tetrisConfig } from 'constants/config.js';
 import './GameSettings.css';
+
+const { speed: { min, max } } = tetrisConfig;
 
 const GameSettings = ({
   speed,
@@ -10,18 +13,17 @@ const GameSettings = ({
 }) => {
   const handleDecSpeedBtn = useCallback(
     () => {
-      // e.target.blur();
       decSpeed();
     },
     [decSpeed],
   );
   const handleIncSpeedBtn = useCallback(
     () => {
-      // e.target.blur();
       incSpeed();
     },
     [incSpeed],
   );
+
   return (
     <div className="tetris-game-stats__settings">
       <div className="tetris-game-stats__speed">
@@ -29,12 +31,14 @@ const GameSettings = ({
           <button
             className="tetris-game-stats__speed-btn tetris-game-stats__speed-btn--dec"
             onClick={handleDecSpeedBtn}
+            disabled={speed === min}
           />)}
         <p className="tetris-game-stats__speed-value">Speed: {speed}</p>
         {canAdjustSpeed && (
           <button
             className="tetris-game-stats__speed-btn tetris-game-stats__speed-btn--inc"
             onClick={handleIncSpeedBtn}
+            disabled={speed === max}
           />)}
       </div>
       <div className="tetris-game-stats__score">
