@@ -8,11 +8,11 @@ const GameInfo = () => (
     <div className="tetris-game-info__paragraph">
       <span>Use</span>
       <div className="tetris-game-info__arrows" aria-label="keyboard arrows">
-        <div className="tetris-game-info__arrow tetris-game-info__arrow--top" />
+        <kbd className="tetris-game-info__arrow tetris-game-info__arrow--top" />
         <div className="tetris-game-info__arrows-bottom-layout">
-          <div className="tetris-game-info__arrow tetris-game-info__arrow--left" />
-          <div className="tetris-game-info__arrow tetris-game-info__arrow--down" />
-          <div className="tetris-game-info__arrow tetris-game-info__arrow--right" />
+          <kbd className="tetris-game-info__arrow tetris-game-info__arrow--left" />
+          <kbd className="tetris-game-info__arrow tetris-game-info__arrow--down" />
+          <kbd className="tetris-game-info__arrow tetris-game-info__arrow--right" />
         </div>
       </div>
       <span>to move figure</span>
@@ -20,13 +20,13 @@ const GameInfo = () => (
 
     <div className="tetris-game-info__paragraph">
       <span className="tetris-game-info__phrase">Press</span>
-      <div className="tetris-game-info__key">[Space]</div>
+      <kbd className="tetris-game-info__key">[Space]</kbd>
       <span className="tetris-game-info__phrase">to rotate figure</span>
     </div>
 
     <div className="tetris-game-info__paragraph">
       <span className="tetris-game-info__phrase">Press</span>
-      <div className="tetris-game-info__key tetris-game-info__key--pause">[Shift]</div>
+      <kbd className="tetris-game-info__key tetris-game-info__key--pause">[Shift]</kbd>
       <span className="tetris-game-info__phrase">to pause/unpause game</span>
     </div>
   </div>
