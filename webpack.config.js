@@ -2,6 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const WebpackBar = require('webpackbar');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const FlowWebpackPlugin = require('flow-webpack-plugin');
 
 const isDevMode = process.env.NODE_ENV !== 'production';
 
@@ -71,6 +72,7 @@ module.exports = {
       filename: '../index.html',
       template: path.resolve(__dirname, 'public/index.html'),
     }),
+    new FlowWebpackPlugin(),
   ],
   devtool: isDevMode ? 'source-map' : false,
   devServer: {

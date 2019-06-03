@@ -1,3 +1,4 @@
+// @flow
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Header from 'components/common/Header.jsx';
@@ -6,8 +7,22 @@ import GameStats from './GameStats.js';
 import GameInfo from './GameInfo.jsx';
 import './Tetris.css';
 
-const Tetris = ({ gameState, ...actions }) => {
-  const keydownListener = (e) => {
+type Props = {
+  gameState: 'initial' | 'started' | 'paused' | 'finished',
+  pauseGame: Function,
+  resumeGame: Function,
+  tryFigureLeft: Function,
+  tryFigureRight: Function,
+  tryFigureDown: Function,
+  tryRotateFigure: Function,
+};
+
+type Event = {
+  keyCode: number,
+};
+
+const Tetris = ({ gameState, ...actions }: Props) => {
+  const keydownListener = (e: Event) => {
     // check ingame state
     if (gameState !== 'started' && gameState !== 'paused') {
       return;
