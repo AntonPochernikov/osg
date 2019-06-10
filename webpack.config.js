@@ -18,17 +18,6 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.png$/,
-        loader: 'file?name=assets/icons/[name].[hash].[ext]'
-      },
-      // {
-      //   test: /\.html$/,
-      //   loader: 'html-loader',
-      //   query: {
-      //     interpolate: 'require'
-      //   }
-      // },
-      {
         test: /\.(js|jsx)$/,
         include: [
           path.resolve(__dirname, 'src'),
@@ -49,30 +38,6 @@ module.exports = {
           'postcss-loader',
         ],
       },
-      // {
-      //   test: /\.jpe?g$|\.ico$|\.gif$|\.png$|\.svg$|\.woff$|\.ttf$|\.wav$|\.mp3$/,
-      //   include: [
-      //     path.resolve(__dirname, 'public/static'),
-      //   ],
-      //   use: [
-      //     {
-      //       loader: 'file-loader',
-      //       options: {
-      //         name: '[name].[ext]',
-      //         outputPath: (url, resourcePath, context) => {
-      //           const relativePath = path.relative(context, resourcePath);
-      //           const { dir, base, root } = path.parse(relativePath);
-      //           const outputPath = path.format({
-      //             root,
-      //             dir: dir.split('\\').slice(1).join('\\'),
-      //             base,
-      //           });
-      //           return `../${outputPath}`;
-      //         },
-      //       },
-      //     },
-      //   ],
-      // },
     ],
   },
   plugins: [
