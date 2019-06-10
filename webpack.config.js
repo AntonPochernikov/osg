@@ -2,7 +2,6 @@ const path = require('path');
 const webpack = require('webpack');
 const WebpackBar = require('webpackbar');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const FlowWebpackPlugin = require('flow-webpack-plugin');
 
 const isDevMode = process.env.NODE_ENV !== 'production';
 
@@ -13,11 +12,22 @@ module.exports = {
   output: {
     filename: 'main.js',
     chunkFilename: '[chunkhash].[name].js',
-    path: path.resolve(__dirname, 'dist/js'),
-    publicPath: '/js/',
+    path: path.resolve(__dirname, 'dist/assets'),
+    publicPath: '/assets/',
   },
   module: {
     rules: [
+      {
+        test: /\.png$/,
+        loader: 'file?name=assets/icons/[name].[hash].[ext]'
+      },
+      // {
+      //   test: /\.html$/,
+      //   loader: 'html-loader',
+      //   query: {
+      //     interpolate: 'require'
+      //   }
+      // },
       {
         test: /\.(js|jsx)$/,
         include: [
@@ -39,40 +49,40 @@ module.exports = {
           'postcss-loader',
         ],
       },
-      {
-        test: /\.jpe?g$|\.ico$|\.gif$|\.png$|\.svg$|\.woff$|\.ttf$|\.wav$|\.mp3$/,
-        include: [
-          path.resolve(__dirname, 'public/static'),
-        ],
-        use: [
-          {
-            loader: 'file-loader',
-            options: {
-              name: '[name].[ext]',
-              outputPath: (url, resourcePath, context) => {
-                const relativePath = path.relative(context, resourcePath);
-                const { dir, base, root } = path.parse(relativePath);
-                const outputPath = path.format({
-                  root,
-                  dir: dir.split('\\').slice(1).join('\\'),
-                  base,
-                });
-                return `../${outputPath}`;
-              },
-            },
-          },
-        ],
-      },
+      // {
+      //   test: /\.jpe?g$|\.ico$|\.gif$|\.png$|\.svg$|\.woff$|\.ttf$|\.wav$|\.mp3$/,
+      //   include: [
+      //     path.resolve(__dirname, 'public/static'),
+      //   ],
+      //   use: [
+      //     {
+      //       loader: 'file-loader',
+      //       options: {
+      //         name: '[name].[ext]',
+      //         outputPath: (url, resourcePath, context) => {
+      //           const relativePath = path.relative(context, resourcePath);
+      //           const { dir, base, root } = path.parse(relativePath);
+      //           const outputPath = path.format({
+      //             root,
+      //             dir: dir.split('\\').slice(1).join('\\'),
+      //             base,
+      //           });
+      //           return `../${outputPath}`;
+      //         },
+      //       },
+      //     },
+      //   ],
+      // },
     ],
   },
   plugins: [
     new WebpackBar(),
     new webpack.HotModuleReplacementPlugin(),
     new HtmlWebpackPlugin({
+      favicon: 'public/static/icons/favicon.ico',
       filename: '../index.html',
       template: path.resolve(__dirname, 'public/index.html'),
     }),
-    new FlowWebpackPlugin(),
   ],
   devtool: isDevMode ? 'source-map' : false,
   devServer: {
