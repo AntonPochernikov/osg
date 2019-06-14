@@ -7,7 +7,6 @@
     "build": "webpack --config webpack.config.js --mode production",
     "dev": "webpack-dev-server --config webpack.config.js --mode development",
     "test": "jest --config jest.config.js",
-    "flow": "flow",
     "stats": "webpack --json --profile > stats.stats.json",
     "modules": "webpack  --display-modules > modules.stats.json"
   },
@@ -43,7 +42,6 @@
     "@babel/plugin-proposal-decorators": "^7.2.3",
     "@babel/plugin-syntax-dynamic-import": "^7.2.0",
     "@babel/preset-env": "^7.2.3",
-    "@babel/preset-flow": "^7.0.0",
     "@babel/preset-react": "^7.0.0",
     "autoprefixer": "^9.5.1",
     "babel-core": "^7.0.0-bridge.0",
