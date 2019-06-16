@@ -5,6 +5,7 @@
 
 # productions
 /dist
+/build
 
 # stats
 *.stats.json
