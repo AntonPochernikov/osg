@@ -44,6 +44,7 @@ module.exports = {
     new WebpackBar(),
     new webpack.HotModuleReplacementPlugin(),
     new HtmlWebpackPlugin({
+      minify: false,
       favicon: 'public/static/icons/favicon.ico',
       filename: '../index.html',
       template: path.resolve(__dirname, 'public/index.html'),
