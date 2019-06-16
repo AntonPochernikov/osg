@@ -22,7 +22,7 @@
   "bugs": {
     "url": "https://github.com/AntonPochernikov/old-school-games/issues"
   },
-  "homepage": "https://antonpochernikov.github.io/osg/",
+  "homepage": "https://antonpochernikov.github.io/osg",
   "dependencies": {
     "@babel/polyfill": "^7.2.5",
     "classnames": "^2.2.6",
