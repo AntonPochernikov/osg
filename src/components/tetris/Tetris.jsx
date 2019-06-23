@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import Header from 'components/common/Header.jsx';
 import GameBoard from './GameBoard.js';
@@ -7,47 +7,51 @@ import GameInfo from './GameInfo.jsx';
 import './Tetris.css';
 
 const Tetris = ({ gameState, ...actions }) => {
+  // use refed game state for listeners
+  const game = useRef(gameState);
+  game.current = gameState;
+
   const keydownListener = (e) => {
     // check ingame state
-    if (gameState !== 'started' && gameState !== 'paused') {
+    if (game.current !== 'started' && game.current !== 'paused') {
       return;
     }
     switch (e.keyCode) {
       // shift
       case 16: {
-        if (gameState === 'started') {
+        if (game.current === 'started') {
           actions.pauseGame();
           break;
         }
-        if (gameState === 'paused') {
+        if (game.current === 'paused') {
           actions.resumeGame();
         }
         break;
       }
       // arrow left
       case 37: {
-        if (gameState === 'started') {
+        if (game.current === 'started') {
           actions.tryFigureLeft();
         }
         break;
       }
       // arrow right
       case 39: {
-        if (gameState === 'started') {
+        if (game.current === 'started') {
           actions.tryFigureRight();
         }
         break;
       }
       // arrow down
       case 40: {
-        if (gameState === 'started') {
+        if (game.current === 'started') {
           actions.tryFigureDown();
         }
         break;
       }
       // space
       case 32: {
-        if (gameState === 'started') {
+        if (game.current === 'started') {
           actions.tryRotateFigure();
         }
         break;
@@ -59,12 +63,12 @@ const Tetris = ({ gameState, ...actions }) => {
   useEffect(() => {
     document.addEventListener('keydown', keydownListener);
     return () => {
-      document.removeEventListener('keydown', keydownListener);
-      if (gameState === 'started') {
+      if (game.current === 'started') {
         actions.pauseGame();
       }
+      document.removeEventListener('keydown', keydownListener);
     };
-  });
+  }, []);
 
   return (
     <div className="main-container">
