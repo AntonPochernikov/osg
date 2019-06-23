@@ -60,6 +60,9 @@ const Tetris = ({ gameState, ...actions }) => {
     document.addEventListener('keydown', keydownListener);
     return () => {
       document.removeEventListener('keydown', keydownListener);
+      if (gameState === 'started') {
+        actions.pauseGame();
+      }
     };
   });
 
