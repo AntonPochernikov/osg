@@ -13,7 +13,7 @@ module.exports = {
     filename: 'main.js',
     chunkFilename: '[chunkhash].[name].js',
     path: path.resolve(__dirname, 'build/assets'),
-    publicPath: '/assets/',
+    publicPath: isDevMode ? '/assets/' : '/osg/assets/',
   },
   module: {
     rules: [
@@ -44,11 +44,12 @@ module.exports = {
     new WebpackBar(),
     new webpack.HotModuleReplacementPlugin(),
     new HtmlWebpackPlugin({
+      inject: false,
       minify: false,
       favicon: 'public/static/icons/favicon.ico',
       filename: '../index.html',
       template: path.resolve(__dirname, 'public/index.html'),
-    }),
+    })
   ],
   devtool: isDevMode ? 'source-map' : false,
   devServer: {

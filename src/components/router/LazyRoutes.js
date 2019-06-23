@@ -1,7 +1,7 @@
 import React from 'react';
 import store from 'store/store.js';
 import delay from 'libs/delay.js';
-import isDev from 'constants/isDev.js';
+import { isDev } from 'constants/environment.js';
 
 export const Tetris = React.lazy(async () => {
   const [

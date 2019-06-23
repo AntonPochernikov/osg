@@ -12,7 +12,7 @@ const HomePage = () => (
           <Link className="main-navigation__link" to="/tetris">Tetris</Link>
         </li>
         <li className="main-navigation__item">
-          <Link className="main-navigation__link" to='/'>Some Game</Link>
+          <Link className="main-navigation__link" to="/">Some Game</Link>
         </li>
       </ul>
     </nav>

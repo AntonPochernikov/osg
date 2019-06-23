@@ -22,7 +22,7 @@ const mimeTypes = {
 
 const requestHandler = (req, res) => {
   console.log('request ', req.url);
-  const filePath = req.url === '/' ? './dist/index.html' : `./dist/${req.url}`;
+  const filePath = req.url === '/' ? './build/index.html' : `./build/${req.url}`;
   const extname = String(path.extname(filePath)).toLowerCase();
 
   const contentType = mimeTypes[extname] || 'application/octet-stream';
@@ -30,7 +30,7 @@ const requestHandler = (req, res) => {
   fs.readFile(filePath, (err, data) => {
     if (err) {
       res.writeHead(200, { 'Content-Type': 'text/html' });
-      fs.readFile('./dist/index.html', (e, index) => res.end(index));
+      fs.readFile('./build/index.html', (e, index) => res.end(index));
       return;
     }
     res.writeHead(200, { 'Content-Type': contentType });
