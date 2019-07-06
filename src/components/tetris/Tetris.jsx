@@ -76,6 +76,7 @@ const Tetris = ({
     };
   });
 
+  // unmount effect
   useEffect(() => () => {
     if (game.current === 'started') {
       pauseGame();
