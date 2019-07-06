@@ -17,8 +17,7 @@ export const getGameState = state => state.tetris.gameState;
 
 // add current figure on board
 export const getBoardCells = createSelector(
-  getBoard,
-  getCurrentFigure,
+  [getBoard, getCurrentFigure],
   (board, figure) => {
     if (figure) {
       const figureCells = figure.getCells();
@@ -84,8 +83,7 @@ export const canAdjustSpeed = createSelector(
 
 // figure collision predicate
 export const canFigureMoveDown = createSelector(
-  getBoard,
-  getCurrentFigure,
+  [getBoard, getCurrentFigure],
   (board, figure) => figure && figure
     .getCells()
     .every((cell) => {
@@ -95,8 +93,7 @@ export const canFigureMoveDown = createSelector(
 );
 
 export const canFigureMoveLeft = createSelector(
-  getBoard,
-  getCurrentFigure,
+  [getBoard, getCurrentFigure],
   (board, figure) => figure && figure
     .getCells()
     .every((cell) => {
@@ -106,8 +103,7 @@ export const canFigureMoveLeft = createSelector(
 );
 
 export const canFigureMoveRight = createSelector(
-  getBoard,
-  getCurrentFigure,
+  [getBoard, getCurrentFigure],
   (board, figure) => figure && figure
     .getCells()
     .every((cell) => {
@@ -117,8 +113,7 @@ export const canFigureMoveRight = createSelector(
 );
 
 export const canFigureRotate = createSelector(
-  getBoard,
-  getCurrentFigure,
+  [getBoard, getCurrentFigure],
   (board, figure) => figure && figure
     .rotate()
     .getCells()
