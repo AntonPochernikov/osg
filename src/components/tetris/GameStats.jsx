@@ -33,15 +33,13 @@ const GameStats = ({
 
   const getButtonTitle = () => buttonByState[gameState].title;
 
-  const getButtonHandler = () => buttonByState[gameState].action;
-
   const handleGameButton = useCallback(
     (e) => {
       // blur focus to use [space] in game
       e.target.blur();
-      getButtonHandler()();
+      buttonByState[gameState].action()
     },
-    [gameState],
+    [gameState, buttonByState],
   );
 
   return (

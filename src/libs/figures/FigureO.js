@@ -1,5 +1,4 @@
 import { cons as consCell, getCoordinates } from 'libs/cell.js';
-import readonly from 'libs/decorators.js';
 import Figure from './Figure.js';
 
 export default class FigureO extends Figure {
@@ -20,8 +19,7 @@ export default class FigureO extends Figure {
     },
   };
 
-  @readonly
-  type = 'O';
+  #type = 'O';
 
   getSize() {
     return FigureO.alignment[this.direction].getSize();
