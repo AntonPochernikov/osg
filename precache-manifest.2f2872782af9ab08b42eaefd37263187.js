@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "5a8109c06d8e733b88e1d52516a01c34",
+    "revision": "995008f5de89646f19a0bb4a159b5506",
     "url": "/osg/index.html"
   },
   {
@@ -12,7 +12,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/osg/static/css/main.9e12d2f0.chunk.css"
   },
   {
-    "revision": "c8f05e01dacc0044e9b8",
+    "revision": "b456d812f89725059321",
     "url": "/osg/static/css/tetris.da3effa2.chunk.css"
   },
   {
@@ -32,15 +32,15 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/osg/static/js/main.8ced75e7.chunk.js"
   },
   {
-    "revision": "67565e026cf716b7557d",
-    "url": "/osg/static/js/runtime~main.4550706d.js"
+    "revision": "5bd57e8101caa1045bdf",
+    "url": "/osg/static/js/runtime~main.b863d8a9.js"
   },
   {
     "revision": "318fc4928b6c6968b4f1",
     "url": "/osg/static/js/tetris-reducer.33bc2bd7.chunk.js"
   },
   {
-    "revision": "c8f05e01dacc0044e9b8",
-    "url": "/osg/static/js/tetris.6636f544.chunk.js"
+    "revision": "b456d812f89725059321",
+    "url": "/osg/static/js/tetris.c1372697.chunk.js"
   }
 ]);
