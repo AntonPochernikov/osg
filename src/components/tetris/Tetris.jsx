@@ -6,12 +6,22 @@ import GameStats from './GameStats.js';
 import GameInfo from './GameInfo.jsx';
 import './Tetris.css';
 
-const Tetris = ({ gameState, ...actions }) => {
+const Tetris = ({
+  gameState,
+  pauseGame,
+  resumeGame,
+  tryFigureLeft,
+  tryFigureRight,
+  tryFigureDown,
+  tryRotateFigure,
+}) => {
+
+
   // use "refed" game state for key listener
   const game = useRef(gameState);
+  game.current = gameState;
 
   useEffect(() => {
-    game.current = gameState;
     const keydownListener = (e) => {
       if (game.current !== 'started' && game.current !== 'paused') {
         return;
@@ -21,39 +31,39 @@ const Tetris = ({ gameState, ...actions }) => {
         // shift
         case 16: {
           if (game.current === 'started') {
-            actions.pauseGame();
+            pauseGame();
             break;
           }
           if (game.current === 'paused') {
-            actions.resumeGame();
+            resumeGame();
           }
           break;
         }
         // arrow left
         case 37: {
           if (game.current === 'started') {
-            actions.tryFigureLeft();
+            tryFigureLeft();
           }
           break;
         }
         // arrow right
         case 39: {
           if (game.current === 'started') {
-            actions.tryFigureRight();
+            tryFigureRight();
           }
           break;
         }
         // arrow down
         case 40: {
           if (game.current === 'started') {
-            actions.tryFigureDown();
+            tryFigureDown();
           }
           break;
         }
         // space
         case 32: {
           if (game.current === 'started') {
-            actions.tryRotateFigure();
+            tryRotateFigure();
           }
           break;
         }
@@ -62,12 +72,15 @@ const Tetris = ({ gameState, ...actions }) => {
     };
     document.addEventListener('keydown', keydownListener);
     return () => {
-      if (game.current === 'started') {
-        actions.pauseGame();
-      }
       document.removeEventListener('keydown', keydownListener);
     };
-  }, [actions, gameState]);
+  });
+
+  useEffect(() => () => {
+    if (game.current === 'started') {
+      pauseGame();
+    }
+  }, [pauseGame]);
 
   return (
     <div className="main-container">
