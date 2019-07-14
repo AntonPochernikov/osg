@@ -54,15 +54,27 @@ export const getContent = (cell) => {
 };
 
 // construct cell
-export const cons = ([col, row], state = 'empty', color = 'black', content = null) => {
-  const cell = {
+export const cons = (coordinates, state = 'empty', color = 'black', content = null) => {
+  if (!Array.isArray(coordinates)) {
+    const value = typeof coordinates === 'object'
+      ? JSON.stringify(coordinates, null, 2)
+      : String(coordinates);
+
+    throw new Error(`First argument must be an array of coordinates but it was ${value}`);
+  }
+
+  const [col, row] = coordinates;
+  if (!Number.isInteger(col) || !Number.isInteger(row)) {
+    throw new Error(`Coordinates must be array of integers, but it was [${col} : ${typeof col}, ${row} : ${typeof row}]`);
+  }
+
+  return {
     coordinates: [col, row],
     state,
     color,
     content,
     isCell: true,
   };
-  return cell;
 };
 
 // =====================

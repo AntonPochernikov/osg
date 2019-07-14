@@ -28,6 +28,9 @@ describe('cell abstraction', () => {
       content: null,
       isCell: true,
     });
+
+    expect(() => cons(['1', 3], 'empty')).toThrow();
+    expect(() => cons('string', 'empty')).toThrow();
   });
 
   test('isCell', () => {
