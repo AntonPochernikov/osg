@@ -5,7 +5,7 @@ const double = n => n * 2;
 const sumOfSymbs = (str) => {
   const sum = str.split('').reduce((acc, s) => acc + Number(s), 0);
   return String(sum);
-}
+};
 
 test('times', () => {
   const doubleInc = times(inc, 2);
