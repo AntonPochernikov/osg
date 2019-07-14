@@ -8,8 +8,8 @@ const sumOfSymbs = (str) => {
 };
 
 test('times', () => {
-  const doubleInc = times(inc, 2);
-  expect(doubleInc(0)).toBe(2);
+  const inc2 = times(inc, 2);
+  expect(inc2(0)).toBe(2);
 
   const double2 = times(double, 2);
   expect(double2(1)).toBe(4);
