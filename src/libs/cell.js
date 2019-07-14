@@ -3,7 +3,7 @@
 // =============================
 
 // is cell predicate
-export const isCell = cell => (typeof cell === 'object' && cell.isCell);
+export const isCell = cell => (typeof cell === 'object' && cell !== null && cell.isCell);
 
 // check cell for selectors and operations
 const checkCell = (cell) => {
@@ -83,12 +83,8 @@ export const haveSameCoordinates = (c1, c2) => {
 // convert cell to string operation
 export const toString = (cell) => {
   checkCell(cell);
-  return `
-    coorinates: [${getCol(cell)}, ${getRow(cell)}],
-    state: ${getState(cell)},
-    color: ${getColor(cell)},
-    content: ${getContent(cell)}
-  `;
+  return `coorinates: [${getCol(cell)}, ${getRow(cell)}], ` +
+    `state: ${getState(cell)}, color: ${getColor(cell)}, content: ${getContent(cell)}`;
 };
 
 // get cell moved down operation
