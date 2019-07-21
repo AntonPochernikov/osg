@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import * as actionCreators from 'actions';
 import * as select from 'selectors';
-import GameStats from './GameStats.jsx';
+import GameStats from './Stats.jsx';
 
 const mapStateToProps = state => ({
   gameState: select.tetris.getGameState(state),

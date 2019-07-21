@@ -1,10 +1,10 @@
 import React, { useCallback } from 'react';
 import { tetrisConfig } from 'constants/config.js';
-import './GameSettings.css';
+import './Settings.css';
 
 const { speed: { min, max } } = tetrisConfig;
 
-export default function GameSettings ({
+export default function Settings({
   speed,
   score,
   canAdjustSpeed,

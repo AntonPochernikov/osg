@@ -1,10 +1,10 @@
 import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
 import NextFigurePreview from './NextFigurePreview.jsx';
-import GameSettings from './GameSettings.jsx';
-import './GameStats.css';
+import Settings from './Settings.jsx';
+import './Stats.css';
 
-export default function GameStats({
+export default function Stats({
   score,
   speed,
   gameState,
@@ -45,9 +45,9 @@ export default function GameStats({
   return (
     <div className="tetris-game-stats">
       <h2 className="tetris-game-stats__title">Game Stats</h2>
-      <NextFigurePreview board={nextFigurePreview} />
+      <NextFigurePreview grid={nextFigurePreview} />
 
-      <GameSettings
+      <Settings
         speed={speed}
         score={score}
         incSpeed={actions.increaseGameSpeed}
@@ -62,7 +62,7 @@ export default function GameStats({
   );
 };
 
-GameStats.propTypes = {
+Stats.propTypes = {
   gameState: PropTypes.oneOf(['initial', 'started', 'paused', 'finished']).isRequired,
   speed: PropTypes.number.isRequired,
   score: PropTypes.number.isRequired,
@@ -70,7 +70,7 @@ GameStats.propTypes = {
   canAdjustSpeed: PropTypes.bool.isRequired,
 };
 
-GameStats.defaultProps = {
+Stats.defaultProps = {
   gameState: 'initial',
   speed: 1,
   score: 0,

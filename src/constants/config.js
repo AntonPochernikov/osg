@@ -10,7 +10,7 @@ export const tetrisConfig = {
     collision: 1,
     completedRow: 5,
   },
-  board: {
+  grid: {
     cols: 10,
     rows: 20,
   },

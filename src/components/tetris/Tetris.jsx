@@ -1,9 +1,9 @@
 import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import Header from 'components/common/Header.jsx';
-import GameBoard from './GameBoard.js';
-import GameStats from './GameStats.js';
-import GameInfo from './GameInfo.jsx';
+import Grid from './Grid.js';
+import Stats from './Stats.js';
+import Info from './Info.jsx';
 import './Tetris.css';
 
 export default function Tetris({
@@ -85,9 +85,9 @@ export default function Tetris({
     <div className="main-container">
       <Header title="Tetris" canHome />
       <main className="game-body">
-        <GameInfo />
-        <GameBoard />
-        <GameStats />
+        <Info />
+        <Grid />
+        <Stats />
       </main>
     </div>
   );

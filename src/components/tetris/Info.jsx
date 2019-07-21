@@ -1,7 +1,7 @@
 import React from 'react';
-import './GameInfo.css';
+import './Info.css';
 
-const GameInfo = () => (
+const Info = () => (
   <div className="tetris-game-info">
     <h2 className="tetris-game-info__title">Game info</h2>
 
@@ -32,4 +32,4 @@ const GameInfo = () => (
   </div>
 );
 
-export default GameInfo;
+export default Info;

@@ -1,12 +1,12 @@
 /*=================================
 	next figure preview
 =================================*/
-.next-figure-board {
+.next-figure-grid {
 	border: none;
 	border-radius: 2px;
 }
 
-.next-figure-board__cell {
+.next-figure-grid__cell {
 	position: relative;
 	width: 18px;
 	height: 18px;
@@ -16,11 +16,11 @@
 	border-radius: 2px;
 }
 
-.next-figure-board__cell--filled {
+.next-figure-grid__cell--filled {
 	border: 2px solid var(--color-neutral--dark);
 }
 
-.next-figure-board__cell--filled::before {
+.next-figure-grid__cell--filled::before {
 	content: "";
 	position: absolute;
 	top: 3px;

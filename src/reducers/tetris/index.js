@@ -2,7 +2,7 @@ import { combineReducers } from 'redux';
 import { handleActions } from 'redux-actions';
 import * as action from 'actions';
 import { tetrisConfig } from 'constants/config.js';
-import board from './board.js';
+import grid from './grid.js';
 import figure from './figure.js';
 
 const { speed: { min, max, init }, score: { collision, completedRow } } = tetrisConfig;
@@ -30,7 +30,7 @@ const score = handleActions({
 
 export default combineReducers({
   gameState,
-  board,
+  grid,
   figure,
   speed,
   score,

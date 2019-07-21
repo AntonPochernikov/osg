@@ -4,7 +4,7 @@ import { createField, createClearRow, createIndeterminateRow } from 'libs/create
 import { haveSameCoordinates, moveDown as moveCelldown } from 'libs/cell.js';
 import { tetrisConfig } from 'constants/config.js';
 
-const { board: { cols, rows } } = tetrisConfig;
+const { grid: { cols, rows } } = tetrisConfig;
 
 export default handleActions({
   [action.tetris.stopGame]: () => createField(cols, rows),

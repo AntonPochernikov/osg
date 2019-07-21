@@ -1,11 +1,11 @@
 /*=================================
-	game board
+	game grid
 =================================*/
-.game-board-container {
+.game-grid-container {
 	position: relative;
 }
 
-.game-board-container__paused-overlay {
+.game-grid-container__paused-overlay {
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -19,12 +19,12 @@
 	animation: fade-in 0.2s ease;
 }
 
-.game-board {
+.game-grid {
 	border: none;
 	border-radius: 2px;
 }
 
-.game-board__cell {
+.game-grid__cell {
 	position: relative;
 	width: 22px;
 	height: 22px;
@@ -34,11 +34,11 @@
 	border-radius: 2px;
 }
 
-.game-board__cell--filled {
+.game-grid__cell--filled {
 	border: 2px solid var(--color-neutral--dark);
 }
 
-.game-board__cell--filled::before {
+.game-grid__cell--filled::before {
 	content: "";
 	position: absolute;
 	top: 4px;
@@ -53,11 +53,11 @@
 	border-radius: 2px;
 }
 
-.game-board__cell--indeterminate {
+.game-grid__cell--indeterminate {
 	border: 2px solid var(--color-inactive);
 }
 
-.game-board__cell--indeterminate::before {
+.game-grid__cell--indeterminate::before {
 	content: "";
 	position: absolute;
 	top: 4px;

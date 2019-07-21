@@ -10,7 +10,7 @@ export const finishGame = createAction('TETRIS/GAME/FINISH');
 export const increaseGameSpeed = createAction('TETRIS/GAME/SPEED/INCREASE');
 export const decreaseGameSpeed = createAction('TETRIS/GAME/SPEED/DECREASE');
 
-// BOARD
+// GRID
 export const selectCompletedRow = createAction('TETRIS/ROW/COMPLETED/SELECT');
 export const removeCompletedRow = createAction('TETRIS/ROW/COMPLETED/REMOVE');
 
