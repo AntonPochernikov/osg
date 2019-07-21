@@ -4,15 +4,15 @@ import cn from 'classnames';
 import './Grid.css';
 
 const Grid = ({ grid, gameState }) => (
-  <div className="game-grid-container">
-    <table className="game-grid">
-      <tbody className="game-grid__body">
+  <div className="tetris-grid-container">
+    <table className="tetris-grid">
+      <tbody className="tetris-grid__body">
         {grid.map((tr, i) => (
-          <tr className="game-grid__row" key={i}>
+          <tr className="tetris-grid__row" key={i}>
             {tr.map((cellState, y) => {
               const cellClass = cn(
-                'game-grid__cell',
-                `game-grid__cell--${cellState}`,
+                'tetris-grid__cell',
+                `tetris-grid__cell--${cellState}`,
               );
               return <td className={cellClass} key={y} />;
             })}
@@ -21,7 +21,7 @@ const Grid = ({ grid, gameState }) => (
       </tbody>
     </table>
     {gameState === 'paused' && (
-      <div className="game-grid-container__paused-overlay" />
+      <div className="tetris-grid-container__paused-overlay" />
     )}
   </div>
 );

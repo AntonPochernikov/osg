@@ -84,7 +84,7 @@ export default function Tetris({
   return (
     <div className="main-container">
       <Header title="Tetris" canHome />
-      <main className="game-body">
+      <main className="tetris-body">
         <Info />
         <Grid />
         <Stats />

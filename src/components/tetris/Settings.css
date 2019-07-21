@@ -1,12 +1,12 @@
 /*=================================
 	tetris game settings
 =================================*/
-.tetris-game-stats__settings {
+.tetris-stats__settings {
 	margin-bottom: 40px;
 }
 
-.tetris-game-stats__speed,
-.tetris-game-stats__score {
+.tetris-stats__speed,
+.tetris-stats__score {
 	display: flex;
 	align-items: center;
 	justify-content: space-around;
@@ -14,8 +14,8 @@
 	margin-bottom: 20px;
 }
 
-.tetris-game-stats__speed-value,
-.tetris-game-stats__score-value {
+.tetris-stats__speed-value,
+.tetris-stats__score-value {
 	padding: 0;
 	margin: 0;
 
@@ -24,7 +24,7 @@
 	text-align: center;
 }
 
-.tetris-game-stats__speed-btn {
+.tetris-stats__speed-btn {
 	position: relative;
 	display: block;
 	width: 26px;
@@ -36,24 +36,24 @@
 	border: none;
 	border: 2px solid var(--color-neutral--lighten);
 	border-radius: 50%;
-	
+
 	cursor: pointer;
 }
 
-.tetris-game-stats__speed-btn:hover {
+.tetris-stats__speed-btn:hover {
 	background-color: var(--color-neutral--dark);
 }
-.tetris-game-stats__speed-btn:focus {
+.tetris-stats__speed-btn:focus {
 	outline: none;
 	border: 2px solid var(--color-orange);
 	box-shadow: 0 0 5px -1px var(--color-neutral--darkest);
 }
-.tetris-game-stats__speed-btn:active {
+.tetris-stats__speed-btn:active {
 	border-color: var(--color-neutral);
 	background-color: var(--color-neutral--dark);
 }
 
-.tetris-game-stats__speed-btn--inc::before {
+.tetris-stats__speed-btn--inc::before {
 	content: "";
 	position: absolute;
 	top: 6px;
@@ -66,7 +66,7 @@
 	background-color: var(--color-orange--lighten);
 }
 
-.tetris-game-stats__speed-btn--inc::after {
+.tetris-stats__speed-btn--inc::after {
 	content: "";
 	position: absolute;
 	top: 10px;
@@ -79,7 +79,7 @@
 	background-color: var(--color-orange--light);
 }
 
-.tetris-game-stats__speed-btn--dec::after {
+.tetris-stats__speed-btn--dec::after {
 	content: "";
 	position: absolute;
 	top: 10px;
@@ -92,10 +92,10 @@
 	background-color: var(--color-orange--light);
 }
 
-.tetris-game-stats__speed-btn[disabled] {
+.tetris-stats__speed-btn[disabled] {
 	opacity: 0.6;
 	cursor: default;
 }
-.tetris-game-stats__speed-btn[disabled]:hover {
+.tetris-stats__speed-btn[disabled]:hover {
 	background-color: var(--color-neutral);
 }

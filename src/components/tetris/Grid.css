@@ -1,11 +1,11 @@
 /*=================================
-	game grid
+	tetris game grid
 =================================*/
-.game-grid-container {
+.tetris-grid-container {
 	position: relative;
 }
 
-.game-grid-container__paused-overlay {
+.tetris-grid-container__paused-overlay {
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -19,12 +19,12 @@
 	animation: fade-in 0.2s ease;
 }
 
-.game-grid {
+.tetris-grid {
 	border: none;
 	border-radius: 2px;
 }
 
-.game-grid__cell {
+.tetris-grid__cell {
 	position: relative;
 	width: 22px;
 	height: 22px;
@@ -34,11 +34,11 @@
 	border-radius: 2px;
 }
 
-.game-grid__cell--filled {
+.tetris-grid__cell--filled {
 	border: 2px solid var(--color-neutral--dark);
 }
 
-.game-grid__cell--filled::before {
+.tetris-grid__cell--filled::before {
 	content: "";
 	position: absolute;
 	top: 4px;
@@ -53,11 +53,11 @@
 	border-radius: 2px;
 }
 
-.game-grid__cell--indeterminate {
+.tetris-grid__cell--indeterminate {
 	border: 2px solid var(--color-inactive);
 }
 
-.game-grid__cell--indeterminate::before {
+.tetris-grid__cell--indeterminate::before {
 	content: "";
 	position: absolute;
 	top: 4px;

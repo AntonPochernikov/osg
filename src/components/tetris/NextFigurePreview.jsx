@@ -3,7 +3,7 @@ import cn from 'classnames';
 import './NextFigurePreview.css';
 
 const NextFigurePreview = ({ grid }) => (
-  <div className="tetris-game-stats__next-figure">
+  <div className="tetris-stats__next-figure">
     <table className="next-figure-grid">
       {grid.length > 0 && <caption className="next-figure-grid__caption">Next Figure</caption>}
       <tbody className="next-figure-grid__body">

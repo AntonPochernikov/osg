@@ -1,7 +1,7 @@
 /*=================================
 	tetris game stats
 =================================*/
-.tetris-game-stats {
+.tetris-stats {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -9,7 +9,7 @@
 	width: 200px;
 }
 
-.tetris-game-stats__title {
+.tetris-stats__title {
 	padding: 0;
 	margin: 0;
 	margin-bottom: 40px;
@@ -18,13 +18,13 @@
 }
 
 /*  next figure  */
-.tetris-game-stats__next-figure {
+.tetris-stats__next-figure {
 	height: 160px;
 	margin-bottom: 40px;
 }
 
 /*  start/stop game button  */
-.tetris-game-stats__game-button {
+.tetris-stats__game-button {
 	flex-shrink: 0;
 
 	margin-bottom: 40px;
@@ -44,20 +44,20 @@
 	transition: color 0.1s ease, background-color 0.1s ease;
 }
 
-.tetris-game-stats__game-button:hover {
+.tetris-stats__game-button:hover {
 	color: var(--color-success);
 	background-color: var(--color-neutral--dark);
 }
-.tetris-game-stats__game-button:active {
+.tetris-stats__game-button:active {
 	color: var(--color-success--darken);
 	background-color: var(--color-main--darkest);
 }
-.tetris-game-stats__game-button:focus {
+.tetris-stats__game-button:focus {
 	outline: none;
 	text-decoration: underline;
 }
 
-.tetris-game-stats__paused-sign {
+.tetris-stats__paused-sign {
 	flex-shrink: 0;
 	position: relative;
 
@@ -72,8 +72,8 @@
 	border-radius: 50%;
 }
 
-.tetris-game-stats__paused-sign::before,
-.tetris-game-stats__paused-sign::after {
+.tetris-stats__paused-sign::before,
+.tetris-stats__paused-sign::after {
 	content: "";
 	position: absolute;
 	top: 20%;
@@ -86,6 +86,6 @@
 	background-color: var(--color-neutral--light);
 }
 
-.tetris-game-stats__paused-sign::after {
+.tetris-stats__paused-sign::after {
 	left: 60%;
 }

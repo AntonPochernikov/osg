@@ -43,8 +43,8 @@ export default function Stats({
   );
 
   return (
-    <div className="tetris-game-stats">
-      <h2 className="tetris-game-stats__title">Game Stats</h2>
+    <div className="tetris-stats">
+      <h2 className="tetris-stats__title">Game Stats</h2>
       <NextFigurePreview grid={nextFigurePreview} />
 
       <Settings
@@ -55,7 +55,7 @@ export default function Stats({
         canAdjustSpeed={canAdjustSpeed}
       />
 
-      <button className="tetris-game-stats__game-button" onClick={handleGameButton}>
+      <button className="tetris-stats__game-button" onClick={handleGameButton}>
         {getButtonTitle()}
       </button>
     </div>
