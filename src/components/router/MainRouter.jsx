@@ -21,7 +21,7 @@ const MainRouter = () => (
       <Switch>
         <Route path="/home" render={renderHome} />
         <Route path="/tetris" render={renderTetris} />
-        <Router path="/snake" render={renderSnake} />
+        <Route path="/snake" render={renderSnake} />
         <Route render={renderRoot} />
       </Switch>
     </React.Suspense>

@@ -3,6 +3,7 @@
 =================================*/
 .header {
 	background-color: var(--color-neutral--darken);
+	min-height: 56px;
 }
 
 .header-content {
