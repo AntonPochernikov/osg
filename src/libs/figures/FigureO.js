@@ -3,8 +3,8 @@ import Figure from './Figure.js';
 
 export default class FigureO extends Figure {
   static alignment = {
-    normal: {
-      direction: 'normal',
+    down: {
+      direction: 'down',
       startHead: consCell([5, 0], 'filled'),
       getCells: (head) => {
         const result = [];
