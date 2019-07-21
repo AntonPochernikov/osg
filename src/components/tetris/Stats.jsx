@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
-import NextFigurePreview from './NextFigurePreview.jsx';
+import NextFigureGrid from './NextFigureGrid.jsx';
 import Settings from './Settings.jsx';
 import './Stats.css';
 
@@ -9,7 +9,7 @@ export default function Stats({
   speed,
   gameState,
   canAdjustSpeed,
-  nextFigurePreview,
+  nextFigureGrid,
   ...actions
 }) {
   const buttonByState = {
@@ -45,7 +45,7 @@ export default function Stats({
   return (
     <div className="tetris-stats">
       <h2 className="tetris-stats__title">Game Stats</h2>
-      <NextFigurePreview grid={nextFigurePreview} />
+      <NextFigureGrid grid={nextFigureGrid} />
 
       <Settings
         speed={speed}

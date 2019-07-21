@@ -34,7 +34,7 @@ export const getGridCells = createSelector(
   },
 );
 
-export const getNextFigurePreview = createSelector(
+export const nextFigureGrid = createSelector(
   getNextFigure,
   (figure) => {
     if (!figure) {

@@ -1,8 +1,8 @@
 import React from 'react';
 import cn from 'classnames';
-import './NextFigurePreview.css';
+import './NextFigureGrid.css';
 
-const NextFigurePreview = ({ grid }) => (
+const NextFigureGrid = ({ grid }) => (
   <div className="tetris-stats__next-figure">
     <table className="next-figure-grid">
       {grid.length > 0 && <caption className="next-figure-grid__caption">Next Figure</caption>}
@@ -23,4 +23,4 @@ const NextFigurePreview = ({ grid }) => (
   </div>
 );
 
-export default NextFigurePreview;
+export default NextFigureGrid;
