@@ -4,6 +4,7 @@ import './index.css';
 import App from './App.jsx';
 import * as serviceWorker from './serviceWorker.js';
 
+// had to use common css for better performance
 ReactDOM.render(<App />, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
