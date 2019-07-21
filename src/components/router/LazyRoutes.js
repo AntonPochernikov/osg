@@ -3,6 +3,14 @@ import store from 'store/store.js';
 import delay from 'libs/delay.js';
 import { isDev } from 'constants/environment.js';
 
+export const HomePage = React.lazy(async () => {
+  const [home] = await Promise.all([
+    import(/* webpackChunkName: "home" */ 'components/home/HomePage.jsx'),
+    delay(isDev ? 0 : 1000),
+  ]);
+  return home;
+});
+
 export const Tetris = React.lazy(async () => {
   const [
     { default: tetrisReducer },
@@ -16,10 +24,15 @@ export const Tetris = React.lazy(async () => {
   return tetris;
 });
 
-export const HomePage = React.lazy(async () => {
-  const [home] = await Promise.all([
-    import(/* webpackChunkName: "home" */ 'components/home/HomePage.jsx'),
+export const Snake = React.lazy(async () => {
+  const [
+    { default: snakeReducer },
+    snake,
+  ] = await Promise.all([
+    import(/* webpackChunkName: "snake-reducer" */ 'reducers/snake'),
+    import(/* webpackChunkName: "snake" */ 'components/snake/Snake.jsx'),
     delay(isDev ? 0 : 1000),
   ]);
-  return home;
+  store.inject('snake', snakeReducer);
+  return snake;
 });
