@@ -13,6 +13,7 @@ export const getBoard = state => state.tetris.board;
 export const getCurrentFigure = state => state.tetris.figure.current;
 export const getNextFigure = state => state.tetris.figure.next;
 export const getSpeed = state => state.tetris.speed;
+export const getScore = state => state.tetris.score;
 export const getGameState = state => state.tetris.gameState;
 
 // add current figure on board

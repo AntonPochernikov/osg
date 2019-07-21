@@ -4,9 +4,9 @@ import * as select from 'selectors';
 import GameStats from './GameStats.jsx';
 
 const mapStateToProps = state => ({
-  gameState: state.tetris.gameState,
-  speed: state.tetris.speed,
-  score: state.tetris.score,
+  gameState: select.tetris.getGameState(state),
+  speed: select.tetris.getSpeed(state),
+  score: select.tetris.getScore(state),
   nextFigurePreview: select.tetris.getNextFigurePreview(state),
   canAdjustSpeed: select.tetris.canAdjustSpeed(state),
 });
