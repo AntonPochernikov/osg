@@ -4,14 +4,14 @@ import NextFigurePreview from './NextFigurePreview.jsx';
 import GameSettings from './GameSettings.jsx';
 import './GameStats.css';
 
-const GameStats = ({
+export default function GameStats({
   score,
   speed,
   gameState,
   canAdjustSpeed,
   nextFigurePreview,
   ...actions
-}) => {
+}) {
   const buttonByState = {
     initial: {
       title: 'Start New Game',
@@ -77,5 +77,3 @@ GameStats.defaultProps = {
   nextFigurePreview: [],
   canAdjustSpeed: true,
 };
-
-export default GameStats;

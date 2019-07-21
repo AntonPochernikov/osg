@@ -6,7 +6,7 @@ import GameStats from './GameStats.js';
 import GameInfo from './GameInfo.jsx';
 import './Tetris.css';
 
-const Tetris = ({
+export default function Tetris({
   gameState,
   pauseGame,
   resumeGame,
@@ -14,9 +14,7 @@ const Tetris = ({
   tryFigureRight,
   tryFigureDown,
   tryRotateFigure,
-}) => {
-
-
+}) {
   // use "refed" game state for key listener
   const game = useRef(gameState);
   game.current = gameState;
@@ -102,5 +100,3 @@ Tetris.propTypes = {
 Tetris.defaultProps = {
   gamesState: 'initial',
 };
-
-export default Tetris;

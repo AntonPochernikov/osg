@@ -4,13 +4,13 @@ import './GameSettings.css';
 
 const { speed: { min, max } } = tetrisConfig;
 
-const GameSettings = ({
+export default function GameSettings ({
   speed,
   score,
   canAdjustSpeed,
   incSpeed,
   decSpeed,
-}) => {
+}) {
   const handleDecSpeedBtn = useCallback(
     () => {
       decSpeed();
@@ -47,5 +47,3 @@ const GameSettings = ({
     </div>
   );
 };
-
-export default GameSettings;
