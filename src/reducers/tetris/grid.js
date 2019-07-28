@@ -2,9 +2,9 @@ import { handleActions } from 'redux-actions';
 import * as action from 'actions';
 import { createField, createClearRow, createIndeterminateRow } from 'libs/createField.js';
 import { haveSameCoordinates, moveDown as moveCelldown } from 'libs/cell.js';
-import { tetrisConfig } from 'constants/config.js';
+import { tetrisConfig as config } from 'constants/config.js';
 
-const { grid: { cols, rows } } = tetrisConfig;
+const { grid: { cols, rows } } = config;
 
 export default handleActions({
   [action.tetris.stopGame]: () => createField(cols, rows),

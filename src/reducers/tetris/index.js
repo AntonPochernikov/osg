@@ -1,11 +1,11 @@
 import { combineReducers } from 'redux';
 import { handleActions } from 'redux-actions';
 import * as action from 'actions';
-import { tetrisConfig } from 'constants/config.js';
+import { tetrisConfig as config } from 'constants/config.js';
 import grid from './grid.js';
 import figure from './figure.js';
 
-const { speed: { min, max, init }, score: { collision, completedRow } } = tetrisConfig;
+const { speed: { min, max, init }, score: { collision, completedRow } } = config;
 
 const gameState = handleActions({
   [action.tetris.startGame]: () => 'started',
