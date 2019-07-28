@@ -1,11 +1,12 @@
 import { createSelector } from 'reselect';
 import {
-  getCoordinates,
+  // getCoordinates,
   haveSameCoordinates,
   getState,
-  isFilled,
+  // isFilled,
 } from 'libs/cell.js';
-import times from 'libs/times.js';
+// import times from 'libs/times.js';
+import { createGrid } from 'libs/createGrid';
 import { snakeConfig as config } from 'constants/config.js';
 
 const { grid: { rows, cols } } = config;
@@ -16,14 +17,19 @@ export const getSpeed = state => state.snake.speed;
 export const getSnake = state => state.snake.snake;
 
 export const getGridCells = createSelector(
-  getApple,
-  (grid, figure) => {
-    if (figure) {
-      const figureCells = figure.getCells();
+  [getApple, getSnake],
+  (apple, snake) => {
+    const grid = createGrid(cols, rows);
+    if (snake && apple) {
+      const snakeCells = snake.getCells();
       return grid.map(tr => tr.map((cell) => {
-        const commonCell = figureCells.find(c => haveSameCoordinates(c, cell));
+        const commonCell = snakeCells.find(c => haveSameCoordinates(c, cell));
+        const appleCell = haveSameCoordinates(cell, apple);
         if (commonCell) {
           return getState(commonCell);
+        }
+        if (appleCell) {
+          return getState(apple);
         }
         return getState(cell);
       }));
