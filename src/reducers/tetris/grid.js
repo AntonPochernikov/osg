@@ -1,14 +1,14 @@
 import { handleActions } from 'redux-actions';
 import * as action from 'actions';
-import { createField, createClearRow, createIndeterminateRow } from 'libs/createField.js';
+import { createGrid, createClearRow, createIndeterminateRow } from 'libs/createGrid.js';
 import { haveSameCoordinates, moveDown as moveCelldown } from 'libs/cell.js';
 import { tetrisConfig as config } from 'constants/config.js';
 
 const { grid: { cols, rows } } = config;
 
 export default handleActions({
-  [action.tetris.stopGame]: () => createField(cols, rows),
-  [action.tetris.startGame]: () => createField(cols, rows),
+  [action.tetris.stopGame]: () => createGrid(cols, rows),
+  [action.tetris.startGame]: () => createGrid(cols, rows),
   [action.tetris.collideFigure]: (state, { payload: { currentFigure } }) => {
     const figureCells = currentFigure.getCells();
     return state.map(tr => tr.map((cell) => {
@@ -28,4 +28,4 @@ export default handleActions({
     const rest = state.slice(rowIndex + 1);
     return [createClearRow(cols, 0), ...first, ...rest];
   },
-}, createField(cols, rows));
+}, createGrid(cols, rows));

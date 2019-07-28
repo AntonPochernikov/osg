@@ -1,5 +1,5 @@
 import { createSelector } from 'reselect';
-import { createField } from 'libs/createField.js';
+import { createGrid } from 'libs/createGrid.js';
 import {
   getCoordinates,
   haveSameCoordinates,
@@ -43,7 +43,7 @@ export const nextFigureGrid = createSelector(
     const { height, width } = figure.getSize();
     const gridW = width + 2;
     const gridH = height + 2;
-    const grid = createField(gridW, gridH);
+    const grid = createGrid(gridW, gridH);
     const figureCells = figure.setPosition(Math.floor(gridW / 2), 1).getCells();
     return grid.map(tr => tr.map((cell) => {
       const commonCell = figureCells.find(c => haveSameCoordinates(c, cell));
