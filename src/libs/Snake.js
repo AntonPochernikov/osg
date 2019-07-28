@@ -1,94 +1,37 @@
-import { cons, getCoordinates } from 'libs/cell';
-import { capitalize, initial } from 'lodash';
+import {
+  initial,
+  head,
+  tail,
+} from 'lodash';
+import { haveSameCoordinates } from 'libs/cell';
 
 export default class Snake {
-  constructor(cells, direction = 'up') {
+  constructor(cells) {
     this.cells = cells;
-    this.direction = direction;
   }
-
-  static directions = {
-    up: {
-      left: true,
-      right: true,
-      up: true,
-    },
-    right: {
-      up: true,
-      down: true,
-      right: true,
-    },
-    down: {
-      left: true,
-      right: true,
-      down: true,
-    },
-    left: {
-      up: true,
-      down: true,
-      left: true,
-    },
-  };
 
   getLength() {
     return this.cells.length;
   }
 
-  eat() {
-    const newCell = this.getNextCell(this.direction);
-    return new Snake([newCell, ...this.cells], this.direction);
-  }
-
-  getNextCell(direction) {
-    const head = this.cells[0];
-    const [hCol, hRow] = getCoordinates(head);
-    switch (direction) {
-      case 'up': {
-        return cons([hCol, hRow - 1], 'filled');
-      }
-      case 'right': {
-        return cons([hCol + 1, hRow], 'filled');
-      }
-      case 'down': {
-        return cons([hCol, hRow + 1], 'filled');
-      }
-      case 'left': {
-        return cons([hCol - 1, hRow], 'filled');
-      }
-      default: {
-        throw new Error(`Invalid direction -- GET-NEXT-CELL, ${direction}`)
-      }
-    }
+  eat(cell) {
+    return new Snake([cell, ...this.getCells()]);
   }
 
   getCells() {
     return this.cells;
   }
 
-  move(nextDir) {
-    if (!Snake.directions[this.direction][nextDir]) {
-      return this;
-    }
-    return this[`move${capitalize(nextDir)}`]();
+  getHead() {
+    return head(this.cells);
   }
 
-  moveDown() {
-    const nextCells = [this.getNextCell('down'), ...initial(this.cells)];
-    return new Snake(nextCells, 'down');
+  isColliding() {
+    const h = this.getHead();
+    return tail(this.cells).some(c => haveSameCoordinates(c, h));
   }
 
-  moveUp() {
-    const nextCells = [this.getNextCell('up'), ...initial(this.cells)];
-    return new Snake(nextCells, 'up');
-  }
-W
-  moveLeft() {
-    const nextCells = [this.getNextCell('left'), ...initial(this.cells)];
-    return new Snake(nextCells, 'left');
-  }
-
-  moveRight() {
-    const nextCells = [this.getNextCell('right'), ...initial(this.cells)];
-    return new Snake(nextCells, 'right');
+  move(cell) {
+    return new Snake([cell, ...initial(this.cells)])
   }
 }
