@@ -21,46 +21,46 @@ export default function Tetris({
 
   useEffect(() => {
     const keydownListener = (e) => {
-      if (game.current !== 'started' && game.current !== 'paused') {
+      if (gameState !== 'started' && gameState !== 'paused') {
         return;
       }
 
       switch (e.keyCode) {
         // shift
         case 16: {
-          if (game.current === 'started') {
+          if (gameState === 'started') {
             pauseGame();
             break;
           }
-          if (game.current === 'paused') {
+          if (gameState === 'paused') {
             resumeGame();
           }
           break;
         }
         // arrow left
         case 37: {
-          if (game.current === 'started') {
+          if (gameState === 'started') {
             tryFigureLeft();
           }
           break;
         }
         // arrow right
         case 39: {
-          if (game.current === 'started') {
+          if (gameState === 'started') {
             tryFigureRight();
           }
           break;
         }
         // arrow down
         case 40: {
-          if (game.current === 'started') {
+          if (gameState === 'started') {
             tryFigureDown();
           }
           break;
         }
         // space
         case 32: {
-          if (game.current === 'started') {
+          if (gameState === 'started') {
             tryRotateFigure();
           }
           break;
@@ -72,9 +72,9 @@ export default function Tetris({
     return () => {
       document.removeEventListener('keydown', keydownListener);
     };
-  });
+  }, [gameState, pauseGame, resumeGame, tryFigureDown, tryFigureLeft, tryFigureRight, tryRotateFigure]);
 
-  // unmount effect
+  // pause game when unmounting
   useEffect(() => () => {
     if (game.current === 'started') {
       pauseGame();
