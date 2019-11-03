@@ -7,7 +7,7 @@ import FigureT from 'libs/figures/FigureT.js';
 import FigureZ from 'libs/figures/FigureZ.js';
 import { cons } from 'libs/cell';
 
-const cell = cons([0, 0], 'filled');
+const cell = cons([0, 0], { state: 'filled' });
 
 describe('figures', () => {
   test('I', () => {
@@ -20,10 +20,10 @@ describe('figures', () => {
         .getCells()
     ).toEqual(
       expect.arrayContaining([
-        cons([-1, 1], 'filled'),
-        cons([0, 1], 'filled'),
-        cons([1, 1], 'filled'),
-        cons([2, 1], 'filled'),
+        cons([-1, 1], { state: 'filled' }),
+        cons([0, 1], { state: 'filled' }),
+        cons([1, 1], { state: 'filled' }),
+        cons([2, 1], { state: 'filled' }),
       ]),
     );
   });
@@ -37,10 +37,10 @@ describe('figures', () => {
         .getCells()
     ).toEqual(
       expect.arrayContaining([
-        cons([0, 1], 'filled'),
-        cons([0, 2], 'filled'),
-        cons([0, 3], 'filled'),
-        cons([1, 1], 'filled'),
+        cons([0, 1], { state: 'filled' }),
+        cons([0, 2], { state: 'filled' }),
+        cons([0, 3], { state: 'filled' }),
+        cons([1, 1], { state: 'filled' }),
       ]),
     );
   });
@@ -54,10 +54,10 @@ describe('figures', () => {
         .getCells()
     ).toEqual(
       expect.arrayContaining([
-        cons([0, 1], 'filled'),
-        cons([0, 2], 'filled'),
-        cons([0, 3], 'filled'),
-        cons([1, 3], 'filled'),
+        cons([0, 1], { state: 'filled' }),
+        cons([0, 2], { state: 'filled' }),
+        cons([0, 3], { state: 'filled' }),
+        cons([1, 3], { state: 'filled' }),
       ]),
     );
   });
@@ -72,10 +72,10 @@ describe('figures', () => {
         .getCells()
     ).toEqual(
       expect.arrayContaining([
-        cons([1, 1], 'filled'),
-        cons([1, 2], 'filled'),
-        cons([2, 1], 'filled'),
-        cons([2, 2], 'filled'),
+        cons([1, 1], { state: 'filled' }),
+        cons([1, 2], { state: 'filled' }),
+        cons([2, 1], { state: 'filled' }),
+        cons([2, 2], { state: 'filled' }),
       ]),
     );
   });
@@ -89,10 +89,10 @@ describe('figures', () => {
         .getCells()
     ).toEqual(
       expect.arrayContaining([
-        cons([0, 1], 'filled'),
-        cons([0, 2], 'filled'),
-        cons([1, 2], 'filled'),
-        cons([1, 3], 'filled'),
+        cons([0, 1], { state: 'filled' }),
+        cons([0, 2], { state: 'filled' }),
+        cons([1, 2], { state: 'filled' }),
+        cons([1, 3], { state: 'filled' }),
       ]),
     );
   });
@@ -106,10 +106,10 @@ describe('figures', () => {
         .getCells()
     ).toEqual(
       expect.arrayContaining([
-        cons([1, 1], 'filled'),
-        cons([1, 2], 'filled'),
-        cons([1, 3], 'filled'),
-        cons([2, 2], 'filled'),
+        cons([1, 1], { state: 'filled' }),
+        cons([1, 2], { state: 'filled' }),
+        cons([1, 3], { state: 'filled' }),
+        cons([2, 2], { state: 'filled' }),
       ]),
     );
   });
@@ -123,10 +123,10 @@ describe('figures', () => {
         .getCells()
     ).toEqual(
       expect.arrayContaining([
-        cons([1, 1], 'filled'),
-        cons([0, 2], 'filled'),
-        cons([1, 2], 'filled'),
-        cons([0, 3], 'filled'),
+        cons([1, 1], { state: 'filled' }),
+        cons([0, 2], { state: 'filled' }),
+        cons([1, 2], { state: 'filled' }),
+        cons([0, 3], { state: 'filled' }),
       ]),
     );
   });

@@ -5,30 +5,30 @@ export default class FigureS extends Figure {
   static alignment = {
     down: {
       direction: 'down',
-      startHead: consCell([5, 0], 'filled'),
+      startHead: consCell([5, 0], { state: 'filled' }),
       rotate: head => new FigureS(head, 'left'),
       getCells: (head) => {
         const result = [];
         const [headX, headY] = getCoordinates(head);
-        result.push(consCell([headX, headY], 'filled'));
-        result.push(consCell([headX - 1, headY + 1], 'filled'));
-        result.push(consCell([headX, headY + 1], 'filled'));
-        result.push(consCell([headX + 1, headY], 'filled'));
+        result.push(consCell([headX, headY], { state: 'filled' }));
+        result.push(consCell([headX - 1, headY + 1], { state: 'filled' }));
+        result.push(consCell([headX, headY + 1], { state: 'filled' }));
+        result.push(consCell([headX + 1, headY], { state: 'filled' }));
         return result;
       },
       getSize: () => ({ height: 2, width: 3 }),
     },
     left: {
       direction: 'left',
-      startHead: consCell([5, 0], 'filled'),
+      startHead: consCell([5, 0], { state: 'filled' }),
       rotate: head => new FigureS(head, 'down'),
       getCells: (head) => {
         const result = [];
         const [headX, headY] = getCoordinates(head);
-        result.push(consCell([headX - 1, headY], 'filled'));
-        result.push(consCell([headX - 1, headY + 1], 'filled'));
-        result.push(consCell([headX, headY + 1], 'filled'));
-        result.push(consCell([headX, headY + 2], 'filled'));
+        result.push(consCell([headX - 1, headY], { state: 'filled' }));
+        result.push(consCell([headX - 1, headY + 1], { state: 'filled' }));
+        result.push(consCell([headX, headY + 1], { state: 'filled' }));
+        result.push(consCell([headX, headY + 2], { state: 'filled' }));
         return result;
       },
       getSize: () => ({ height: 3, width: 2 }),
@@ -50,12 +50,12 @@ export default class FigureS extends Figure {
   }
 
   setPosition(x, y) {
-    return new FigureS(consCell([x, y], 'filled'), this.direction);
+    return new FigureS(consCell([x, y], { state: 'filled' }), this.direction);
   }
 
   move(x, y) {
     const [headX, headY] = getCoordinates(this.head);
-    return new FigureS(consCell([headX + x, headY + y], 'filled'), this.direction);
+    return new FigureS(consCell([headX + x, headY + y], { state: 'filled' }), this.direction);
   }
 
   moveDown() {

@@ -54,7 +54,11 @@ export const getContent = (cell) => {
 };
 
 // construct cell
-export const cons = (coordinates, state = 'empty', color = 'black', content = null) => {
+export const cons = (coordinates, {
+  state = 'empty',
+  color = 'black',
+  content = null,
+} = {}) => {
   if (!Array.isArray(coordinates)) {
     const value = typeof coordinates === 'object'
       ? JSON.stringify(coordinates, null, 2)
@@ -65,7 +69,10 @@ export const cons = (coordinates, state = 'empty', color = 'black', content = nu
 
   const [col, row] = coordinates;
   if (!Number.isInteger(col) || !Number.isInteger(row)) {
-    throw new Error(`Coordinates must be array of integers, but it was [${col} : ${typeof col}, ${row} : ${typeof row}]`);
+    throw new Error(
+      `Coordinates must be array of integers,
+      but it was [${col} : ${typeof col}, ${row} : ${typeof row}]`,
+    );
   }
 
   return {
@@ -102,21 +109,28 @@ export const toString = (cell) => {
 // get cell moved down operation
 export const moveDown = (cell) => {
   checkCell(cell);
-  return cons(
-    [getCol(cell), getRow(cell) + 1],
-    getState(cell),
-    getColor(cell),
-    getContent(cell),
-  );
+  return cons([getCol(cell), getRow(cell) + 1], {
+    state: getState(cell),
+    color: getColor(cell),
+    content: getContent(cell),
+  });
+};
+
+export const move = (cell, coordinates) => {
+  checkCell(cell);
+  return cons(coordinates, {
+    state: getState(cell),
+    color: getColor(cell),
+    content: getContent(cell),
+  });
 };
 
 // get cell painted with color operation
 export const paint = (cell, color) => {
   checkCell(cell);
-  return cons(
-    getCoordinates(cell),
-    getState(cell),
+  return cons(getCoordinates(cell), {
+    state: getState(cell),
     color,
-    getContent(cell),
-  );
+    content: getContent(cell),
+  });
 };

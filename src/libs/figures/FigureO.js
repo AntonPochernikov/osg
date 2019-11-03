@@ -5,14 +5,14 @@ export default class FigureO extends Figure {
   static alignment = {
     down: {
       direction: 'down',
-      startHead: consCell([5, 0], 'filled'),
+      startHead: consCell([5, 0], { state: 'filled' }),
       getCells: (head) => {
         const result = [];
         const [headX, headY] = getCoordinates(head);
-        result.push(consCell([headX, headY], 'filled'));
-        result.push(consCell([headX - 1, headY], 'filled'));
-        result.push(consCell([headX, headY + 1], 'filled'));
-        result.push(consCell([headX - 1, headY + 1], 'filled'));
+        result.push(consCell([headX, headY], { state: 'filled' }));
+        result.push(consCell([headX - 1, headY], { state: 'filled' }));
+        result.push(consCell([headX, headY + 1], { state: 'filled' }));
+        result.push(consCell([headX - 1, headY + 1], { state: 'filled' }));
         return result;
       },
       getSize: () => ({ height: 2, width: 2 }),
@@ -34,12 +34,12 @@ export default class FigureO extends Figure {
   }
 
   setPosition(x, y) {
-    return new FigureO(consCell([x, y], 'filled'), this.direction);
+    return new FigureO(consCell([x, y], { state: 'filled' }), this.direction);
   }
 
   move(x, y) {
     const [headX, headY] = getCoordinates(this.head);
-    return new FigureO(consCell([headX + x, headY + y], 'filled'), this.direction);
+    return new FigureO(consCell([headX + x, headY + y], { state: 'filled' }), this.direction);
   }
 
   moveDown() {

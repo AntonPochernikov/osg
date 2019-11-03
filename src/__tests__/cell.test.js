@@ -15,13 +15,13 @@ import {
   paint,
 } from 'libs/cell';
 
-const c1 = cons([1, 1], 'empty');
-const c2 = cons([5, 0], 'filled', 'yellow');
-const c3 = cons([5, 0], 'withContent', 'black', 'content');
+const c1 = cons([1, 1], { state: 'empty' });
+const c2 = cons([5, 0], { state: 'filled', color: 'yellow' });
+const c3 = cons([5, 0], { state: 'withContent', color: 'black', content: 'content' });
 
 describe('cell abstraction', () => {
   test('cons', () => {
-    expect(cons([1, 3], 'empty')).toEqual({
+    expect(cons([1, 3], { state: 'empty' })).toEqual({
       coordinates: [1, 3],
       state: 'empty',
       color: 'black',
@@ -29,8 +29,8 @@ describe('cell abstraction', () => {
       isCell: true,
     });
 
-    expect(() => cons(['1', 3], 'empty')).toThrow();
-    expect(() => cons('string', 'empty')).toThrow();
+    expect(() => cons(['1', 3], { state: 'empty' })).toThrow();
+    expect(() => cons('string', { state: 'empty' })).toThrow();
   });
 
   test('isCell', () => {
@@ -85,25 +85,27 @@ describe('cell operations', () => {
   });
 
   test('toString', () => {
-    expect(toString(c1)).toBe('coorinates: [1, 1], state: empty, color: black, content: null');
-    expect(toString(c3)).toBe('coorinates: [5, 0], state: withContent, color: black, content: content');
+    expect(toString(c1)).toBe(
+      'coorinates: [1, 1], state: empty, color: black, content: null',
+    );
+    expect(toString(c3)).toBe(
+      'coorinates: [5, 0], state: withContent, color: black, content: content',
+    );
   });
 
   test('moveDown', () => {
-    expect(moveDown(c3)).toEqual(cons(
-      [getCol(c3), getRow(c3) + 1],
-      getState(c3),
-      getColor(c3),
-      getContent(c3),
-    ));
+    expect(moveDown(c3)).toEqual(cons([getCol(c3), getRow(c3) + 1], {
+      state: getState(c3),
+      color: getColor(c3),
+      content: getContent(c3),
+    }));
   });
 
   test('paint', () => {
-    expect(paint(c1, 'green')).toEqual(cons(
-      getCoordinates(c1),
-      getState(c1),
-      'green',
-      getContent(c1),
-    ));
+    expect(paint(c1, 'green')).toEqual(cons(getCoordinates(c1), {
+      state: getState(c1),
+      color: 'green',
+      content: getContent(c1),
+    }));
   });
 });
