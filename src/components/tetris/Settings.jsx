@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react';
-import { tetrisConfig } from 'constants/config.js';
+import { tetrisConfig } from 'constants/config';
 import './Settings.css';
 
 const { speed: { min, max } } = tetrisConfig;

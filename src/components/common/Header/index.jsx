@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import './Header.css';
+import './styles.css';
 
 const Header = ({ title, canHome }) => (
   <header className="header">

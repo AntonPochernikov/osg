@@ -23,40 +23,6 @@
 	margin-bottom: 40px;
 }
 
-/*  start/stop game button  */
-.tetris-stats__game-button {
-	flex-shrink: 0;
-
-	margin-bottom: 40px;
-	padding: 10px 30px;
-
-	color: var(--color-yellow--light);
-	font-weight: 700;
-	text-transform: uppercase;
-
-	background-color: var(--color-neutral);
-	border: none;
-	border-radius: 5px;
-
-	user-select: none;
-	cursor: pointer;
-
-	transition: color 0.1s ease, background-color 0.1s ease;
-}
-
-.tetris-stats__game-button:hover {
-	color: var(--color-success);
-	background-color: var(--color-neutral--dark);
-}
-.tetris-stats__game-button:active {
-	color: var(--color-success--darken);
-	background-color: var(--color-main--darkest);
-}
-.tetris-stats__game-button:focus {
-	outline: none;
-	text-decoration: underline;
-}
-
 .tetris-stats__paused-sign {
 	flex-shrink: 0;
 	position: relative;

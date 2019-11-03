@@ -30,7 +30,7 @@
 	text-align: center;
 }
 
-.tetris-info__arrows {
+.info-arrows {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -38,11 +38,11 @@
 	margin: 5px 0;
 }
 
-.tetris-info__arrows-bottom-layout {
+.info-arrows__bottom-layout {
 	display: flex;
 }
 
-.tetris-info__arrow {
+.info-arrow {
 	position: relative;
 
 	width: 28px;
@@ -56,7 +56,7 @@
 	background-color: var(--color-yellow--lighten);
 }
 
-.tetris-info__arrow::before {
+.info-arrow::before {
 	position: absolute;
 	content: "";
 	top: 6px;
@@ -71,7 +71,7 @@
 	border-radius: 3px;
 }
 
-.tetris-info__arrow--top::before {
+.info-arrow--top::before {
 	top: 9px;
 	transform: rotate(45deg);
 
@@ -79,7 +79,7 @@
 	border-bottom-color: transparent;
 }
 
-.tetris-info__arrow--left::before {
+.info-arrow--left::before {
 	top: 6px;
 	left: 8px;
 	transform: rotate(-45deg);
@@ -88,7 +88,7 @@
 	border-bottom-color: transparent;
 }
 
-.tetris-info__arrow--down::before {
+.info-arrow--down::before {
 	top: 5px;
 	left: 6px;
 	transform: rotate(45deg);
@@ -97,7 +97,7 @@
 	border-top-color: transparent;
 }
 
-.tetris-info__arrow--right::before {
+.info-arrow--right::before {
 	top: 6px;
 	left: 4px;
 	transform: rotate(45deg);
@@ -106,7 +106,7 @@
 	border-bottom-color: transparent;
 }
 
-.tetris-info__key {
+.info-key {
 	max-width: 140px;
 	padding: 5px 30px;
 	margin: 5px 0;

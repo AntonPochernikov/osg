@@ -1,13 +1,13 @@
 import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
-import Header from 'components/common/Header.jsx';
-import Grid from './Grid.js';
-import Stats from './Stats.js';
-import Info from './Info.jsx';
+import Header from 'components/common/Header';
+import Grid from './Grid';
+import Stats from './Stats';
+import Info from './Info';
 import './Tetris.css';
 
 export default function Tetris({
-  gameState,
+  gameState = 'initial',
   pauseGame,
   resumeGame,
   tryFigureLeft,
@@ -72,7 +72,15 @@ export default function Tetris({
     return () => {
       document.removeEventListener('keydown', keydownListener);
     };
-  }, [gameState, pauseGame, resumeGame, tryFigureDown, tryFigureLeft, tryFigureRight, tryRotateFigure]);
+  }, [
+    gameState,
+    pauseGame,
+    resumeGame,
+    tryFigureDown,
+    tryFigureLeft,
+    tryFigureRight,
+    tryRotateFigure,
+  ]);
 
   // pause game when unmounting
   useEffect(() => () => {
@@ -95,8 +103,4 @@ export default function Tetris({
 
 Tetris.propTypes = {
   gameState: PropTypes.oneOf(['initial', 'started', 'paused', 'finished']).isRequired,
-};
-
-Tetris.defaultProps = {
-  gamesState: 'initial',
 };

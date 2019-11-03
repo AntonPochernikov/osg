@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import cn from 'classnames';
 import './Grid.css';
 
-const Grid = ({ grid, gameState }) => (
+const Grid = ({ grid = [], gameState = 'initial' }) => (
   <div className="tetris-grid-container">
     <table className="tetris-grid">
       <tbody className="tetris-grid__body">
@@ -25,11 +25,6 @@ const Grid = ({ grid, gameState }) => (
     )}
   </div>
 );
-
-Grid.defaultProps = {
-  grid: [],
-  gameState: 'initial',
-};
 
 Grid.propTypes = {
   grid: PropTypes.arrayOf(PropTypes.array).isRequired,

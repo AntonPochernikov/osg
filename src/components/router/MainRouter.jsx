@@ -6,9 +6,9 @@ import {
   Switch,
 } from 'react-router-dom';
 import './MainRouter.css';
-import PageLoader from 'components/common/PageLoader.jsx';
-import { ENV_PREFIX } from 'constants/environment.js';
-import { HomePage, Tetris, Snake } from './LazyRoutes.js';
+import PageLoader from 'components/common/PageLoader';
+import { ENV_PREFIX } from 'constants/environment';
+import { HomePage, Tetris, Snake } from './LazyRoutes';
 
 const renderRoot = () => <Redirect to="/home" />;
 const renderHome = () => <HomePage />;

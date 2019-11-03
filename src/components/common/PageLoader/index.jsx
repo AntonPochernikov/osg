@@ -1,6 +1,6 @@
 import React from 'react';
-import Header from './Header.jsx';
-import ProgressBar from './ProgressBar.jsx';
+import Header from 'components/common/Header';
+import ProgressBar from 'components/common/ProgressBar';
 
 const PageLoader = () => (
   <>

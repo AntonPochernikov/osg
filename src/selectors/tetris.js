@@ -1,13 +1,13 @@
 import { createSelector } from 'reselect';
-import { createGrid } from 'libs/createGrid.js';
+import { createGrid } from 'libs/createGrid';
 import {
   getCoordinates,
   haveSameCoordinates,
   getState,
   isFilled,
-} from 'libs/cell.js';
-import times from 'libs/times.js';
-import { tetrisConfig } from 'constants/config.js';
+} from 'libs/cell';
+import times from 'libs/times';
+import { tetrisConfig } from 'constants/config';
 
 export const getGrid = state => state.tetris.grid;
 export const getCurrentFigure = state => state.tetris.figure.current;
@@ -30,7 +30,7 @@ export const getGridCells = createSelector(
         return getState(cell);
       }));
     }
-    return grid.map(tr => tr.map(cell => getState(cell)));
+    return grid.map(tr => tr.map(getState));
   },
 );
 

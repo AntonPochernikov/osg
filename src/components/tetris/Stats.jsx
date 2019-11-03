@@ -1,7 +1,8 @@
 import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
-import NextFigureGrid from './NextFigureGrid.jsx';
-import Settings from './Settings.jsx';
+import NextFigureGrid from './NextFigureGrid';
+import Settings from './Settings';
+import GameButton from 'components/common/GameButton';
 import './Stats.css';
 
 export default function Stats({
@@ -55,9 +56,9 @@ export default function Stats({
         canAdjustSpeed={canAdjustSpeed}
       />
 
-      <button className="tetris-stats__game-button" onClick={handleGameButton}>
+      <GameButton onClick={handleGameButton}>
         {getButtonTitle()}
-      </button>
+      </GameButton>
     </div>
   );
 };

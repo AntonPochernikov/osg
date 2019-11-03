@@ -1,7 +1,7 @@
 import React from 'react';
-import store from 'store/store.js';
-import delay from 'libs/delay.js';
-import { isDev } from 'constants/environment.js';
+import store from 'store/store';
+import delay from 'libs/delay';
+import { isDev } from 'constants/environment';
 
 export const HomePage = React.lazy(async () => {
   const [home] = await Promise.all([
@@ -30,7 +30,7 @@ export const Snake = React.lazy(async () => {
     snake,
   ] = await Promise.all([
     import(/* webpackChunkName: "snake-reducer" */ 'reducers/snake'),
-    import(/* webpackChunkName: "snake" */ 'components/snake/Snake.jsx'),
+    import(/* webpackChunkName: "snake" */ 'components/snake/Snake.js'),
     delay(isDev ? 0 : 1000),
   ]);
   store.inject('snake', snakeReducer);
