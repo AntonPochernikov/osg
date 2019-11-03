@@ -2,8 +2,14 @@ import { combineReducers } from 'redux';
 import { handleActions } from 'redux-actions';
 import { snakeConfig } from 'constants/config';
 import * as action from 'actions';
+import Snake from 'libs/Snake';
+import { cons as consCell } from 'libs/cell.js';
+import generateNextCell from 'libs/generateNextCell';
 
-const { speed: { init, min, max } } = snakeConfig;
+const {
+  speed: { init, min, max },
+  grid: { cols, rows },
+} = snakeConfig;
 
 const gameState = handleActions({
   [action.snake.startGame]: () => 'started',
@@ -18,12 +24,36 @@ const speed = handleActions({
   [action.snake.decreaseGameSpeed]: state => (state === min ? state : state - 1),
 }, init);
 
-const apple = handleActions({}, null);
-const snake = handleActions({}, null);
+const apple = handleActions({
+  [action.snake.spawnApple]: (_, { payload: { apple } }) => apple,
+  [action.snake.stopGame]: () => null,
+}, null);
+
+const body = handleActions({
+  [action.snake.startGame]: () => new Snake([
+    consCell([Math.floor(cols / 2), rows - 6], { state: 'filled' }),
+    consCell([Math.floor(cols / 2), rows - 5], { state: 'filled' }),
+    consCell([Math.floor(cols / 2), rows - 4], { state: 'filled' }),
+    consCell([Math.floor(cols / 2), rows - 3], { state: 'filled' }),
+    consCell([Math.floor(cols / 2), rows - 2], { state: 'filled' }),
+  ]),
+  [action.snake.moveSnake]: (snake, { payload: { direction } }) => snake.move(
+    generateNextCell(snake.getHead(), direction),
+  ),
+  [action.snake.stopGame]: () => null,
+}, null);
+
+const direction = handleActions({
+  [action.snake.startGame]: () => 'up',
+  [action.snake.stopGame]: () => null,
+  [action.snake.finishGame]: () => null,
+  [action.snake.moveSnake]: (_, { payload: { direction } }) => direction,
+}, null);
 
 export default combineReducers({
   gameState,
-  snake,
+  body,
+  direction,
   apple,
   speed,
 });

@@ -1,0 +1,127 @@
+/*=================================
+	snake game info
+=================================*/
+.snake-info {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
+	width: 200px;
+}
+
+.snake-info__title {
+	margin: 0;
+	margin-bottom: 40px;
+	padding: 0;
+
+	color: var(--color-neutral--dark);
+}
+
+.snake-info__paragraph {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	flex-shrink: 0;
+
+	margin: 0;
+	margin-bottom: 40px;
+
+	color: var(--color-neutral);
+	text-align: center;
+}
+
+.info-arrows {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
+	margin: 5px 0;
+}
+
+.info-arrows__bottom-layout {
+	display: flex;
+}
+
+.info-arrow {
+	position: relative;
+
+	width: 28px;
+	height: 28px;
+	margin: 1px;
+	box-sizing: border-box;
+
+	border: 2px solid var(--color-neutral--light);
+	border-radius: 6px;
+
+	background-color: var(--color-yellow--lighten);
+}
+
+.info-arrow::before {
+	position: absolute;
+	content: "";
+	top: 6px;
+	left: 6px;
+
+	display: block;
+	width: 12px;
+	height: 12px;
+	box-sizing: border-box;
+
+	border: 3px solid var(--color-neutral--light);
+	border-radius: 3px;
+}
+
+.info-arrow--top::before {
+	top: 9px;
+	transform: rotate(45deg);
+
+	border-right-color: transparent;
+	border-bottom-color: transparent;
+}
+
+.info-arrow--left::before {
+	top: 6px;
+	left: 8px;
+	transform: rotate(-45deg);
+
+	border-right-color: transparent;
+	border-bottom-color: transparent;
+}
+
+.info-arrow--down::before {
+	top: 5px;
+	left: 6px;
+	transform: rotate(45deg);
+
+	border-left-color: transparent;
+	border-top-color: transparent;
+}
+
+.info-arrow--right::before {
+	top: 6px;
+	left: 4px;
+	transform: rotate(45deg);
+
+	border-left-color: transparent;
+	border-bottom-color: transparent;
+}
+
+.info-key {
+	max-width: 140px;
+	padding: 5px 30px;
+	margin: 5px 0;
+
+	color: var(--color-neutral--light);
+	font-weight: 700;
+
+	border: 2px solid var(--color-neutral--light);
+	border-radius: 6px;
+
+	background-color: var(--color-yellow--lighten);
+
+	user-select: none;
+}
+
+.snake-info__phrase {
+	max-width: 140px;
+}

@@ -9,3 +9,12 @@ export const finishGame = createAction('SNAKE/GAME/FINISH');
 
 export const increaseGameSpeed = createAction('SNAKE/GAME/SPEED/INCREASE');
 export const decreaseGameSpeed = createAction('SNAKE/GAME/SPEED/DECREASE');
+
+// APPLE
+export const spawnApple = createAction('SNAKE/APPLE/SPAWN');
+
+// SNAKE FLOW
+export const spawnSnake = createAction('SNAKE/BODY/SPAWN');
+
+export const moveSnake = createAction('SNAKE/BODY/MOVE');
+export const checkSnakeMove = createAction('SNAKE/BODY/CHECK/MOVE');

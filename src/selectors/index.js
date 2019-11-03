@@ -1,4 +1,4 @@
-import * as tetris from './tetris.js';
-import * as snake from './snake.js';
+import * as tetris from './tetris';
+import * as snake from './snake';
 
 export { tetris, snake };

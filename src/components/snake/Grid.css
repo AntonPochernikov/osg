@@ -1,0 +1,90 @@
+/*=================================
+	snake game grid
+=================================*/
+.snake-grid-container {
+	position: relative;
+}
+
+.snake-grid-container__paused-overlay {
+	position: absolute;
+	top: 0;
+	left: 0;
+
+	width: 100%;
+	height: 100%;
+
+	background-color: rgba(0, 0, 0, 0.2);
+	border-radius: 2px;
+
+	animation: fade-in 0.2s ease;
+}
+
+.snake-grid {
+	border: none;
+	border-radius: 2px;
+}
+
+.snake-grid__cell {
+	position: relative;
+	width: 22px;
+	height: 22px;
+	box-sizing: border-box;
+
+	border: 2px solid var(--color-inactive);
+	border-radius: 2px;
+}
+
+.snake-grid__cell--filled {
+	border: 2px solid var(--color-neutral--dark);
+}
+
+.snake-grid__cell--filled::before {
+	content: "";
+	position: absolute;
+	top: 4px;
+	left: 4px;
+
+	display: block;
+	width: 10px;
+	height: 10px;
+	box-sizing: border-box;
+
+	background-color: var(--color-yellow);
+	border-radius: 2px;
+}
+
+.snake-grid__cell--indeterminate {
+	border: 2px solid var(--color-inactive);
+}
+
+.snake-grid__cell--indeterminate::before {
+	content: "";
+	position: absolute;
+	top: 4px;
+	left: 4px;
+
+	display: block;
+	width: 10px;
+	height: 10px;
+	box-sizing: border-box;
+
+	background-color: var(--color-neutral);
+	border-radius: 2px;
+
+	animation: cell-blick 0.2s;
+}
+
+@keyframes cell-blick {
+	0% {
+		background-color: var(--color-neutral);
+	}
+	33% {
+		background-color: var(--color-neutral--light);
+	}
+	66% {
+		background-color: var(--color-neutral);
+	}
+	100% {
+		background-color: var(--color-neutral--light);
+	}
+}
