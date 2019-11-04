@@ -24,7 +24,7 @@ export default handleActions({
   [action.tetris.removeCompletedRow]: (state, { payload: { rowIndex } }) => {
     const first = state
       .slice(0, rowIndex)
-      .map(r => r.map(c => moveCelldown(c)));
+      .map(r => r.map(moveCelldown));
     const rest = state.slice(rowIndex + 1);
     return [createClearRow(cols, 0), ...first, ...rest];
   },

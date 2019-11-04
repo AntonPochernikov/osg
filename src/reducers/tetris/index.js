@@ -5,7 +5,10 @@ import { tetrisConfig as config } from 'constants/config.js';
 import grid from './grid.js';
 import figure from './figure.js';
 
-const { speed: { min, max, init }, score: { collision, completedRow } } = config;
+const {
+  speed: { min, max, init },
+  score: { collision, completedRow }
+} = config;
 
 const gameState = handleActions({
   [action.tetris.startGame]: () => 'started',

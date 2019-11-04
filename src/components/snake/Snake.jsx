@@ -66,6 +66,7 @@ export default function Snake({
     };
 
     document.addEventListener('keydown', keydownListener);
+
     return () => {
       document.removeEventListener('keydown', keydownListener);
     };

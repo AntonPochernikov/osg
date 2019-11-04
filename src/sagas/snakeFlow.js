@@ -8,13 +8,10 @@ import {
 import * as action from 'actions';
 import * as selector from 'selectors';
 import delay from 'libs/delay';
-import { cons as consCell } from 'libs/cell.js';
-import { snakeConfig } from 'constants/config';
 import isAllowedDirection from 'libs/isAllowedDirection';
+import generateApple from 'libs/generateApple';
 
-const { grid: { cols, rows } } = snakeConfig;
-
-function* movement() {
+function* movement(apple) {
   while (true) {
     try {
       const interval = yield select(selector.snake.getIncrementInterval);
@@ -26,6 +23,12 @@ function* movement() {
 
       if (pause) {
         yield take('SNAKE/GAME/RESUME');
+      }
+
+      // snake eats apple
+      if (yield select(selector.snake.doesSnakeEatApple)) {
+        yield put(action.snake.eatApple({ apple }));
+        return;
       }
 
       const prevDirection = yield select(selector.snake.getDirection);
@@ -42,11 +45,6 @@ function* movement() {
       if (yield select(selector.snake.isSnakeColliding)) {
         yield put(action.snake.finishGame());
       }
-
-      // snake eats apple
-      if (yield select(selector.snake.doesSnakeEatApple)) {
-        return;
-      }
     } catch (e) {
       console.log(e);
       yield put(action.snake.finishGame());
@@ -56,13 +54,10 @@ function* movement() {
 
 function* applesLoop() {
   while (true) {
-    // TODO: spawn random apple
-    const apple = consCell(
-      [Math.floor(cols / 2), Math.floor(rows / 2)],
-      { state: 'filled', color: 'green' },
-    );
+    const snake = yield select(selector.snake.getBody);
+    const apple = generateApple(snake);
     yield put(action.snake.spawnApple({ apple }));
-    yield call(movement);
+    yield call(movement, apple);
   }
 }
 

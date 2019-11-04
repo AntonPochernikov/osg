@@ -12,6 +12,7 @@ export const decreaseGameSpeed = createAction('SNAKE/GAME/SPEED/DECREASE');
 
 // APPLE
 export const spawnApple = createAction('SNAKE/APPLE/SPAWN');
+export const eatApple = createAction('SNAKE/APPLE/EAT');
 
 // SNAKE FLOW
 export const spawnSnake = createAction('SNAKE/BODY/SPAWN');

@@ -1,4 +1,4 @@
-import { getCoordinates, move } from 'libs/cell.js';
+import { getCoordinates, moveTo } from 'libs/cell.js';
 import { snakeConfig as config } from 'constants/config';
 
 const { grid } = config;
@@ -33,5 +33,5 @@ function generateNextCoordinates(coordinates, direction) {
 export default (cell, direction) => {
   const coordinates = getCoordinates(cell);
 
-  return move(cell, generateNextCoordinates(coordinates, direction));
+  return moveTo(cell, generateNextCoordinates(coordinates, direction));
 };

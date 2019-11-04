@@ -3,7 +3,7 @@ import { handleActions } from 'redux-actions';
 import { snakeConfig } from 'constants/config';
 import * as action from 'actions';
 import Snake from 'libs/Snake';
-import { cons as consCell } from 'libs/cell.js';
+import { cons as consCell, setState } from 'libs/cell.js';
 import generateNextCell from 'libs/generateNextCell';
 
 const {
@@ -26,6 +26,7 @@ const speed = handleActions({
 
 const apple = handleActions({
   [action.snake.spawnApple]: (_, { payload: { apple } }) => apple,
+  [action.snake.eatApple]: () => null,
   [action.snake.stopGame]: () => null,
 }, null);
 
@@ -37,10 +38,14 @@ const body = handleActions({
     consCell([Math.floor(cols / 2), rows - 3], { state: 'filled' }),
     consCell([Math.floor(cols / 2), rows - 2], { state: 'filled' }),
   ]),
-  [action.snake.moveSnake]: (snake, { payload: { direction } }) => snake.move(
-    generateNextCell(snake.getHead(), direction),
+  [action.snake.moveSnake]: (prevSnake, { payload: { direction } }) => prevSnake.move(
+    generateNextCell(prevSnake.getHead(), direction),
   ),
+  [action.snake.eatApple]: (prevSnake, { payload: { apple } }) => prevSnake.eat(apple),
   [action.snake.stopGame]: () => null,
+  [action.snake.finishGame]: (prevSnake) => new Snake(
+    prevSnake.getCells().map(cell => setState(cell, 'indeterminate')),
+  ),
 }, null);
 
 const direction = handleActions({

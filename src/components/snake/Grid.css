@@ -54,7 +54,7 @@
 }
 
 .snake-grid__cell--indeterminate {
-	border: 2px solid var(--color-inactive);
+	border: 2px solid var(--color-neutral--dark);
 }
 
 .snake-grid__cell--indeterminate::before {
@@ -71,20 +71,17 @@
 	background-color: var(--color-neutral);
 	border-radius: 2px;
 
-	animation: cell-blick 0.2s;
+	animation: cell-blick 0.5s infinite;
 }
 
 @keyframes cell-blick {
 	0% {
 		background-color: var(--color-neutral);
 	}
-	33% {
+	50% {
 		background-color: var(--color-neutral--light);
-	}
-	66% {
-		background-color: var(--color-neutral);
 	}
 	100% {
-		background-color: var(--color-neutral--light);
+		background-color: var(--color-neutral);
 	}
 }
