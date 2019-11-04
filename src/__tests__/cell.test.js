@@ -12,6 +12,8 @@ import {
   haveSameCoordinates,
   toString,
   moveDown,
+  moveTo,
+  setState,
   paint,
 } from 'libs/cell';
 
@@ -99,6 +101,20 @@ describe('cell operations', () => {
       color: getColor(c3),
       content: getContent(c3),
     }));
+  });
+
+  test('moveTo', () => {
+    expect(moveTo(c3, [5, 13])).toEqual(cons([5, 13], {
+      state: getState(c3),
+      color: getColor(c3),
+      content: getContent(c3),
+    }));
+  });
+
+  test('setState', () => {
+    expect(setState(c2, 'indeterminate')).toEqual(
+      cons([5, 0], { state: 'indeterminate', color: 'yellow' }),
+    );
   });
 
   test('paint', () => {

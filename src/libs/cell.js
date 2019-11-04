@@ -116,10 +116,19 @@ export const moveDown = (cell) => {
   });
 };
 
-export const move = (cell, coordinates) => {
+export const moveTo = (cell, coordinates) => {
   checkCell(cell);
   return cons(coordinates, {
     state: getState(cell),
+    color: getColor(cell),
+    content: getContent(cell),
+  });
+};
+
+export const setState = (cell, state) => {
+  checkCell(cell);
+  return cons(getCoordinates(cell), {
+    state,
     color: getColor(cell),
     content: getContent(cell),
   });
