@@ -27,7 +27,9 @@ const Grid = ({ grid = [], gameState = 'initial' }) => (
 );
 
 Grid.propTypes = {
-  grid: PropTypes.arrayOf(PropTypes.array).isRequired,
+  grid: PropTypes.arrayOf(
+    PropTypes.arrayOf(PropTypes.string),
+  ).isRequired,
   gameState: PropTypes.oneOf(['initial', 'started', 'paused', 'finished']).isRequired,
 };
 
