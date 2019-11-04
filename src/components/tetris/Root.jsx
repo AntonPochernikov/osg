@@ -2,15 +2,18 @@ import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import Header from 'components/common/Header';
 import Grid from './Grid';
-import Info from './Info';
 import Stats from './Stats';
-import './Snake.css';
+import Info from './Info';
+import './Root.css';
 
-export default function Snake({
+export default function Root({
   gameState = 'initial',
   pauseGame,
   resumeGame,
-  checkSnakeMove,
+  tryFigureLeft,
+  tryFigureRight,
+  tryFigureDown,
+  tryRotateFigure,
 }) {
   // use "refed" game state for key listener
   const game = useRef(gameState);
@@ -21,6 +24,7 @@ export default function Snake({
       if (gameState !== 'started' && gameState !== 'paused') {
         return;
       }
+
       switch (e.keyCode) {
         // shift
         case 16: {
@@ -36,41 +40,47 @@ export default function Snake({
         // arrow left
         case 37: {
           if (gameState === 'started') {
-            checkSnakeMove('left');
-          }
-          break;
-        }
-        // arrow up
-        case 38: {
-          if (gameState === 'started') {
-            checkSnakeMove('up');
+            tryFigureLeft();
           }
           break;
         }
         // arrow right
         case 39: {
           if (gameState === 'started') {
-            checkSnakeMove('right');
+            tryFigureRight();
           }
           break;
         }
         // arrow down
         case 40: {
           if (gameState === 'started') {
-            checkSnakeMove('down');
+            tryFigureDown();
+          }
+          break;
+        }
+        // space
+        case 32: {
+          if (gameState === 'started') {
+            tryRotateFigure();
           }
           break;
         }
         default: break;
       }
     };
-
     document.addEventListener('keydown', keydownListener);
-
     return () => {
       document.removeEventListener('keydown', keydownListener);
     };
-  }, [gameState, pauseGame, resumeGame, checkSnakeMove]);
+  }, [
+    gameState,
+    pauseGame,
+    resumeGame,
+    tryFigureDown,
+    tryFigureLeft,
+    tryFigureRight,
+    tryRotateFigure,
+  ]);
 
   // pause game when unmounting
   useEffect(() => () => {
@@ -81,16 +91,16 @@ export default function Snake({
 
   return (
     <div className="main-container">
-      <Header title="Snake" canHome />
-      <main className="snake-body">
+      <Header title="Tetris" canHome />
+      <main className="tetris-body">
         <Info />
         <Grid />
         <Stats />
       </main>
     </div>
   );
-}
+};
 
-Snake.propTypes = {
+Root.propTypes = {
   gameState: PropTypes.oneOf(['initial', 'started', 'paused', 'finished']).isRequired,
 };

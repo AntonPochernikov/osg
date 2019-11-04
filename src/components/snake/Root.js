@@ -1,10 +1,10 @@
 import { connect } from 'react-redux';
 import * as actionCreators from 'actions';
 import * as select from 'selectors';
-import Tetris from './Tetris.jsx';
+import Root from './Root.jsx';
 
 const mapStateToProps = state => ({
-  gameState: select.tetris.getGameState(state),
+  gameState: select.snake.getGameState(state),
 });
 
-export default connect(mapStateToProps, actionCreators.tetris)(Tetris);
+export default connect(mapStateToProps, actionCreators.snake)(Root);

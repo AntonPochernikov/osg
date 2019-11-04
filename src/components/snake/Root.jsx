@@ -2,18 +2,15 @@ import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import Header from 'components/common/Header';
 import Grid from './Grid';
-import Stats from './Stats';
 import Info from './Info';
-import './Tetris.css';
+import Stats from './Stats';
+import './Root.css';
 
-export default function Tetris({
+export default function Root({
   gameState = 'initial',
   pauseGame,
   resumeGame,
-  tryFigureLeft,
-  tryFigureRight,
-  tryFigureDown,
-  tryRotateFigure,
+  checkSnakeMove,
 }) {
   // use "refed" game state for key listener
   const game = useRef(gameState);
@@ -24,7 +21,6 @@ export default function Tetris({
       if (gameState !== 'started' && gameState !== 'paused') {
         return;
       }
-
       switch (e.keyCode) {
         // shift
         case 16: {
@@ -40,47 +36,41 @@ export default function Tetris({
         // arrow left
         case 37: {
           if (gameState === 'started') {
-            tryFigureLeft();
+            checkSnakeMove('left');
+          }
+          break;
+        }
+        // arrow up
+        case 38: {
+          if (gameState === 'started') {
+            checkSnakeMove('up');
           }
           break;
         }
         // arrow right
         case 39: {
           if (gameState === 'started') {
-            tryFigureRight();
+            checkSnakeMove('right');
           }
           break;
         }
         // arrow down
         case 40: {
           if (gameState === 'started') {
-            tryFigureDown();
-          }
-          break;
-        }
-        // space
-        case 32: {
-          if (gameState === 'started') {
-            tryRotateFigure();
+            checkSnakeMove('down');
           }
           break;
         }
         default: break;
       }
     };
+
     document.addEventListener('keydown', keydownListener);
+
     return () => {
       document.removeEventListener('keydown', keydownListener);
     };
-  }, [
-    gameState,
-    pauseGame,
-    resumeGame,
-    tryFigureDown,
-    tryFigureLeft,
-    tryFigureRight,
-    tryRotateFigure,
-  ]);
+  }, [gameState, pauseGame, resumeGame, checkSnakeMove]);
 
   // pause game when unmounting
   useEffect(() => () => {
@@ -91,16 +81,16 @@ export default function Tetris({
 
   return (
     <div className="main-container">
-      <Header title="Tetris" canHome />
-      <main className="tetris-body">
+      <Header title="Snake" canHome />
+      <main className="snake-body">
         <Info />
         <Grid />
         <Stats />
       </main>
     </div>
   );
-};
+}
 
-Tetris.propTypes = {
+Root.propTypes = {
   gameState: PropTypes.oneOf(['initial', 'started', 'paused', 'finished']).isRequired,
 };

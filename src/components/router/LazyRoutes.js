@@ -16,8 +16,8 @@ export const Tetris = React.lazy(async () => {
     { default: tetrisReducer },
     tetris,
   ] = await Promise.all([
-    import(/* webpackChunkName: "tetris-reducer" */ 'reducers/tetris/index.js'),
-    import(/* webpackChunkName: "tetris" */ 'components/tetris/Tetris.js'),
+    import(/* webpackChunkName: "tetris-reducer" */ 'reducers/tetris'),
+    import(/* webpackChunkName: "tetris" */ 'components/tetris/Root.js'),
     delay(isDev ? 0 : 1000),
   ]);
   store.inject('tetris', tetrisReducer);
@@ -30,7 +30,7 @@ export const Snake = React.lazy(async () => {
     snake,
   ] = await Promise.all([
     import(/* webpackChunkName: "snake-reducer" */ 'reducers/snake'),
-    import(/* webpackChunkName: "snake" */ 'components/snake/Snake.js'),
+    import(/* webpackChunkName: "snake" */ 'components/snake/Root.js'),
     delay(isDev ? 0 : 1000),
   ]);
   store.inject('snake', snakeReducer);
