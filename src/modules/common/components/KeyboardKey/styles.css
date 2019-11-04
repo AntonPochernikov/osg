@@ -1,0 +1,14 @@
+.keyboard-key {
+	max-width: 140px;
+	padding: 5px 30px;
+
+	color: var(--color-neutral--light);
+	font-weight: 700;
+
+	border: 2px solid var(--color-neutral--light);
+	border-radius: 6px;
+
+	background-color: var(--color-yellow--lighten);
+
+	user-select: none;
+}
