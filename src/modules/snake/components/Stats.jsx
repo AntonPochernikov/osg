@@ -45,6 +45,8 @@ export default function Stats({
     <div className="snake-stats">
       <h2 className="snake-stats__title">Game Stats</h2>
 
+      {/* TODO: add settings */}
+
       {/* <Settings
         speed={speed}
         score={score}
