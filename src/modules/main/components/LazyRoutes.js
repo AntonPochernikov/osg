@@ -1,5 +1,5 @@
 import React from 'react';
-import store from 'store/store';
+import store from 'store';
 import sleep from 'libs/sleep';
 import { isDev } from 'constants/environment';
 
