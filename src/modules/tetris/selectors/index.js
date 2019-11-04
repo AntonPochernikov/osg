@@ -9,12 +9,13 @@ import {
 import times from 'libs/times';
 import config from '../constants/config';
 
-export const getGrid = state => state.tetris.grid;
-export const getCurrentFigure = state => state.tetris.figure.current;
-export const getNextFigure = state => state.tetris.figure.next;
-export const getSpeed = state => state.tetris.speed;
-export const getScore = state => state.tetris.score;
-export const getGameState = state => state.tetris.gameState;
+export const tetris = state => state.tetris;
+export const getGrid = createSelector(tetris, tetris => tetris.grid);
+export const getCurrentFigure = createSelector(tetris, tetris => tetris.figure.current);
+export const getNextFigure = createSelector(tetris, tetris => tetris.figure.next);
+export const getSpeed = createSelector(tetris, tetris => tetris.speed);
+export const getScore = createSelector(tetris, tetris => tetris.score);
+export const getGameState = createSelector(tetris, tetris => tetris.gameState);
 
 // add current figure on grid
 export const getGridCells = createSelector(

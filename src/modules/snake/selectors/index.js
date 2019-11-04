@@ -9,11 +9,12 @@ import config from '../constants/config';
 import grid from '../constants/snakeGrid';
 import generateNextCell from '../libs/generateNextCell';
 
-export const getGameState = state => state.snake.gameState;
-export const getApple = state => state.snake.apple;
-export const getSpeed = state => state.snake.speed;
-export const getBody = state => state.snake.body;
-export const getDirection = state => state.snake.direction;
+export const snake = state => state.snake;
+export const getGameState = createSelector(snake, snake => snake.gameState);
+export const getApple = createSelector(snake, snake => snake.apple);
+export const getSpeed = createSelector(snake, snake => snake.speed);
+export const getBody = createSelector(snake, snake => snake.body);
+export const getDirection = createSelector(snake, snake => snake.direction);
 
 export const getGridCells = createSelector(
   [getApple, getBody],
