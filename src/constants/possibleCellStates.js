@@ -2,7 +2,7 @@ export default [
   'empty',
   'filled',
   'indeterminate',
-  'crossedOut',
+  'crossed',
   'pointed',
   'rounded',
   'withContent',

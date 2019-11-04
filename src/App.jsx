@@ -1,7 +1,7 @@
 import React from 'react';
 import { Provider } from 'react-redux';
-import store from 'store/store.js';
-import MainRouter from 'components/router/MainRouter.jsx';
+import store from 'store/store';
+import MainRouter from 'modules/main/components/MainRouter';
 import './App.css';
 
 export default function App() {

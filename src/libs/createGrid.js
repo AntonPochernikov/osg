@@ -1,4 +1,4 @@
-import { cons as consCell } from './cell.js';
+import { cons as consCell } from './cell';
 
 export const createClearRow = (columns, y) => {
   return [...Array(columns).keys()].map(x => consCell([x, y], { state: 'empty' }));

@@ -6,8 +6,8 @@ import {
 } from 'redux';
 import createSagaMiddleWare from 'redux-saga';
 
-import user from 'reducers/user';
-import rootSaga from 'sagas';
+import user from 'modules/user/reducers';
+import rootSaga from 'modules/main/sagas';
 
 // eslint-disable-next-line no-underscore-dangle
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
