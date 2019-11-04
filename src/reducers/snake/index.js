@@ -3,7 +3,7 @@ import { handleActions } from 'redux-actions';
 import { snakeConfig } from 'constants/config';
 import * as action from 'actions';
 import Snake from 'libs/Snake';
-import { cons as consCell, setState } from 'libs/cell.js';
+import { cons as consCell, setState, paint } from 'libs/cell.js';
 import generateNextCell from 'libs/generateNextCell';
 
 const {
@@ -31,17 +31,20 @@ const apple = handleActions({
 }, null);
 
 const body = handleActions({
+  // TODO: generate snake
   [action.snake.startGame]: () => new Snake([
-    consCell([Math.floor(cols / 2), rows - 6], { state: 'filled' }),
-    consCell([Math.floor(cols / 2), rows - 5], { state: 'filled' }),
-    consCell([Math.floor(cols / 2), rows - 4], { state: 'filled' }),
-    consCell([Math.floor(cols / 2), rows - 3], { state: 'filled' }),
-    consCell([Math.floor(cols / 2), rows - 2], { state: 'filled' }),
+    consCell([Math.floor(cols / 2), rows - 6], { state: 'filled', color: 'yellow' }),
+    consCell([Math.floor(cols / 2), rows - 5], { state: 'filled', color: 'yellow' }),
+    consCell([Math.floor(cols / 2), rows - 4], { state: 'filled', color: 'yellow' }),
+    consCell([Math.floor(cols / 2), rows - 3], { state: 'filled', color: 'yellow' }),
+    consCell([Math.floor(cols / 2), rows - 2], { state: 'filled', color: 'yellow' }),
   ]),
   [action.snake.moveSnake]: (prevSnake, { payload: { direction } }) => prevSnake.move(
     generateNextCell(prevSnake.getHead(), direction),
   ),
-  [action.snake.eatApple]: (prevSnake, { payload: { apple } }) => prevSnake.eat(apple),
+  [action.snake.eatApple]: (prevSnake, { payload: { apple } }) => prevSnake.eat(
+    paint(apple, 'yellow')
+  ),
   [action.snake.stopGame]: () => null,
   [action.snake.finishGame]: (prevSnake) => new Snake(
     prevSnake.getCells().map(cell => setState(cell, 'indeterminate')),

@@ -1,9 +1,8 @@
 import { createSelector } from 'reselect';
 import {
-  // getCoordinates,
   haveSameCoordinates,
   getState,
-  // isFilled,
+  getColor,
 } from 'libs/cell';
 import times from 'libs/times';
 import { snakeConfig as config } from 'constants/config';
@@ -25,15 +24,21 @@ export const getGridCells = createSelector(
         const commonCell = snakeCells.find(c => haveSameCoordinates(c, cell));
         const isAppleCell = apple && haveSameCoordinates(cell, apple);
         if (commonCell) {
-          return getState(commonCell);
+          return {
+            state: getState(commonCell),
+            color: getColor(commonCell),
+          };
         }
         if (isAppleCell) {
-          return getState(apple);
+          return {
+            state: getState(apple),
+            color: getColor(apple),
+          };
         }
-        return getState(cell);
+        return { state: getState(cell) };
       }));
     }
-    return grid.map(tr => tr.map(getState));
+    return grid.map(tr => tr.map(cell => ({ state: getState(cell) })));
   },
 );
 

@@ -9,10 +9,11 @@ const Grid = ({ grid = [], gameState = 'initial' }) => (
       <tbody className="snake-grid__body">
         {grid.map((tr, i) => (
           <tr className="snake-grid__row" key={i}>
-            {tr.map((cellState, y) => {
+            {tr.map(({ state, color }, y) => {
               const cellClass = cn(
                 'snake-grid__cell',
-                `snake-grid__cell--${cellState}`,
+                `snake-grid__cell--${state}`,
+                { [`snake-grid__cell--${color}`]: color },
               );
               return <td className={cellClass} key={y} />;
             })}
@@ -27,7 +28,14 @@ const Grid = ({ grid = [], gameState = 'initial' }) => (
 );
 
 Grid.propTypes = {
-  grid: PropTypes.arrayOf(PropTypes.array).isRequired,
+  grid: PropTypes.arrayOf(
+    PropTypes.arrayOf(
+      PropTypes.shape({
+        state: PropTypes.string.isRequired,
+        color: PropTypes.string,
+      }),
+    ),
+  ).isRequired,
   gameState: PropTypes.oneOf(['initial', 'started', 'paused', 'finished']).isRequired,
 };
 

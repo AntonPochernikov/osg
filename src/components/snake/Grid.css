@@ -49,8 +49,15 @@
 	height: 10px;
 	box-sizing: border-box;
 
-	background-color: var(--color-yellow);
 	border-radius: 2px;
+}
+
+.snake-grid__cell--yellow::before {
+	background-color: var(--color-yellow);
+}
+
+.snake-grid__cell--green::before {
+	background-color: var(--color-green);
 }
 
 .snake-grid__cell--indeterminate {

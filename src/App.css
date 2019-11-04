@@ -37,6 +37,8 @@ body {
 	--color-yellow--darken: rgb(206, 187, 80);
 	--color-yellow--darkest: rgb(193, 172, 54);
 
+	--color-green: rgb(88, 233, 88);
+
 	--color-orange--lightest: rgb(244, 229, 214);
 	--color-orange--lighten: rgb(235, 209, 183);
 	--color-orange--light: rgb(227, 190, 152);
