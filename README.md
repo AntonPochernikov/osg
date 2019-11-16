@@ -5,12 +5,6 @@ This repo is made for testing React-Redux and other stuff building simple old sc
 You can try it out here:
 https://antonpochernikov.github.io/osg/
 
-### Development mode
-```
-npm run dev
-```
-
-### Production mode
-```
-npm run build
-```
+## Games
+- Tetris (pretty much done);
+- Snake (beta);

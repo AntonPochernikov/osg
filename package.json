@@ -1,6 +1,6 @@
 {
   "name": "osg",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "old school games made with react&redux",
   "private": true,
   "repository": {
