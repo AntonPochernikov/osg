@@ -1,12 +1,13 @@
 import React from 'react';
-import store from 'store';
-import sleep from 'libs/sleep';
-import { isDev } from 'constants/environment';
+
+import { IS_DEV } from 'constants/environment';
+import { sleep } from 'libs/sleep';
+import { store } from 'store';
 
 export const HomePage = React.lazy(async () => {
   const [home] = await Promise.all([
     import(/* webpackChunkName: "home" */ 'modules/home/components/HomePage'),
-    sleep(isDev ? 0 : 1000),
+    sleep(IS_DEV ? 0 : 1000),
   ]);
   return home;
 });
@@ -16,9 +17,9 @@ export const Tetris = React.lazy(async () => {
     { default: tetrisReducer },
     tetris,
   ] = await Promise.all([
-    import(/* webpackChunkName: "tetris-reducer" */ 'modules/tetris/reducers'),
+    import(/* webpackChunkName: "tetris-reducer" */ 'modules/tetris/reducer'),
     import(/* webpackChunkName: "tetris" */ 'modules/tetris/containers/Root'),
-    sleep(isDev ? 0 : 1000),
+    sleep(IS_DEV ? 0 : 1000),
   ]);
   store.inject('tetris', tetrisReducer);
   return tetris;
@@ -29,9 +30,9 @@ export const Snake = React.lazy(async () => {
     { default: snakeReducer },
     snake,
   ] = await Promise.all([
-    import(/* webpackChunkName: "snake-reducer" */ 'modules/snake/reducers'),
+    import(/* webpackChunkName: "snake-reducer" */ 'modules/snake/reducer'),
     import(/* webpackChunkName: "snake" */ 'modules/snake/containers/Root'),
-    sleep(isDev ? 0 : 1000),
+    sleep(IS_DEV ? 0 : 1000),
   ]);
   store.inject('snake', snakeReducer);
   return snake;

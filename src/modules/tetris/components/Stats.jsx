@@ -1,11 +1,13 @@
-import React, { useCallback } from 'react';
-import PropTypes from 'prop-types';
-import NextFigureGrid from './NextFigureGrid';
-import Settings from './Settings';
-import GameButton from 'modules/common/components/GameButton';
+import React, { useCallback, useMemo } from 'react';
+
+import { GameButton } from 'modules/common/components/GameButton';
+
+import { NextFigureGrid } from './NextFigureGrid';
+import { Settings } from './Settings';
+
 import './Stats.css';
 
-export default function Stats({
+export function Stats({
   score,
   speed,
   gameState,
@@ -13,7 +15,7 @@ export default function Stats({
   nextFigureGrid,
   ...actions
 }) {
-  const buttonByState = {
+  const buttonByState = useMemo(() => ({
     initial: {
       title: 'Start New Game',
       action: actions.startGame,
@@ -30,9 +32,9 @@ export default function Stats({
       title: 'Start New Game',
       action: actions.startGame,
     },
-  };
+  }), [actions.startGame, actions.stopGame]);
 
-  const getButtonTitle = () => buttonByState[gameState].title;
+  const buttonTitle = buttonByState[gameState].title;
 
   const handleGameButton = useCallback(
     (e) => {
@@ -57,19 +59,19 @@ export default function Stats({
       />
 
       <GameButton onClick={handleGameButton}>
-        {getButtonTitle()}
+        {buttonTitle}
       </GameButton>
     </div>
   );
 };
 
-Stats.propTypes = {
-  gameState: PropTypes.oneOf(['initial', 'started', 'paused', 'finished']).isRequired,
-  speed: PropTypes.number.isRequired,
-  score: PropTypes.number.isRequired,
-  nextFigurePreview: PropTypes.array.isRequired,
-  canAdjustSpeed: PropTypes.bool.isRequired,
-};
+// Stats.propTypes = {
+//   gameState: PropTypes.oneOf(['initial', 'started', 'paused', 'finished']).isRequired,
+//   speed: PropTypes.number.isRequired,
+//   score: PropTypes.number.isRequired,
+//   nextFigurePreview: PropTypes.array.isRequired,
+//   canAdjustSpeed: PropTypes.bool.isRequired,
+// };
 
 Stats.defaultProps = {
   gameState: 'initial',

@@ -1,10 +1,9 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import cn from 'classnames';
-import cellStates from 'constants/possibleCellStates';
+
 import './Grid.css';
 
-export default function Grid({ grid = [], gameState = 'initial' }) {
+export function Grid({ grid = [], gameState = 'initial' }) {
   return (
     <div className="snake-grid-container">
       <table className="snake-grid">
@@ -30,14 +29,14 @@ export default function Grid({ grid = [], gameState = 'initial' }) {
   );
 }
 
-Grid.propTypes = {
-  grid: PropTypes.arrayOf(
-    PropTypes.arrayOf(
-      PropTypes.shape({
-        state: PropTypes.oneOf(cellStates).isRequired,
-        color: PropTypes.string,
-      }),
-    ),
-  ).isRequired,
-  gameState: PropTypes.oneOf(['initial', 'started', 'paused', 'finished']).isRequired,
-};
+// Grid.propTypes = {
+//   grid: PropTypes.arrayOf(
+//     PropTypes.arrayOf(
+//       PropTypes.shape({
+//         state: PropTypes.oneOf(cellStates).isRequired,
+//         color: PropTypes.string,
+//       }),
+//     ),
+//   ).isRequired,
+//   gameState: PropTypes.oneOf(['initial', 'started', 'paused', 'finished']).isRequired,
+// };

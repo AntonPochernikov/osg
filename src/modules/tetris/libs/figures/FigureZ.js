@@ -1,7 +1,8 @@
 import { cons as consCell, getCoordinates } from 'libs/cell';
-import Figure from './Figure';
 
-export default class FigureZ extends Figure {
+import { Figure } from './Figure';
+
+export class FigureZ extends Figure {
   static alignment = {
     down: {
       direction: 'down',

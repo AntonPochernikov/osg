@@ -1,7 +1,8 @@
 import { getCoordinates, moveTo } from 'libs/cell';
-import config from '../constants/config';
 
-const { grid } = config;
+import { CONFIG } from '../constants/config';
+
+const { grid } = CONFIG;
 
 const coordinatesByDirection = {
   up: ([col, row]) => ([
@@ -27,10 +28,11 @@ function generateNextCoordinates(coordinates, direction) {
   if (!getNext) {
     throw new Error(`Invalid direction - GENERATE_NEXT_COORDINATES: ${direction}`);
   }
+
   return getNext(coordinates);
 }
 
-export default (cell, direction) => {
+export const generateNextCell = (cell, direction) => {
   const coordinates = getCoordinates(cell);
 
   return moveTo(cell, generateNextCoordinates(coordinates, direction));

@@ -5,8 +5,10 @@ import {
   Redirect,
   Switch,
 } from 'react-router-dom';
-import PageLoader from 'modules/common/components/PageLoader';
+
 import { ENV_PREFIX } from 'constants/environment';
+import { PageLoader } from 'modules/common/components/PageLoader';
+
 import { HomePage, Tetris, Snake } from './LazyRoutes';
 
 const renderRoot = () => <Redirect to="/home" />;
@@ -14,7 +16,7 @@ const renderHome = () => <HomePage />;
 const renderTetris = () => <Tetris />;
 const renderSnake = () => <Snake />;
 
-export default function MainRouter() {
+export function MainRouter() {
   return (
     <Router basename={ENV_PREFIX}>
       <React.Suspense fallback={<PageLoader />}>

@@ -1,62 +1,38 @@
 {
-  "name": "osg",
-  "version": "1.1.0",
-  "description": "old school games made with react&redux",
+  "name": "my-app",
+  "version": "0.1.0",
   "private": true,
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/AntonPochernikov/old-school-games.git"
-  },
-  "keywords": [],
-  "author": "Anton Pochernikov",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/AntonPochernikov/old-school-games/issues"
-  },
-  "homepage": "https://antonpochernikov.github.io/osg",
   "dependencies": {
-    "classnames": "^2.2.6",
-    "gh-pages": "^2.0.1",
-    "lodash": "^4.17.14",
-    "prop-types": "^15.7.2",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
-    "react-redux": "^7.1.0",
-    "react-router-dom": "^5.0.1",
-    "react-scripts": "^3.1.1",
-    "redux": "^4.0.1",
+    "@reduxjs/toolkit": "^1.5.1",
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.3.2",
+    "@testing-library/user-event": "^7.1.2",
+    "@types/jest": "^24.0.0",
+    "@types/node": "^12.0.0",
+    "@types/react": "^16.9.0",
+    "@types/react-dom": "^16.9.0",
+    "@types/react-redux": "^7.1.7",
+    "classnames": "^2.3.1",
+    "lodash": "^4.17.21",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-redux": "^7.2.0",
+    "react-router-dom": "^5.2.1",
+    "react-scripts": "4.0.3",
+    "redux": "^4.1.1",
     "redux-actions": "^2.6.5",
-    "redux-saga": "^1.0.5",
-    "reselect": "^4.0.0"
+    "redux-saga": "^1.1.3",
+    "reselect": "^4.0.0",
+    "typescript": "~4.1.5"
   },
   "scripts": {
-    "dev": "react-scripts start",
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": "react-app"
-  },
-  "jest": {
-    "collectCoverageFrom": [
-      "src/**/*.{js,jsx}",
-      "!<rootDir>/node_modules/",
-      "!<rootDir>/path/to/dir/"
-    ],
-    "coverageThreshold": {
-      "global": {
-        "branches": 80,
-        "functions": 80,
-        "lines": 80,
-        "statements": 80
-      }
-    },
-    "coverageReporters": [
-      "text"
-    ]
   },
   "browserslist": {
     "production": [

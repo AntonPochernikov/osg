@@ -1,7 +1,9 @@
 import { connect } from 'react-redux';
+
 import * as actionCreators from 'modules/main/actions';
 import * as select from 'modules/main/selectors';
-import Stats from '../components/Stats';
+
+import { Stats as StatsCommon } from '../components/Stats';
 
 const mapStateToProps = state => ({
   gameState: select.tetris.getGameState(state),
@@ -11,4 +13,4 @@ const mapStateToProps = state => ({
   canAdjustSpeed: select.tetris.canAdjustSpeed(state),
 });
 
-export default connect(mapStateToProps, actionCreators.tetris)(Stats);
+export const Stats = connect(mapStateToProps, actionCreators.tetris)(StatsCommon);

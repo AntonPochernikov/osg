@@ -1,12 +1,14 @@
 import React, { useEffect, useRef } from 'react';
-import PropTypes from 'prop-types';
-import Header from 'modules/common/components/Header';
-import Grid from '../containers/Grid';
-import Stats from '../containers/Stats';
-import Info from './Info';
+
+import { Header } from 'modules/common/components/Header';
+
+import { Grid } from '../containers/Grid';
+import { Stats } from '../containers/Stats';
+import { Info } from './Info';
+
 import './Root.css';
 
-export default function Root({
+export function Root({
   gameState = 'initial',
   pauseGame,
   resumeGame,
@@ -91,6 +93,6 @@ export default function Root({
   );
 }
 
-Root.propTypes = {
-  gameState: PropTypes.oneOf(['initial', 'started', 'paused', 'finished']).isRequired,
-};
+// Root.propTypes = {
+//   gameState: PropTypes.oneOf(['initial', 'started', 'paused', 'finished']).isRequired,
+// };

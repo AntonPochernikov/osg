@@ -3,9 +3,10 @@ import {
   head,
   tail,
 } from 'lodash';
+
 import { haveSameCoordinates } from 'libs/cell';
 
-export default class Snake {
+export class Snake {
   constructor(cells) {
     this.cells = cells;
   }

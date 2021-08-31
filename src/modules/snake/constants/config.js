@@ -1,4 +1,4 @@
-export default {
+export const CONFIG = {
   speed: {
     min: 1,
     init: 4,

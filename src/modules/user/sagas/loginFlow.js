@@ -26,7 +26,7 @@ function* authorize(user, password) {
   }
 }
 
-export default function* loginFlow() {
+export function* loginFlow() {
   while (true) {
     const { user, password } = yield take('USER/LOGIN/REQUEST');
 

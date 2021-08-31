@@ -1,11 +1,13 @@
 import sample from 'lodash/sample';
 import flatten from 'lodash/flatten';
+
 import { haveSameCoordinates, setState, paint } from 'libs/cell';
-import grid from '../constants/snakeGrid';
 
-const flattenGrid = flatten(grid);
+import { snakeGrid } from '../constants/snakeGrid';
 
-export default (snake) => {
+const flattenGrid = flatten(snakeGrid);
+
+export const generateApple = (snake) => {
   const snakeCells = snake.getCells();
   const filtered = flattenGrid
     .filter(c1 => !snakeCells.some(c2 => haveSameCoordinates(c1, c2)));

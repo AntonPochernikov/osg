@@ -1,8 +1,9 @@
 import React from 'react';
 import cn from 'classnames';
+
 import './NextFigureGrid.css';
 
-export default function NextFigureGrid ({ grid }) {
+export function NextFigureGrid ({ grid }) {
   return (
     <div className="tetris-stats__next-figure">
       <table className="next-figure-grid">

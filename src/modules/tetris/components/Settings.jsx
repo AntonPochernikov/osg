@@ -1,28 +1,25 @@
 import React, { useCallback } from 'react';
-import config from '../constants/config';
+
+import { CONFIG } from '../constants/config';
+
 import './Settings.css';
 
-const { speed: { min, max } } = config;
+const { speed: { min, max } } = CONFIG;
 
-export default function Settings({
+export function Settings({
   speed,
   score,
   canAdjustSpeed,
   incSpeed,
   decSpeed,
 }) {
-  const handleDecSpeedBtn = useCallback(
-    () => {
-      decSpeed();
-    },
-    [decSpeed],
-  );
-  const handleIncSpeedBtn = useCallback(
-    () => {
-      incSpeed();
-    },
-    [incSpeed],
-  );
+  const handleDecSpeedBtn = useCallback(() => {
+    decSpeed();
+  }, [decSpeed]);
+
+  const handleIncSpeedBtn = useCallback(() => {
+    incSpeed();
+  }, [incSpeed]);
 
   return (
     <div className="tetris-stats__settings">

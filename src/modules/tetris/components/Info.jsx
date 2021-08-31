@@ -1,9 +1,11 @@
 import React from 'react';
-import ArrowKeys from 'modules/common/components/ArrowKeys';
-import KeyboardKey from 'modules/common/components/KeyboardKey';
+
+import { ArrowKeys } from 'modules/common/components/ArrowKeys';
+import { KeyboardKey } from 'modules/common/components/KeyboardKey';
+
 import './Info.css';
 
-export default function Info() {
+export function Info() {
   return (
     <div className="tetris-info">
       <h2 className="tetris-info__title">Game info</h2>

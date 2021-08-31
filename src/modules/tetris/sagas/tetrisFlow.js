@@ -6,9 +6,11 @@ import {
   race,
   takeEvery,
 } from 'redux-saga/effects';
+
+import { sleep } from 'libs/sleep';
+
 import * as action from 'modules/main/actions';
 import * as selector from 'modules/main/selectors';
-import sleep from 'libs/sleep';
 
 function* selectCompletedRow(row) {
   yield put(action.tetris.selectCompletedRow({ rowIndex: row }));
@@ -100,7 +102,7 @@ function* figures() {
   }
 }
 
-export default function* game() {
+export function* tetrisFlow() {
   while (true) {
     yield take('TETRIS/GAME/START');
     yield race({

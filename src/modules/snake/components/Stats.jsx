@@ -1,17 +1,19 @@
-import React, { useCallback } from 'react';
-import PropTypes from 'prop-types';
+import React, { useCallback, useMemo } from 'react';
+
+import { GameButton } from 'modules/common/components/GameButton';
+
 // import Settings from './Settings';
-import GameButton from 'modules/common/components/GameButton';
+
 import './Stats.css';
 
-export default function Stats({
+export function Stats({
   // score,
   // speed,
   gameState,
   // canAdjustSpeed,
   ...actions
 }) {
-  const buttonByState = {
+  const buttonByState = useMemo(() => ({
     initial: {
       title: 'Start New Game',
       action: actions.startGame,
@@ -28,7 +30,7 @@ export default function Stats({
       title: 'Start New Game',
       action: actions.startGame,
     },
-  };
+  }) , [actions.startGame, actions.stopGame]);
 
   const getButtonTitle = () => buttonByState[gameState].title;
 
@@ -62,12 +64,12 @@ export default function Stats({
   );
 };
 
-Stats.propTypes = {
-  gameState: PropTypes.oneOf(['initial', 'started', 'paused', 'finished']).isRequired,
-  // speed: PropTypes.number.isRequired,
-  // score: PropTypes.number.isRequired,
-  // canAdjustSpeed: PropTypes.bool.isRequired,
-};
+// Stats.propTypes = {
+//   gameState: PropTypes.oneOf(['initial', 'started', 'paused', 'finished']).isRequired,
+//   // speed: PropTypes.number.isRequired,
+//   // score: PropTypes.number.isRequired,
+//   // canAdjustSpeed: PropTypes.bool.isRequired,
+// };
 
 Stats.defaultProps = {
   gameState: 'initial',

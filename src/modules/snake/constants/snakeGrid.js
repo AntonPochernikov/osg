@@ -1,6 +1,6 @@
 import { createGrid } from 'libs/createGrid';
-import config from './config';
+import { CONFIG } from './config';
 
-const { grid: { rows, cols } } = config;
+const { grid: { rows, cols } } = CONFIG;
 
-export default createGrid(cols, rows);
+export const snakeGrid = createGrid(cols, rows);

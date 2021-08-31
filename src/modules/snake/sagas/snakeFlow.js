@@ -5,11 +5,14 @@ import {
   select,
   race,
 } from 'redux-saga/effects';
+
+import { sleep } from 'libs/sleep';
+
 import * as action from 'modules/main/actions';
 import * as selector from 'modules/main/selectors';
-import sleep from 'libs/sleep';
-import isAllowedDirection from '../libs/isAllowedDirection';
-import generateApple from '../libs/generateApple';
+
+import { isAllowedDirection } from '../libs/isAllowedDirection';
+import { generateApple } from '../libs/generateApple';
 
 function* movement(apple) {
   while (true) {
@@ -61,7 +64,7 @@ function* applesLoop() {
   }
 }
 
-export default function* game() {
+export function* snakeFlow() {
   while (true) {
     yield take('SNAKE/GAME/START');
     yield race({
