@@ -1,54 +1,54 @@
 import { Snake } from '../Snake';
-import { cons } from 'libs/cell';
+import { makeCell } from 'utils/cell';
 
 describe('snake', () => {
   const snake = new Snake([
-    cons([8, 5], 'filled'),
-    cons([8, 6], 'filled'),
-    cons([8, 7], 'filled'),
+    makeCell([8, 5], 'filled'),
+    makeCell([8, 6], 'filled'),
+    makeCell([8, 7], 'filled'),
   ]);
 
   test('get cells', () => {
     expect(snake.getCells()).toEqual([
-      cons([8, 5], 'filled'),
-      cons([8, 6], 'filled'),
-      cons([8, 7], 'filled'),
+      makeCell([8, 5], 'filled'),
+      makeCell([8, 6], 'filled'),
+      makeCell([8, 7], 'filled'),
     ]);
   });
 
   test('move', () => {
     expect(
       snake
-        .move(cons([8, 4], 'filled'))
+        .move(makeCell([8, 4], 'filled'))
         .getCells(),
     ).toEqual([
-      cons([8, 4], 'filled'),
-      cons([8, 5], 'filled'),
-      cons([8, 6], 'filled'),
+      makeCell([8, 4], 'filled'),
+      makeCell([8, 5], 'filled'),
+      makeCell([8, 6], 'filled'),
     ]);
 
     expect(
       snake
-        .move(cons([9, 5], 'filled'))
-        .move(cons([9, 4], 'filled'))
+        .move(makeCell([9, 5], 'filled'))
+        .move(makeCell([9, 4], 'filled'))
         .getCells(),
     ).toEqual([
-        cons([9, 4], 'filled'),
-        cons([9, 5], 'filled'),
-        cons([8, 5], 'filled'),
+        makeCell([9, 4], 'filled'),
+        makeCell([9, 5], 'filled'),
+        makeCell([8, 5], 'filled'),
     ]);
   });
 
   test('eat', () => {
     expect(
       snake
-        .eat(cons([8, 4], 'filled'),)
+        .eat(makeCell([8, 4], 'filled'),)
         .getCells(),
     ).toEqual([
-      cons([8, 4], 'filled'),
-      cons([8, 5], 'filled'),
-      cons([8, 6], 'filled'),
-      cons([8, 7], 'filled'),
+      makeCell([8, 4], 'filled'),
+      makeCell([8, 5], 'filled'),
+      makeCell([8, 6], 'filled'),
+      makeCell([8, 7], 'filled'),
     ]);
   });
 
@@ -56,7 +56,7 @@ describe('snake', () => {
     expect(snake.getLength()).toEqual(3);
     expect(
       snake
-        .eat(cons[0, 0], 'filled')
+        .eat(makeCell[0, 0], 'filled')
         .getLength(),
     ).toEqual(4)
   });
@@ -65,7 +65,7 @@ describe('snake', () => {
     expect(snake.isColliding()).toBeFalsy();
     expect(
       snake
-        .move(cons([8, 6], 'filled'))
+        .move(makeCell([8, 6], 'filled'))
         .isColliding()
     ).toBeTruthy();
   });

@@ -4,7 +4,7 @@ import {
   tail,
 } from 'lodash';
 
-import { haveSameCoordinates } from 'libs/cell';
+import { haveSameCoordinates } from 'utils/cell';
 
 export class Snake {
   constructor(cells) {

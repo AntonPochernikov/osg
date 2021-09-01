@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { IS_DEV } from 'constants/environment';
-import { sleep } from 'libs/sleep';
+import { sleep } from 'utils/sleep';
 import { store } from 'store';
 
 export const HomePage = React.lazy(async () => {

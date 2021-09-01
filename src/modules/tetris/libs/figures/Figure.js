@@ -1,7 +1,7 @@
-import { cons as consCell } from 'libs/cell';
+import { makeCell } from 'utils/cell';
 
 export class Figure {
-  constructor(head = consCell([0, 0]), direction = 'down') {
+  constructor(head = makeCell([0, 0]), direction = 'down') {
     this.head = head;
     this.direction = direction;
   }

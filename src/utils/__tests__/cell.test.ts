@@ -1,5 +1,5 @@
 import {
-  cons,
+  makeCell,
   isCell,
   getCoordinates,
   getCol,
@@ -17,33 +17,28 @@ import {
   paint,
 } from '../cell';
 
-const c1 = cons([1, 1], { state: 'empty' });
-const c2 = cons([5, 0], { state: 'filled', color: 'yellow' });
-const c3 = cons([5, 0], { state: 'withContent', color: 'black', content: 'content' });
+const c1 = makeCell([1, 1], { state: 'empty' });
+const c2 = makeCell([5, 0], { state: 'filled', color: 'yellow' });
+const c3 = makeCell([5, 0], { state: 'withContent', color: 'black', content: 'content' });
 
 describe('cell abstraction', () => {
-  test('cons', () => {
-    expect(cons([1, 3], { state: 'empty' })).toEqual({
+  test('makeCell', () => {
+    expect(makeCell([1, 3], { state: 'empty' })).toEqual({
       coordinates: [1, 3],
       state: 'empty',
       color: 'black',
       content: null,
       isCell: true,
     });
-
-    expect(() => cons(['1', 3], { state: 'empty' })).toThrow();
-    expect(() => cons('string', { state: 'empty' })).toThrow();
   });
 
   test('isCell', () => {
     expect(isCell(c1)).toBeTruthy();
-    expect(isCell()).toBeFalsy();
     expect(isCell(null)).toBeFalsy();
   });
 
   test('getCoordinates', () => {
     expect(getCoordinates(c1)).toEqual([1, 1]);
-    expect(() => getCoordinates(null)).toThrow();
   });
 
   test('getCol', () => {
@@ -88,15 +83,15 @@ describe('cell operations', () => {
 
   test('toString', () => {
     expect(toString(c1)).toBe(
-      'coorinates: [1, 1], state: empty, color: black, content: null',
+      'coordinates: [1, 1], state: empty, color: black, content: null',
     );
     expect(toString(c3)).toBe(
-      'coorinates: [5, 0], state: withContent, color: black, content: content',
+      'coordinates: [5, 0], state: withContent, color: black, content: content',
     );
   });
 
   test('moveDown', () => {
-    expect(moveDown(c3)).toEqual(cons([getCol(c3), getRow(c3) + 1], {
+    expect(moveDown(c3)).toEqual(makeCell([getCol(c3), getRow(c3) + 1], {
       state: getState(c3),
       color: getColor(c3),
       content: getContent(c3),
@@ -104,7 +99,7 @@ describe('cell operations', () => {
   });
 
   test('moveTo', () => {
-    expect(moveTo(c3, [5, 13])).toEqual(cons([5, 13], {
+    expect(moveTo(c3, [5, 13])).toEqual(makeCell([5, 13], {
       state: getState(c3),
       color: getColor(c3),
       content: getContent(c3),
@@ -113,12 +108,12 @@ describe('cell operations', () => {
 
   test('setState', () => {
     expect(setState(c2, 'indeterminate')).toEqual(
-      cons([5, 0], { state: 'indeterminate', color: 'yellow' }),
+      makeCell([5, 0], { state: 'indeterminate', color: 'yellow' }),
     );
   });
 
   test('paint', () => {
-    expect(paint(c1, 'green')).toEqual(cons(getCoordinates(c1), {
+    expect(paint(c1, 'green')).toEqual(makeCell(getCoordinates(c1), {
       state: getState(c1),
       color: 'green',
       content: getContent(c1),

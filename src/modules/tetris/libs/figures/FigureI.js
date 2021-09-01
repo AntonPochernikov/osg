@@ -1,4 +1,4 @@
-import { cons as consCell, getCoordinates } from 'libs/cell';
+import { makeCell, getCoordinates } from 'utils/cell';
 
 import { Figure } from './Figure';
 
@@ -6,13 +6,13 @@ export class FigureI extends Figure {
   static alignment = {
     down: {
       direction: 'down',
-      startHead: consCell([5, 0], { state: 'filled' }),
+      startHead: makeCell([5, 0], { state: 'filled' }),
       rotate: head => new FigureI(head, 'right'),
       getCells: (head) => {
         const result = [];
         const [headX, headY] = getCoordinates(head);
         for (let y = headY; y < headY + 4; y += 1) {
-          result.push(consCell([headX, y], { state: 'filled' }));
+          result.push(makeCell([headX, y], { state: 'filled' }));
         }
         return result;
       },
@@ -20,13 +20,13 @@ export class FigureI extends Figure {
     },
     right: {
       direction: 'right',
-      startHead: consCell([5, 0], { state: 'filled' }),
+      startHead: makeCell([5, 0], { state: 'filled' }),
       rotate: head => new FigureI(head, 'down'),
       getCells: (head) => {
         const result = [];
         const [headX, headY] = getCoordinates(head);
         for (let x = headX - 2; x < headX + 2; x += 1) {
-          result.push(consCell([x, headY], { state: 'filled' }));
+          result.push(makeCell([x, headY], { state: 'filled' }));
         }
         return result;
       },
@@ -49,12 +49,12 @@ export class FigureI extends Figure {
   }
 
   setPosition(x, y) {
-    return new FigureI(consCell([x, y], { state: 'filled' }), this.direction);
+    return new FigureI(makeCell([x, y], { state: 'filled' }), this.direction);
   }
 
   move(x, y) {
     const [headX, headY] = getCoordinates(this.head);
-    return new FigureI(consCell([headX + x, headY + y], { state: 'filled' }), this.direction);
+    return new FigureI(makeCell([headX + x, headY + y], { state: 'filled' }), this.direction);
   }
 
   moveDown() {

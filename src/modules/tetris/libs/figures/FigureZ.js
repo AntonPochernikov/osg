@@ -1,4 +1,4 @@
-import { cons as consCell, getCoordinates } from 'libs/cell';
+import { makeCell, getCoordinates } from 'utils/cell';
 
 import { Figure } from './Figure';
 
@@ -6,30 +6,30 @@ export class FigureZ extends Figure {
   static alignment = {
     down: {
       direction: 'down',
-      startHead: consCell([5, 0], { state: 'filled' }),
+      startHead: makeCell([5, 0], { state: 'filled' }),
       rotate: head => new FigureZ(head, 'left'),
       getCells: (head) => {
         const result = [];
         const [headX, headY] = getCoordinates(head);
-        result.push(consCell([headX, headY], { state: 'filled' }));
-        result.push(consCell([headX - 1, headY], { state: 'filled' }));
-        result.push(consCell([headX, headY + 1], { state: 'filled' }));
-        result.push(consCell([headX + 1, headY + 1], { state: 'filled' }));
+        result.push(makeCell([headX, headY], { state: 'filled' }));
+        result.push(makeCell([headX - 1, headY], { state: 'filled' }));
+        result.push(makeCell([headX, headY + 1], { state: 'filled' }));
+        result.push(makeCell([headX + 1, headY + 1], { state: 'filled' }));
         return result;
       },
       getSize: () => ({ height: 2, width: 3 }),
     },
     left: {
       direction: 'left',
-      startHead: consCell([5, 0], { state: 'filled' }),
+      startHead: makeCell([5, 0], { state: 'filled' }),
       rotate: head => new FigureZ(head, 'down'),
       getCells: (head) => {
         const result = [];
         const [headX, headY] = getCoordinates(head);
-        result.push(consCell([headX, headY], { state: 'filled' }));
-        result.push(consCell([headX - 1, headY + 1], { state: 'filled' }));
-        result.push(consCell([headX, headY + 1], { state: 'filled' }));
-        result.push(consCell([headX - 1, headY + 2], { state: 'filled' }));
+        result.push(makeCell([headX, headY], { state: 'filled' }));
+        result.push(makeCell([headX - 1, headY + 1], { state: 'filled' }));
+        result.push(makeCell([headX, headY + 1], { state: 'filled' }));
+        result.push(makeCell([headX - 1, headY + 2], { state: 'filled' }));
         return result;
       },
       getSize: () => ({ height: 3, width: 2 }),
@@ -51,12 +51,12 @@ export class FigureZ extends Figure {
   }
 
   setPosition(x, y) {
-    return new FigureZ(consCell([x, y], { state: 'filled' }), this.direction);
+    return new FigureZ(makeCell([x, y], { state: 'filled' }), this.direction);
   }
 
   move(x, y) {
     const [headX, headY] = getCoordinates(this.head);
-    return new FigureZ(consCell([headX + x, headY + y], { state: 'filled' }), this.direction);
+    return new FigureZ(makeCell([headX + x, headY + y], { state: 'filled' }), this.direction);
   }
 
   moveDown() {

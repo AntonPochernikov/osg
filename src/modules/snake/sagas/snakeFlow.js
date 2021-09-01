@@ -6,7 +6,7 @@ import {
   race,
 } from 'redux-saga/effects';
 
-import { sleep } from 'libs/sleep';
+import { sleep } from 'utils/sleep';
 
 import * as action from 'modules/main/actions';
 import * as selector from 'modules/main/selectors';

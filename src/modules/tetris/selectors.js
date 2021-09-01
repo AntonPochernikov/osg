@@ -1,13 +1,13 @@
 import { createSelector } from 'reselect';
 
-import { createGrid } from 'libs/createGrid';
+import { createGrid } from 'utils/createGrid';
 import {
   getCoordinates,
   haveSameCoordinates,
   getState,
   isFilled,
-} from 'libs/cell';
-import { times } from 'libs/times';
+} from 'utils/cell';
+import { times } from 'utils/times';
 
 import { CONFIG } from './constants/config';
 

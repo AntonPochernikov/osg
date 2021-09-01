@@ -1,7 +1,7 @@
 import { handleActions } from 'redux-actions';
 
-import { createGrid, createClearRow, createIndeterminateRow } from 'libs/createGrid';
-import { haveSameCoordinates, moveDown as moveCelldown } from 'libs/cell';
+import { createGrid, createClearRow, createIndeterminateRow } from 'utils/createGrid';
+import { haveSameCoordinates, moveDown as moveCelldown } from 'utils/cell';
 
 import * as action from 'modules/main/actions';
 

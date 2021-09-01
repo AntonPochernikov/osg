@@ -1,7 +1,7 @@
 import sample from 'lodash/sample';
 import flatten from 'lodash/flatten';
 
-import { haveSameCoordinates, setState, paint } from 'libs/cell';
+import { haveSameCoordinates, setState, paint } from 'utils/cell';
 
 import { snakeGrid } from '../constants/snakeGrid';
 

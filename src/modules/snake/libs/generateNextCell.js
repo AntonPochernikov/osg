@@ -1,4 +1,4 @@
-import { getCoordinates, moveTo } from 'libs/cell';
+import { getCoordinates, moveTo } from 'utils/cell';
 
 import { CONFIG } from '../constants/config';
 

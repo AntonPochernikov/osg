@@ -1,4 +1,4 @@
-import { createGrid } from 'libs/createGrid';
+import { createGrid } from 'utils/createGrid';
 import { CONFIG } from './config';
 
 const { grid: { rows, cols } } = CONFIG;

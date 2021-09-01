@@ -8,7 +8,7 @@ import {
   FigureZ,
 } from '..';
 
-import { cons } from 'libs/cell';
+import { makeCell } from 'utils/cell';
 
 describe('figures', () => {
   test('I', () => {
@@ -21,10 +21,10 @@ describe('figures', () => {
         .getCells()
     ).toEqual(
       expect.arrayContaining([
-        cons([-1, 1], { state: 'filled' }),
-        cons([0, 1], { state: 'filled' }),
-        cons([1, 1], { state: 'filled' }),
-        cons([2, 1], { state: 'filled' }),
+        makeCell([-1, 1], { state: 'filled' }),
+        makeCell([0, 1], { state: 'filled' }),
+        makeCell([1, 1], { state: 'filled' }),
+        makeCell([2, 1], { state: 'filled' }),
       ]),
     );
   });
@@ -38,10 +38,10 @@ describe('figures', () => {
         .getCells()
     ).toEqual(
       expect.arrayContaining([
-        cons([0, 1], { state: 'filled' }),
-        cons([0, 2], { state: 'filled' }),
-        cons([0, 3], { state: 'filled' }),
-        cons([1, 1], { state: 'filled' }),
+        makeCell([0, 1], { state: 'filled' }),
+        makeCell([0, 2], { state: 'filled' }),
+        makeCell([0, 3], { state: 'filled' }),
+        makeCell([1, 1], { state: 'filled' }),
       ]),
     );
   });
@@ -55,10 +55,10 @@ describe('figures', () => {
         .getCells()
     ).toEqual(
       expect.arrayContaining([
-        cons([0, 1], { state: 'filled' }),
-        cons([0, 2], { state: 'filled' }),
-        cons([0, 3], { state: 'filled' }),
-        cons([1, 3], { state: 'filled' }),
+        makeCell([0, 1], { state: 'filled' }),
+        makeCell([0, 2], { state: 'filled' }),
+        makeCell([0, 3], { state: 'filled' }),
+        makeCell([1, 3], { state: 'filled' }),
       ]),
     );
   });
@@ -73,10 +73,10 @@ describe('figures', () => {
         .getCells()
     ).toEqual(
       expect.arrayContaining([
-        cons([1, 1], { state: 'filled' }),
-        cons([1, 2], { state: 'filled' }),
-        cons([2, 1], { state: 'filled' }),
-        cons([2, 2], { state: 'filled' }),
+        makeCell([1, 1], { state: 'filled' }),
+        makeCell([1, 2], { state: 'filled' }),
+        makeCell([2, 1], { state: 'filled' }),
+        makeCell([2, 2], { state: 'filled' }),
       ]),
     );
   });
@@ -90,10 +90,10 @@ describe('figures', () => {
         .getCells()
     ).toEqual(
       expect.arrayContaining([
-        cons([0, 1], { state: 'filled' }),
-        cons([0, 2], { state: 'filled' }),
-        cons([1, 2], { state: 'filled' }),
-        cons([1, 3], { state: 'filled' }),
+        makeCell([0, 1], { state: 'filled' }),
+        makeCell([0, 2], { state: 'filled' }),
+        makeCell([1, 2], { state: 'filled' }),
+        makeCell([1, 3], { state: 'filled' }),
       ]),
     );
   });
@@ -107,10 +107,10 @@ describe('figures', () => {
         .getCells()
     ).toEqual(
       expect.arrayContaining([
-        cons([1, 1], { state: 'filled' }),
-        cons([1, 2], { state: 'filled' }),
-        cons([1, 3], { state: 'filled' }),
-        cons([2, 2], { state: 'filled' }),
+        makeCell([1, 1], { state: 'filled' }),
+        makeCell([1, 2], { state: 'filled' }),
+        makeCell([1, 3], { state: 'filled' }),
+        makeCell([2, 2], { state: 'filled' }),
       ]),
     );
   });
@@ -124,10 +124,10 @@ describe('figures', () => {
         .getCells()
     ).toEqual(
       expect.arrayContaining([
-        cons([1, 1], { state: 'filled' }),
-        cons([0, 2], { state: 'filled' }),
-        cons([1, 2], { state: 'filled' }),
-        cons([0, 3], { state: 'filled' }),
+        makeCell([1, 1], { state: 'filled' }),
+        makeCell([0, 2], { state: 'filled' }),
+        makeCell([1, 2], { state: 'filled' }),
+        makeCell([0, 3], { state: 'filled' }),
       ]),
     );
   });

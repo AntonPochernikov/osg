@@ -1,4 +1,4 @@
-import { cons as consCell, getCoordinates } from 'libs/cell';
+import { makeCell, getCoordinates } from 'utils/cell';
 
 import { Figure } from './Figure';
 
@@ -6,14 +6,14 @@ export class FigureO extends Figure {
   static alignment = {
     down: {
       direction: 'down',
-      startHead: consCell([5, 0], { state: 'filled' }),
+      startHead: makeCell([5, 0], { state: 'filled' }),
       getCells: (head) => {
         const result = [];
         const [headX, headY] = getCoordinates(head);
-        result.push(consCell([headX, headY], { state: 'filled' }));
-        result.push(consCell([headX - 1, headY], { state: 'filled' }));
-        result.push(consCell([headX, headY + 1], { state: 'filled' }));
-        result.push(consCell([headX - 1, headY + 1], { state: 'filled' }));
+        result.push(makeCell([headX, headY], { state: 'filled' }));
+        result.push(makeCell([headX - 1, headY], { state: 'filled' }));
+        result.push(makeCell([headX, headY + 1], { state: 'filled' }));
+        result.push(makeCell([headX - 1, headY + 1], { state: 'filled' }));
         return result;
       },
       getSize: () => ({ height: 2, width: 2 }),
@@ -35,12 +35,12 @@ export class FigureO extends Figure {
   }
 
   setPosition(x, y) {
-    return new FigureO(consCell([x, y], { state: 'filled' }), this.direction);
+    return new FigureO(makeCell([x, y], { state: 'filled' }), this.direction);
   }
 
   move(x, y) {
     const [headX, headY] = getCoordinates(this.head);
-    return new FigureO(consCell([headX + x, headY + y], { state: 'filled' }), this.direction);
+    return new FigureO(makeCell([headX + x, headY + y], { state: 'filled' }), this.direction);
   }
 
   moveDown() {

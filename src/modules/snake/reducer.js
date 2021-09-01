@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 import { handleActions } from 'redux-actions';
 
-import { cons as consCell, setState, paint } from 'libs/cell';
+import { makeCell, setState, paint } from 'utils/cell';
 
 import * as action from 'modules/main/actions';
 
@@ -36,11 +36,11 @@ const apple = handleActions({
 const body = handleActions({
   // TODO: generate snake
   [action.snake.startGame]: () => new Snake([
-    consCell([Math.floor(cols / 2), rows - 6], { state: 'filled', color: 'yellow' }),
-    consCell([Math.floor(cols / 2), rows - 5], { state: 'filled', color: 'yellow' }),
-    consCell([Math.floor(cols / 2), rows - 4], { state: 'filled', color: 'yellow' }),
-    consCell([Math.floor(cols / 2), rows - 3], { state: 'filled', color: 'yellow' }),
-    consCell([Math.floor(cols / 2), rows - 2], { state: 'filled', color: 'yellow' }),
+    makeCell([Math.floor(cols / 2), rows - 6], { state: 'filled', color: 'yellow' }),
+    makeCell([Math.floor(cols / 2), rows - 5], { state: 'filled', color: 'yellow' }),
+    makeCell([Math.floor(cols / 2), rows - 4], { state: 'filled', color: 'yellow' }),
+    makeCell([Math.floor(cols / 2), rows - 3], { state: 'filled', color: 'yellow' }),
+    makeCell([Math.floor(cols / 2), rows - 2], { state: 'filled', color: 'yellow' }),
   ]),
   [action.snake.moveSnake]: (prevSnake, { payload: { direction } }) => prevSnake.move(
     generateNextCell(prevSnake.getHead(), direction),

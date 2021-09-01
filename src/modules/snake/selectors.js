@@ -4,8 +4,8 @@ import {
   haveSameCoordinates,
   getState,
   getColor,
-} from 'libs/cell';
-import { times } from 'libs/times';
+} from 'utils/cell';
+import { times } from 'utils/times';
 
 import { CONFIG } from './constants/config';
 import { snakeGrid } from './constants/snakeGrid';
